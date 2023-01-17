@@ -1,3 +1,12 @@
 @import url(../blocks/root/root.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/header__logo/header__logo.css);
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/profile__avatar/profile__avatar.css);
+@import url(../blocks/profile/profile__info/profile__info.css);
+@import url(../blocks/profile/profile__user-name/profile__user-name.css);
+@import url(../blocks/profile/profile__user-profession/profile__user-profession.css);
+@import url(../blocks/profile/profile__edit-button-container/profile__edit-button-container.css);
+@import url(../blocks/profile/profile__edit-button-icon/profile__edit-button-icon.css);
+@import url(../blocks/profile/profile__add-button-container/profile__add-button-container.css);
+@import url(../blocks/profile/profile__add-button-icon/profile__add-button-icon.css);

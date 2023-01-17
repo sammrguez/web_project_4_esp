@@ -1,0 +1,9 @@
+.profile__add-button-container {
+  width: 150px;
+  height: 50px;
+  border: 1px #fff solid;
+  position: absolute;
+  right: 0px;
+  top: 35px;
+  display: flex;
+}
