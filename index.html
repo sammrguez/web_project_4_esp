@@ -113,8 +113,33 @@
               </div>
             </div>
           </div>
-          </div>
         </section>
+        <div class="form__container">
+          <h3 class="form__header">Editar Perfil</h3>
+          <form class="form__admin">
+            <fieldset
+              class="form__input-container form__input-container_ctrl_profile-info"
+            >
+              <input
+                type="text"
+                class="form__item form__item_type_name"
+                placeholder="Nombre"
+                id="name"
+                name="name"
+              />
+              <input
+                type="text"
+                class="form__item form__item_type_about-me"
+                placeholder="Acerca de mi"
+                id="about-me"
+                name="about-me"
+              />
+            </fieldset>
+            <fieldset class="form__handlers">
+              <button type="submit" class="form__button">Crear</button>
+            </fieldset>
+          </form>
+        </div>
       </main>
     </div>
   </body>

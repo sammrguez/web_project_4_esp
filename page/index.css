@@ -28,3 +28,6 @@
 
 @import url(../blocks/like/like.css);
 @import url(../blocks/like/like__icon/like__icon.css);
+
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/form__container/form__container.css);
