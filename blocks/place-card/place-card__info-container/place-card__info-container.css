@@ -1,0 +1,9 @@
+.place-card__info-container {
+  width: 87%;
+  display: flex;
+  align-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 31px;
+  margin: auto;
+}

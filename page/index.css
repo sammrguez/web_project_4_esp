@@ -10,3 +10,21 @@
 @import url(../blocks/profile/profile__edit-button-icon/profile__edit-button-icon.css);
 @import url(../blocks/profile/profile__add-button-container/profile__add-button-container.css);
 @import url(../blocks/profile/profile__add-button-icon/profile__add-button-icon.css);
+
+@import url(../blocks/content/content.css);
+@import url(../blocks/photo-grid/photo-grid.css);
+@import url(../blocks/photo-grid/photo-grid__element/photo-grid__element.css);
+
+@import url(../blocks/place-card/place-card.css);
+@import url(../blocks/place-card/place-card__image/place-card__image.css);
+@import url(../blocks/place-card/place-card__image/_place/place-card__image_place_yosemite-valley.css);
+@import url(../blocks/place-card/place-card__image/_place/place-card__image_place_lago-louise.css);
+@import url(../blocks/place-card/place-card__image/_place/place-card__image_place_montañas-calvas.css);
+@import url(../blocks/place-card/place-card__info-container/place-card__info-container.css);
+@import url(../blocks/place-card/place-card__name/place-card__name.css);
+
+@import url(../blocks/trash/trash.css);
+@import url(../blocks/trash/trash__icon/trash__icon.css);
+
+@import url(../blocks/like/like.css);
+@import url(../blocks/like/like__icon/like__icon.css);
