@@ -8,139 +8,159 @@
     <link rel="stylesheet" href="/page/index.css" />
   </head>
   <body class="root">
-    <div class="page">
-      <section class="header">
-        <img
-          class="header__logo"
-          src="images/logo-vector.svg"
-          alt="logo del proyecto"
-        />
-      </section>
-      <section class="profile">
-        <div class="profile__avatar-container">
-          <img
-            class="profile__avatar"
-            src="images/avatar.jpg"
-            alt="aquí está tu foto de perfil"
-          />
-        </div>
-        <div class="profile__info">
-          <div class="profile__user-name">Jacques Cousteau</div>
-          <div class="profile__user-profession">Explorer</div>
-        </div>
-        <div class="edit-button">
-          <img
-            class="edit-button__icon"
-            src="images/edit_button.png"
-            alt="ícono de editar"
-          />
-        </div>
-        <div class="add-button">
-          <img
-            class="add-button__icon"
-            src="images/add_button.svg"
-            alt="ícono de editar"
-          />
-        </div>
-      </section>
-      <<<<<<< Updated upstream =======
-      <main class="content">
-        <section class="photo-grid">
-          <div class="place-card">
-            <div
-              class="place-card__image place-card__image_place_yosemite-valley"
-            >
-              <div class="trash">
-                <img
-                  class="trash-icon"
-                  src="images/Trash-icon.svg"
-                  alt="icono de bote de basura"
+    <script src="script.js"></script>
+    <div class="pop-up__opacity-layer">
+      <section class="popup">
+        <div class="form__container">
+          <button class="form__close-button">
+          </button>
+          <div class="form" >
+            <h3 class="form__header">Editar Perfil</h3>
+            <form class="form__admin">
+              <fieldset
+                class="form__input-container form__input-container_ctrl_profile-info"
+              >
+                <input
+                  type="text"
+                  class="form__item form__item_type_name"
+                  placeholder="Nombre"
+                  id="name"
+                  name="name"
                 />
-              </div>
-            </div>
-            <div class="place-card__info-container">
-              <h3 class="place-card__name">Valle de Yosemite</h3>
-              <div class="like">
-                <img
-                  class="like__icon"
-                  src="images/like-icon.svg"
-                  alt="icono de like"
+                <input
+                  type="text"
+                  class="form__item form__item_type_about-me"
+                  placeholder="Acerca de mi"
+                  id="about-me"
+                  name="about-me"
                 />
-              </div>
-            </div>
+              </fieldset>
+              <fieldset class="form__handlers">
+                </button>
+                <button
+                  type="submit"
+                  class="form__submit-button"
+                >
+                  Crear
+                </button>
+              </fieldset>
+            </form>
           </div>
-          <div class="place-card">
-            <div class="place-card__image place-card__image_place_lago-louise">
-              <div class="trash">
-                <img
-                  class="trash-icon"
-                  src="images/Trash-icon.svg"
-                  alt="icono de bote de basura"
-                />
-              </div>
-            </div>
-            <div class="place-card__info-container">
-              <h3 class="place-card__name">Lago Louise</h3>
-              <div class="like">
-                <img
-                  class="like__icon"
-                  src="images/like-icon.svg"
-                  alt="icono de like"
-                />
-              </div>
-            </div>
+        </div>
+            
+          </section>       
+      
+      <div class="page">
+        <section class="header">
+          <img
+            class="header__logo"
+            src="images/logo-vector.svg"
+            alt="logo del proyecto"
+          />
+        </section>
+        <section class="profile">
+          <div class="profile__avatar-container">
+            <img
+              class="profile__avatar"
+              src="images/avatar.jpg"
+              alt="aquí está tu foto de perfil"
+            />
           </div>
-          <div class="place-card">
-            <div
-              class="place-card__image place-card__image_place_montañas-calvas"
-            >
-              <div class="trash">
-                <img
-                  class="trash-icon"
-                  src="images/Trash-icon.svg"
-                  alt="icono de bote de basura"
-                />
-              </div>
-            </div>
-            <div class="place-card__info-container">
-              <h3 class="place-card__name">Montañas calvas</h3>
-              <div class="like">
-                <img
-                  class="like__icon"
-                  src="images/like-icon.svg"
-                  alt="icono de like"
-                />
-              </div>
-            </div>
+          <div class="profile__info">
+            <div class="profile__user-name">Jacques Cousteau</div>
+            <div class="profile__user-profession">Explorer</div>
+          </div>
+          <div class="edit-button">
+            <img
+              class="edit-button__icon"
+              src="images/edit_button.png"
+              alt="ícono de editar"
+            />
+          </div>
+          <div class="add-button">
+            <img
+              class="add-button__icon"
+              src="images/add_button.svg"
+              alt="ícono de editar"
+            />
           </div>
         </section>
-        <div class="form__container">
-          <h3 class="form__header">Editar Perfil</h3>
-          <form class="form__admin">
-            <fieldset
-              class="form__input-container form__input-container_ctrl_profile-info"
-            >
-              <input
-                type="text"
-                class="form__item form__item_type_name"
-                placeholder="Nombre"
-                id="name"
-                name="name"
-              />
-              <input
-                type="text"
-                class="form__item form__item_type_about-me"
-                placeholder="Acerca de mi"
-                id="about-me"
-                name="about-me"
-              />
-            </fieldset>
-            <fieldset class="form__handlers">
-              <button type="submit" class="form__button">Crear</button>
-            </fieldset>
-          </form>
-        </div>
-      </main>
+        <main class="content">
+          <section class="photo-grid">
+            <div class="place-card">
+              <div
+                class="place-card__image place-card__image_place_yosemite-valley"
+              >
+                <div class="trash">
+                  <img
+                    class="trash-icon"
+                    src="images/Trash-icon.svg"
+                    alt="icono de bote de basura"
+                  />
+                </div>
+              </div>
+              <div class="place-card__info-container">
+                <h3 class="place-card__name">Valle de Yosemite</h3>
+                <div class="like">
+                  <img
+                    class="like__icon"
+                    src="images/like-icon.svg"
+                    alt="icono de like"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="place-card">
+              <div
+                class="place-card__image place-card__image_place_lago-louise"
+              >
+                <div class="trash">
+                  <img
+                    class="trash-icon"
+                    src="images/Trash-icon.svg"
+                    alt="icono de bote de basura"
+                  />
+                </div>
+              </div>
+              <div class="place-card__info-container">
+                <h3 class="place-card__name">Lago Louise</h3>
+                <div class="like">
+                  <img
+                    class="like__icon"
+                    src="images/like-icon.svg"
+                    alt="icono de like"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="place-card">
+              <div
+                class="place-card__image place-card__image_place_montañas-calvas"
+              >
+                <div class="trash">
+                  <img
+                    class="trash-icon"
+                    src="images/Trash-icon.svg"
+                    alt="icono de bote de basura"
+                  />
+                </div>
+              </div>
+              <div class="place-card__info-container">
+                <h3 class="place-card__name">Montañas calvas</h3>
+                <div class="like">
+                  <img
+                    class="like__icon"
+                    src="images/like-icon.svg"
+                    alt="icono de like"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          
+        </main>
+      </div>
     </div>
   </body>
 </html>
