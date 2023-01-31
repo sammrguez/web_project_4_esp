@@ -1,12 +1,27 @@
-const btnEditProfile = document.getElementById(".edit-button");
-const popup = document.querySelector(".popup");
+const btnEditProfile = document.querySelector(".edit-button");
+const popupEditProfile = document.querySelector(".popup_type_edit-profile");
+const btnCloseEditProfile = document.querySelector(
+  ".form__close-button_type_edit-profile"
+);
 
-/*console.log(popup);*/
+console.log(popupEditProfile);
 
-console.log("Hello World");
-
-btnEditProfile.addEventListener("click", mostrarOcultarFooter);
-
-function mostrarOcultarFooter() {
-  console.log("Hello World 2");
+function openEditProfile() {
+  if (popupEditProfile.classList.contains("popup_opened")) {
+    popupEditProfile.classList.remove("popup_opened");
+  } else {
+    popupEditProfile.classList.add("popup_opened");
+  }
 }
+
+btnEditProfile.addEventListener("click", openEditProfile);
+
+function closeEditProfile() {
+  if (popupEditProfile.classList.contains("popup_opened")) {
+    popupEditProfile.classList.remove("popup_opened");
+  } else {
+    popupEditProfile.classList.add("popup_opened");
+  }
+}
+
+btnCloseEditProfile.addEventListener("click", closeEditProfile);
