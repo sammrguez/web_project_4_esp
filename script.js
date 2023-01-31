@@ -1,8 +1,12 @@
-let btnEditProfile = documument.querySelector(".edit-button");
-let btnCloseEditProfile = document.querySelector(".form__button_type_close");
-let popupEditProfile = document.querySelector(".popup_type_edit-profile");
+const btnEditProfile = document.getElementById(".edit-button");
+const popup = document.querySelector(".popup");
 
-function openEditProfile() {
-  popupEditProfile.showModal();
+/*console.log(popup);*/
+
+console.log("Hello World");
+
+btnEditProfile.addEventListener("click", mostrarOcultarFooter);
+
+function mostrarOcultarFooter() {
+  console.log("Hello World 2");
 }
-btnEditProfile.addEventListener("click");

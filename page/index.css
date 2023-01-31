@@ -13,7 +13,7 @@
 
 @import url(../blocks/content/content.css);
 @import url(../blocks/photo-grid/photo-grid.css);
-@import url(../blocks/photo-grid/photo-grid__element/photo-grid__element.css);
+/*@import url(../blocks/photo-grid/photo-grid__element/photo-grid__element.css);*/
 
 @import url(../blocks/place-card/place-card.css);
 @import url(../blocks/place-card/place-card__image/place-card__image.css);

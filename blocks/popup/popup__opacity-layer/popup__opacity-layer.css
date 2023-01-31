@@ -1,7 +1,0 @@
-.pop-up__opacity-layer {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  z-index: 1;
-}

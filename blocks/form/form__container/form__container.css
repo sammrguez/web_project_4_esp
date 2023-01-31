@@ -1,9 +1,7 @@
 .form__container {
   max-width: 470px;
   margin: auto;
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  position: relative;
-  z-index: 1000;
+  z-index: 70;
 }
