@@ -1,5 +1,6 @@
 .form {
-  max-width: 91.5%;
+  max-width: 91%;
+  height: 370px;
   background-color: #fff;
   border-radius: 10px;
 }

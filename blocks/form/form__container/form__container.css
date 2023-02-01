@@ -1,7 +1,6 @@
 .form__container {
-  max-width: 470px;
-  margin: auto;
+  width: 37%;
+  max-height: 500px;
   display: flex;
   flex-direction: column;
-  z-index: 70;
 }
