@@ -1,9 +1,7 @@
 //funciones para abrir y cerrrar popups//
 const btnEditProfile = document.querySelector(".edit-button");
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
-const btnCloseEditProfile = document.querySelector(
-  ".form__close-button_type_edit-profile"
-);
+const btnCloseEditProfile = document.querySelector(".form__close-button");
 
 function openEditProfile() {
   cleanInput();
@@ -55,23 +53,22 @@ btnCloseNewPlace.addEventListener("click", closeAddNewPlace);
 //funciones para asignar información del perfil//
 
 const profileInfo = document.querySelector(".profile__info");
-const btnCreateProfile = document.querySelector(".form__submit-button_edit");
+const btnCreateProfile = document.querySelector(".form__submit-button");
 
 btnCreateProfile.addEventListener("click", createProfile);
-
-let userName = document.querySelector(".form__item_type_name");
-let userProfession = document.querySelector(".profile__user-profession");
 
 function createProfile() {
   cleanProfile();
 
-  let userName = document.querySelector(".form__item_type_name");
-  let userProfession = document.querySelector(".form__item_type_about-me");
+  let userNameInput = document.querySelector(".input__text_type_name");
+  let userProfessionInput = document.querySelector(
+    ".input__text_type_about-me"
+  );
 
   profileInfo.insertAdjacentHTML(
     "beforeend",
-    `<h2 class="profile__user-name">${userName.value}</h2>
-  <h3 class="profile__user-profession">${userProfession.value}</h3>`
+    `<h2 class="profile__user-name">${userNameInput.value}</h2>
+  <h3 class="profile__user-profession">${userProfessionInput.value}</h3>`
   );
 
   cleanInput();
@@ -80,22 +77,65 @@ function createProfile() {
 
 btnCreateProfile.addEventListener("click", createProfile);
 
-// Elimina los cursos del carrito en el DOM
+// Reset de perfil en html
 function cleanProfile() {
-  const element1 = document.querySelector(".profile__user-name");
-  const element2 = document.querySelector(".profile__user-profession");
-  if (element1 !== null && element2 !== null) {
-    element1.remove();
-    element2.remove();
+  const resetName = document.querySelector(".profile__user-name");
+  const resetAboutMe = document.querySelector(".profile__user-profession");
+  if (resetName !== null && resetAboutMe !== null) {
+    resetName.remove();
+    resetAboutMe.remove();
     console.log("function working");
   }
-
-  console.log(element1);
-  console.log(element2);
-  console.log("nulls");
 }
 
+//limpiar inputs//
 function cleanInput() {
-  document.querySelector(".form__item_type_name").value = "";
-  document.querySelector(".form__item_type_about-me").value = "";
+  document.querySelector(".input__text_type_name").value = "Jacques Cousteau";
+  document.querySelector(".input__text_type_about-me").value = "Explorador";
+}
+
+// insertar cards
+const photoGrid = document.querySelector(".photo-grid");
+const btnSubmitNewPlace = document.querySelector(".form__submit-button_place");
+
+function createNewPlace() {
+  const placeNameInput = document.querySelector(".input__text_type_place-name");
+  const placeImgLinkInput = document.querySelector(
+    ".input__text_type_photo-link"
+  );
+  photoGrid.insertAdjacentHTML(
+    "afterbegin",
+    ` <div class="place-card">
+  <div
+    class="place-card__image place-card__image_place_yosemite-valley"
+  >
+    <div class="trash">
+      <img
+        class="trash-icon"
+        src="images/Trash-icon.svg"
+        alt="icono de bote de basura"
+      />
+    </div>
+  </div>
+  <div class="place-card__info-container">
+    <h3 class="place-card__name">${placeNameInput.value}</h3>
+    <div class="like">
+      <img
+        class="like__icon"
+        src="images/like-icon.svg"
+        alt="icono de like"
+      />
+    </div>
+  </div>
+  </div>`
+  );
+  cleanInputPlace();
+  closeAddNewPlace();
+}
+
+btnSubmitNewPlace.addEventListener("click", createNewPlace);
+//limpiar inputs
+function cleanInputPlace() {
+  document.querySelector(".input__text_type_place-name").value = "";
+  document.querySelector(".input__text_type_photo-link").value = "";
 }
