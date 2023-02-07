@@ -103,12 +103,13 @@ function createNewPlace() {
   const placeImgLinkInput = document.querySelector(
     ".input__text_type_photo-link"
   );
+
   photoGrid.insertAdjacentHTML(
     "afterbegin",
     ` <div class="place-card">
-  <div
-    class="place-card__image place-card__image_place_yosemite-valley"
-  >
+    <img class="place-card__photo"
+     src="${placeImgLinkInput.value}"
+     />
     <div class="trash">
       <img
         class="trash-icon"
@@ -116,7 +117,6 @@ function createNewPlace() {
         alt="icono de bote de basura"
       />
     </div>
-  </div>
   <div class="place-card__info-container">
     <h3 class="place-card__name">${placeNameInput.value}</h3>
     <div class="like">
@@ -129,10 +129,10 @@ function createNewPlace() {
   </div>
   </div>`
   );
+
   cleanInputPlace();
   closeAddNewPlace();
 }
-
 btnSubmitNewPlace.addEventListener("click", createNewPlace);
 //limpiar inputs
 function cleanInputPlace() {
