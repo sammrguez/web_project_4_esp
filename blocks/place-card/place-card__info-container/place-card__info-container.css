@@ -1,5 +1,7 @@
 .place-card__info-container {
   width: 87%;
+  max-height: 21%;
+  min-height: 70px;
   display: flex;
   align-content: center;
   flex-direction: row;

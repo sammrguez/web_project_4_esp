@@ -1,4 +1,4 @@
-//funciones para abrir y cerrrar popups//
+//abrir editar perfil
 const btnEditProfile = document.querySelector(".edit-button");
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
 const btnCloseEditProfile = document.querySelector(".form__close-button");
@@ -13,7 +13,7 @@ function openEditProfile() {
 }
 
 btnEditProfile.addEventListener("click", openEditProfile);
-
+//cerrar editar perfil
 function closeEditProfile() {
   if (popupEditProfile.classList.contains("popup_opened")) {
     popupEditProfile.classList.remove("popup_opened");
@@ -29,7 +29,7 @@ const popupAddNewPlace = document.querySelector(".popup_type_new-place");
 const btnCloseNewPlace = document.querySelector(
   ".form__close-button_type_new-place"
 );
-
+//abrir add new place
 function openAddNewPlace() {
   if (popupAddNewPlace.classList.contains("popup_opened")) {
     popupAddNewPlace.classList.remove("popup_opened");
@@ -39,7 +39,7 @@ function openAddNewPlace() {
 }
 
 btnAddNewPlace.addEventListener("click", openAddNewPlace);
-
+//cerrar add new place
 function closeAddNewPlace() {
   if (popupAddNewPlace.classList.contains("popup_opened")) {
     popupAddNewPlace.classList.remove("popup_opened");
@@ -50,8 +50,45 @@ function closeAddNewPlace() {
 
 btnCloseNewPlace.addEventListener("click", closeAddNewPlace);
 
-//funciones para asignar información del perfil//
+//img popup
+const cardPhotos = document.querySelectorAll(".place-card__photo");
+const popupPhoto = document.querySelector(".popup_type_photo");
+const closePopupPhoto = document.querySelector(
+  ".form__close-button_type_photo"
+);
+//asignando a cada photo como botón
+cardPhotos.forEach((photo) => {
+  photo.addEventListener("click", openPhoto);
+});
+//abrir popup de foto
+function openPhoto() {
+  if (popupPhoto.classList.contains("popup_opened")) {
+    popupPhoto.classList.remove("popup_opened");
+  } else {
+    popupPhoto.classList.add("popup_opened");
+  }
+}
 
+function closePhoto() {
+  if (popupPhoto.classList.contains("popup_opened")) {
+    popupPhoto.classList.remove("popup_opened");
+  } else {
+    popupPhoto.classList.add("popup_opened");
+  }
+}
+closePopupPhoto.addEventListener("click", closePhoto);
+
+//submit
+function openEditProfile() {
+  cleanInput();
+  if (popupEditProfile.classList.contains("popup_opened")) {
+    popupEditProfile.classList.remove("popup_opened");
+  } else {
+    popupEditProfile.classList.add("popup_opened");
+  }
+}
+
+//funciones para asignar información del perfil//
 const profileInfo = document.querySelector(".profile__info");
 const btnCreateProfile = document.querySelector(".form__submit-button");
 
