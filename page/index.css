@@ -17,9 +17,7 @@
 
 @import url(../blocks/place-card/place-card.css);
 @import url(../blocks/place-card/place-card__image/place-card__image.css);
-@import url(../blocks/place-card/place-card__image/_place/place-card__image_place_yosemite-valley.css);
-@import url(../blocks/place-card/place-card__image/_place/place-card__image_place_lago-louise.css);
-@import url(../blocks/place-card/place-card__image/_place/place-card__image_place_montañas-calvas.css);
+@import url(../blocks/place-card/place-card__photo/place-card__photo.css);
 @import url(../blocks/place-card/place-card__info-container/place-card__info-container.css);
 @import url(../blocks/place-card/place-card__name/place-card__name.css);
 

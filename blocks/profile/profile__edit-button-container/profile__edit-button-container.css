@@ -6,3 +6,7 @@
   border: 1px #fff solid;
   display: flex;
 }
+.edit-button:hover {
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}

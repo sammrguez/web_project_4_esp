@@ -1,9 +1,8 @@
-.place-card__image {
+.place-card__photo {
   max-width: 100%;
   max-height: 282px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  padding-bottom: 100%;
   display: flex;
   position: relative;
 }

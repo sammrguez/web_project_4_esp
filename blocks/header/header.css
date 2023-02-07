@@ -1,37 +1,3 @@
-* body,
-h1,
-h2,
-h3,
-h4,
-h5,
-p,
-a,
-img,
-li,
-main,
-div,
-section,
-blockquote,
-cite,
-span {
-  margin: 0;
-  padding: 0;
-  font-size: 100%;
-  font-weight: normal;
-  border: 2px red solid;
-}
-* {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-}
-.root {
-  background-color: #000;
-  max-width: 1280px;
-}
-.page {
-  max-width: 69%;
-  margin: auto;
-}
 .header {
   margin: 45px auto 40px;
   max-height: 74px;
