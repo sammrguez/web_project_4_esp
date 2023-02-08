@@ -124,7 +124,7 @@ function createProfile() {
     `<h2 class="profile__user-name">${userNameInput.value}</h2>
   <h3 class="profile__user-profession">${userProfessionInput.value}</h3>`
   );
-
+  obtenerIndex();
   cleanInput();
   closeEditProfile();
 }

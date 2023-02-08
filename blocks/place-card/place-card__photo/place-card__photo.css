@@ -1,6 +1,6 @@
 .place-card__photo {
   max-width: 100%;
-  max-height: 282px;
+  height: 78%;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   display: flex;
