@@ -1,0 +1,21 @@
+.popup__photo-container {
+  max-width: 70%;
+  height: 612px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+@media screen and (max-width: 599px) {
+  .popup__photo-container {
+    max-width: 80%;
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .popup__photo-container {
+    max-width: 95%;
+    height: 350px;
+  }
+}

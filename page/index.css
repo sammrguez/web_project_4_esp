@@ -38,3 +38,6 @@
 @import url(../blocks/form/form__submit-button/form__submit-button.css);
 
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/popup__photo/popup__photo.css);
+@import url(../blocks/popup/popup__photo-caption/popup__photo-caption.css);
+@import url(../blocks/popup/popup__photo-container/popup__photo-container.css);
