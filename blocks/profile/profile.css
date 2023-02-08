@@ -5,5 +5,8 @@
   position: relative;
   margin: auto;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 725px) {
+  .profile {
+    max-width: 80%;
+  }
 }

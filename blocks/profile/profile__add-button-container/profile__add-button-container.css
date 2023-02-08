@@ -12,8 +12,13 @@
   border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 725px) {
   .add-button {
     width: 100px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .add-button {
+    width: 50px;
   }
 }

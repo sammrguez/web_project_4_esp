@@ -56,10 +56,16 @@ const popupPhoto = document.querySelector(".popup_type_photo");
 const closePopupPhoto = document.querySelector(
   ".form__close-button_type_photo"
 );
+const popupImgContainer = document.querySelector(".popup__photo");
+const photoCaption = document.querySelector(".popup__photo-caption");
+const placeCardName = document.querySelectorAll(".place-card__name");
+
 //asignando a cada photo como botón
 cardPhotos.forEach((photo) => {
+  obtenerIndex();
   photo.addEventListener("click", openPhoto);
 });
+
 //abrir popup de foto
 function openPhoto() {
   if (popupPhoto.classList.contains("popup_opened")) {
@@ -67,6 +73,17 @@ function openPhoto() {
   } else {
     popupPhoto.classList.add("popup_opened");
   }
+  obtenerIndex();
+}
+
+function obtenerIndex() {
+  cardPhotos.forEach((el, index) => {
+    el.addEventListener("click", () => {
+      let nvoIndex = index;
+      popupImgContainer.src = cardPhotos[nvoIndex].src;
+      photoCaption.textContent = placeCardName[nvoIndex].textContent;
+    });
+  });
 }
 
 function closePhoto() {
@@ -166,7 +183,7 @@ function createNewPlace() {
   </div>
   </div>`
   );
-
+  obtenerIndex();
   cleanInputPlace();
   closeAddNewPlace();
 }
