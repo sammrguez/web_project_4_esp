@@ -1,3 +1,30 @@
+const initialCards = [
+  {
+    name: "Valle de Yosemite",
+    src: "./images/valle-yosemite.jpeg",
+  },
+  {
+    name: "Lago Louise",
+    src: "./images/Lago-Louise.jpeg",
+  },
+  {
+    name: "Montañas Calvas",
+    src: "./images/montanas-calvas.jpeg",
+  },
+  {
+    name: "Latemar",
+    src: "./images/latemar.jpeg",
+  },
+  {
+    name: "Parque Nacional de la Vanoise",
+    src: "./images/parque-vanoise.jpeg",
+  },
+  {
+    name: "Lago di Braies",
+    src: "./images/lago-dibraies.jpeg",
+  },
+];
+
 //abrir editar perfil
 const btnEditProfile = document.querySelector(".edit-button");
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
@@ -61,20 +88,11 @@ const photoCaption = document.querySelector(".popup__photo-caption");
 const placeCardName = document.querySelectorAll(".place-card__name");
 
 //asignando a cada photo como botón
-cardPhotos.forEach((photo) => {
+
+/*cardPhotos.forEach((photo) => {
   obtenerIndex();
   photo.addEventListener("click", openPhoto);
 });
-
-//abrir popup de foto
-function openPhoto() {
-  if (popupPhoto.classList.contains("popup_opened")) {
-    popupPhoto.classList.remove("popup_opened");
-  } else {
-    popupPhoto.classList.add("popup_opened");
-  }
-  obtenerIndex();
-}
 
 function obtenerIndex() {
   cardPhotos.forEach((el, index) => {
@@ -84,6 +102,62 @@ function obtenerIndex() {
       photoCaption.textContent = placeCardName[nvoIndex].textContent;
     });
   });
+}*/
+// insertar cards
+const photoGrid = document.querySelector(".photo-grid");
+const btnSubmitNewPlace = document.querySelector(".form__submit-button_place");
+function createNewPlace() {
+  const placeNameInput = document.querySelector(".input__text_type_place-name");
+  const placeImgLinkInput = document.querySelector(
+    ".input__text_type_photo-link"
+  );
+
+  const cardPhotos = document.querySelectorAll(".place-card__photo");
+  console.log(cardPhotos);
+
+  cleanInputPlace();
+  closeAddNewPlace();
+}
+//renderizar las primeras tarjetas
+const cardTemplateContent = document.querySelector("#photo-template").content;
+
+function getCardElement(link, name) {
+  const cardElement = cardTemplateContent.cloneNode(true);
+  const cardPhoto = cardElement.querySelector(".place-card__photo");
+  const placeCardName = cardElement.querySelector(".place-card__name");
+
+  cardPhoto.src = link;
+  cardPhoto.alt = name;
+
+  placeCardName.textContent = name;
+  return cardElement;
+}
+
+function renderInitialCards() {
+  for (const card of initialCards) {
+    const cardElement = getCardElement(card.src, card.name);
+    photoGrid.prepend(cardElement);
+    cardElement.addEventListener("click", openPhoto);
+  }
+}
+
+renderInitialCards();
+
+btnSubmitNewPlace.addEventListener("click", createNewPlace);
+//limpiar inputs
+function cleanInputPlace() {
+  document.querySelector(".input__text_type_place-name").value = "";
+  document.querySelector(".input__text_type_photo-link").value = "";
+}
+
+//abrir popup de foto
+function openPhoto() {
+  if (popupPhoto.classList.contains("popup_opened")) {
+    popupPhoto.classList.remove("popup_opened");
+  } else {
+    popupPhoto.classList.add("popup_opened");
+  }
+  obtenerIndex();
 }
 
 function closePhoto() {
@@ -124,7 +198,7 @@ function createProfile() {
     `<h2 class="profile__user-name">${userNameInput.value}</h2>
   <h3 class="profile__user-profession">${userProfessionInput.value}</h3>`
   );
-  obtenerIndex();
+
   cleanInput();
   closeEditProfile();
 }
@@ -146,50 +220,4 @@ function cleanProfile() {
 function cleanInput() {
   document.querySelector(".input__text_type_name").value = "Jacques Cousteau";
   document.querySelector(".input__text_type_about-me").value = "Explorador";
-}
-
-// insertar cards
-const photoGrid = document.querySelector(".photo-grid");
-const btnSubmitNewPlace = document.querySelector(".form__submit-button_place");
-
-function createNewPlace() {
-  const placeNameInput = document.querySelector(".input__text_type_place-name");
-  const placeImgLinkInput = document.querySelector(
-    ".input__text_type_photo-link"
-  );
-
-  photoGrid.insertAdjacentHTML(
-    "afterbegin",
-    ` <div class="place-card">
-    <img class="place-card__photo"
-     src="${placeImgLinkInput.value}"
-     />
-    <div class="trash">
-      <img
-        class="trash-icon"
-        src="images/Trash-icon.svg"
-        alt="icono de bote de basura"
-      />
-    </div>
-  <div class="place-card__info-container">
-    <h3 class="place-card__name">${placeNameInput.value}</h3>
-    <div class="like">
-      <img
-        class="like__icon"
-        src="images/like-icon.svg"
-        alt="icono de like"
-      />
-    </div>
-  </div>
-  </div>`
-  );
-  obtenerIndex();
-  cleanInputPlace();
-  closeAddNewPlace();
-}
-btnSubmitNewPlace.addEventListener("click", createNewPlace);
-//limpiar inputs
-function cleanInputPlace() {
-  document.querySelector(".input__text_type_place-name").value = "";
-  document.querySelector(".input__text_type_photo-link").value = "";
 }

@@ -42,7 +42,7 @@
       </section>
       <main class="content">
         <section class="photo-grid">
-          <div class="place-card">
+          <!--<div class="place-card">
               <img class="place-card__photo" src="images/valle-de-yosemite.jpg"/>
               <div class="trash">
                 <img
@@ -101,7 +101,7 @@
                 />
               </div>
             </div>
-          </div>
+          </div>-->
         </section>
       </main>
       <!--<section class="popups">-->
@@ -193,6 +193,31 @@
         </div>
       <!--</section>-->
     </div>
+    <template id="photo-template">
+    <div class="place-card">
+      <img class="place-card__photo"
+       src=" "
+       alt=" "
+       />
+      <div class="trash">
+        <img
+          class="trash-icon"
+          src="images/Trash-icon.svg"
+          alt="icono de bote de basura"
+        />
+      </div>
+    <div class="place-card__info-container">
+      <h3 class="place-card__name"></h3>
+      <div class="like">
+        <img
+          class="like__icon"
+          src="images/like-icon.svg"
+          alt="icono de like"
+        />
+      </div>
+    </div>
+    </div>
+  </template>
     <script src="/script.js"></script>
   </body>
 </html>
