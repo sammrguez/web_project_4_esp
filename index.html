@@ -17,40 +17,43 @@
         />
       </section>
       <section class="profile">
-          <img
-            class="profile__avatar"
-            src="images/avatar.jpg"
-            alt="aquí está tu foto de perfil"
-          />
+        <img
+          class="profile__avatar"
+          src="images/avatar.jpg"
+          alt="aquí está tu foto de perfil"
+        />
         <div class="profile__info">
-       
-        <div class="edit-button">
-          <img
-            class="edit-button__icon"
-            src="images/edit_button.png"
-            alt="ícono de editar"
-          />
-        </div>
-        <div class="add-button">
-          <img
-            class="add-button__icon"
-            src="images/add_button.svg"
-            alt="ícono de editar"
-          />
-        </div>
+          <div class="edit-button">
+            <img
+              class="edit-button__icon"
+              src="images/edit_button.png"
+              alt="ícono de editar"
+            />
+          </div>
+          <div class="add-button">
+            <img
+              class="add-button__icon"
+              src="images/add_button.svg"
+              alt="ícono de agregar"
+            />
+          </div>
         </div>
       </section>
       <main class="content">
         <section class="photo-grid">
           <div class="place-card">
-              <img class="place-card__photo" src="images/valle-de-yosemite.jpg"/>
-              <div class="trash">
-                <img
-                  class="trash-icon"
-                  src="images/Trash-icon.svg"
-                  alt="icono de bote de basura"
-                />
-              </div>
+            <img
+              class="place-card__photo"
+              src="images/valle-de-yosemite.jpg"
+              alt="Valle de Yosemite"
+            />
+            <div class="trash">
+              <img
+                class="trash-icon"
+                src="images/Trash-icon.svg"
+                alt="icono de bote de basura"
+              />
+            </div>
             <div class="place-card__info-container">
               <h3 class="place-card__name">Valle de Yosemite</h3>
               <div class="like">
@@ -63,7 +66,11 @@
             </div>
           </div>
           <div class="place-card">
-            <img class="place-card__photo" src="images/lago-louise.jpg"/>
+            <img
+              class="place-card__photo"
+              src="images/lago-louise.jpg"
+              alt="lago Louise"
+            />
             <div class="trash">
               <img
                 class="trash-icon"
@@ -83,7 +90,11 @@
             </div>
           </div>
           <div class="place-card">
-            <img class="place-card__photo" src="images/montañas-calvas.jpg"/>
+            <img
+              class="place-card__photo"
+              src="images/montañas-calvas.jpg"
+              alt="montañas calvas"
+            />
             <div class="trash">
               <img
                 class="trash-icon"
@@ -105,11 +116,10 @@
         </section>
       </main>
       <section class="popups">
-      <div class="popup popup_type_edit-profile">
+        <div class="popup popup_type_edit-profile">
           <div class="form__container">
-            <button class="form__close-button ">
-            </button>
-            <div class="form" >
+            <button class="form__close-button"></button>
+            <div class="form">
               <h3 class="form__header">Editar Perfil</h3>
               <form class="form__admin">
                 <fieldset
@@ -133,27 +143,26 @@
                   />
                 </fieldset>
                 <fieldset class="form__handlers">
-                  </button>
                   <button
-                    class="form__submit-button form__submit-button_edit" type="button"
+                    class="form__submit-button form__submit-button_edit"
+                    type="button"
                   >
                     Crear
                   </button>
                 </fieldset>
               </form>
             </div>
-          </div>  
+          </div>
         </div>
         <div class="popup popup_type_new-place">
           <div class="form__container">
-            <button class="form__close-button form__close-button_type_new-place" >
-            </button>
+            <button
+              class="form__close-button form__close-button_type_new-place"
+            ></button>
             <div class="form">
               <h3 class="form__header">Nuevo Lugar</h3>
               <form class="form__admin">
-                <fieldset
-                  class="form__input-container"
-                >
+                <fieldset class="form__input-container">
                   <input
                     type="text"
                     class="input__text input__text_type_place-name"
@@ -170,7 +179,6 @@
                   />
                 </fieldset>
                 <fieldset class="form__handlers">
-                  </button>
                   <button
                     type="button"
                     class="form__submit-button form__submit-button_place"
@@ -180,19 +188,19 @@
                 </fieldset>
               </form>
             </div>
-          </div>  
+          </div>
         </div>
         <div class="popup popup_type_photo">
           <div class="popup__photo-container">
-            <button class="form__close-button form__close-button_type_photo" >
-            </button>
-            <img class="popup__photo" src=""/>
-            <h4 class="popup__photo-caption"> aquí va el nombre del lugar</h4>
+            <button
+              class="form__close-button form__close-button_type_photo"
+            ></button>
+            <img class="popup__photo" src="" />
+            <h4 class="popup__photo-caption">aquí va el nombre del lugar</h4>
           </div>
-
         </div>
       </section>
     </div>
-   <script src="scripts/script.js"></script>
+    <script src="scripts/script.js"></script>
   </body>
 </html>
