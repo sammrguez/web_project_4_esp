@@ -3,12 +3,19 @@ const btnEditProfile = document.querySelector(".edit-button");
 const btnCreateProfile = document.querySelector(".form__submit-button");
 const btnCloseEditProfile = document.querySelector(".form__close-button");
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
+const resetName = document.querySelector(".profile__user-name");
+const resetAboutMe = document.querySelector(".profile__user-profession");
+const userNameInput = document.querySelector(".input__text_type_name");
+const userProfessionInput = document.querySelector(
+  ".input__text_type_about-me"
+);
 
 function openEditProfile() {
   if (popupEditProfile.classList.contains("popup_opened")) {
     popupEditProfile.classList.remove("popup_opened");
   } else {
     popupEditProfile.classList.add("popup_opened");
+    cleanInput();
   }
 }
 
@@ -30,32 +37,18 @@ btnCreateProfile.addEventListener("click", handleProfileFormSubmit);
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  cleanProfile();
-  const profileInfoContainer = document.querySelector(".profile__info");
-  const userNameInput = document.querySelector(".input__text_type_name");
-  const userProfessionInput = document.querySelector(
-    ".input__text_type_about-me"
-  );
-  profileInfoContainer.insertAdjacentHTML(
-    "beforeend",
-    `<h2 class="profile__user-name">${userNameInput.value}</h2>
-  <h3 class="profile__user-profession">${userProfessionInput.value}</h3>`
-  );
-  cleanInput();
+  resetName.textContent = userNameInput.value;
+  resetAboutMe.textContent = userProfessionInput.value;
 
-  //limpiar inputs//
-  function cleanInput() {
-    document.querySelector(".input__text_type_name").value = "Jacques Cousteau";
-    document.querySelector(".input__text_type_about-me").value = "Explorador";
-  }
+  //cleanProfile();
+  closeEditProfile();
 }
-function cleanProfile() {
-  const resetName = document.querySelector(".profile__user-name");
-  const resetAboutMe = document.querySelector(".profile__user-profession");
-  if (resetName !== null && resetAboutMe !== null) {
-    resetName.remove();
-    resetAboutMe.remove();
-  }
+
+//limpiar inputs
+function cleanInput() {
+  document.querySelector(".input__text_type_name").value = userNameInput.value;
+  document.querySelector(".input__text_type_about-me").value =
+    userProfessionInput.value;
 }
 
 /*
