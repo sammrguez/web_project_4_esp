@@ -2,6 +2,13 @@
   color: #fff;
   font-weight: 400;
   font-size: 18px;
-  line-height: 22px;
+  line-height: 1.2;
   margin-top: 70px;
+  color: #545454;
+}
+
+@media screen and (max-width: 479px) {
+  .footer__copyright {
+    font-size: 14px;
+  }
 }
