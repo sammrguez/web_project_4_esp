@@ -1,0 +1,7 @@
+.footer {
+  max-width: 69%;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
