@@ -15,7 +15,8 @@ function openEditProfile() {
     popupEditProfile.classList.remove("popup_opened");
   } else {
     popupEditProfile.classList.add("popup_opened");
-    cleanInput();
+    resetInput();
+    setImput();
   }
 }
 
@@ -45,10 +46,16 @@ function handleProfileFormSubmit(evt) {
 }
 
 //limpiar inputs
-function cleanInput() {
+function setImput() {
   document.querySelector(".input__text_type_name").value = userNameInput.value;
   document.querySelector(".input__text_type_about-me").value =
     userProfessionInput.value;
+}
+function resetInput() {
+  document.querySelector(".input__text_type_name").value =
+    resetName.textContent;
+  document.querySelector(".input__text_type_about-me").value =
+    resetAboutMe.textContent;
 }
 
 /*
