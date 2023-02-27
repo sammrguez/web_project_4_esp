@@ -60,6 +60,7 @@ const btnCloseNewPlace = document.querySelector(
   ".form__close-button_type_new-place"
 );
 const popupAddNewPlace = document.querySelector(".popup_type_new-place");
+const btnSubmitNewPlace = document.querySelector(".form__submit-button_place");
 
 //funciones para abrir popup template
 function handlePopup(popup) {
@@ -73,6 +74,7 @@ btnCloseEditProfile.addEventListener("click", () =>
 );
 btnAddNewPlace.addEventListener("click", () => handlePopup(popupAddNewPlace));
 btnCloseNewPlace.addEventListener("click", () => handlePopup(popupAddNewPlace));
+btnSubmitNewPlace.addEventListener("click", handleNewPlaceFormSubmit);
 
 //funciones para asignar información del perfil//
 btnCreateProfile.addEventListener("click", handleProfileFormSubmit);
@@ -84,51 +86,21 @@ function handleProfileFormSubmit(evt) {
   handlePopup(popupEditProfile);
 }
 
-//limpiar inputs
-function setImput() {
-  document.querySelector(".input__text_type_name").value = userNameInput.value;
-  document.querySelector(".input__text_type_about-me").value =
-    userProfessionInput.value;
-}
-function resetInput() {
-  document.querySelector(".input__text_type_name").value =
-    resetName.textContent;
-  document.querySelector(".input__text_type_about-me").value =
-    resetAboutMe.textContent;
-}
 //funciones new place
 
-/*
+const placeNameInput = document.querySelector(".input__text_type_place-name");
+const imageLinkInput = document.querySelector(".input__text_type_photo-link");
 
-
-
-
-
-//img popup
-const cardPhotos = document.querySelectorAll(".place-card__photo");
-const popupPhoto = document.querySelector(".popup_type_photo");
-const closePopupPhoto = document.querySelector(
-  ".form__close-button_type_photo"
-);
-const popupImgContainer = document.querySelector(".popup__photo");
-const photoCaption = document.querySelector(".popup__photo-caption");
-const placeCardName = document.querySelectorAll(".place-card__name");
-
-//abrir popup de foto
-function openPhoto() {
-  if (popupPhoto.classList.contains("popup_opened")) {
-    popupPhoto.classList.remove("popup_opened");
-  } else {
-    popupPhoto.classList.add("popup_opened");
-  }
+function handleNewPlaceFormSubmit(evt) {
+  evt.preventDefault();
+  const AddedCard = createCard(placeNameInput.value, imageLinkInput.value);
+  cardsContainer.prepend(AddedCard);
+  handlePopup(popupAddNewPlace);
+  resetImput();
 }
 
-function closePhoto() {
-  if (popupPhoto.classList.contains("popup_opened")) {
-    popupPhoto.classList.remove("popup_opened");
-  } else {
-    popupPhoto.classList.add("popup_opened");
-  }
+//limpiar inputs
+function resetImput() {
+  document.querySelector(".input__text_type_place-name").value = " ";
+  document.querySelector(".input__text_type_photo-link").value = " ";
 }
-closePopupPhoto.addEventListener("click", closePhoto);
-*/
