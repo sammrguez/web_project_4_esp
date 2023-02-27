@@ -1,4 +1,50 @@
-//abrir editar perfil
+const initialCards = [
+  {
+    name: "Valle de Yosemite",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
+  },
+  {
+    name: "Lago Louise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
+  },
+  {
+    name: "Montañas Calvas",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
+  },
+  {
+    name: "Latemar",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
+  },
+  {
+    name: "Parque Nacional de la Vanoise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
+  },
+];
+const cardsContainer = document.querySelector(".card-container");
+// Crear cards
+function createCard(name, link) {
+  const cardTemplate = document.querySelector("#card-template").content;
+  const cardElement = cardTemplate.querySelector(".place-card").cloneNode(true);
+  const cardName = cardElement.querySelector(".place-card__name");
+  cardName.textContent = name;
+  const cardImg = cardElement.querySelector(".place-card__photo");
+  cardImg.src = link;
+  const trashIcon = cardElement.querySelector(".trash-icon");
+  trashIcon.src = "images/Trash-icon.svg";
+  const likeIcon = cardElement.querySelector(".like__icon");
+  likeIcon.src = "images/like-icon.svg";
+  return cardElement;
+}
+initialCards.forEach(function (card) {
+  const newCard = createCard(card.name, card.link);
+  cardsContainer.append(newCard);
+});
+
+//constantes universales
 const btnEditProfile = document.querySelector(".edit-button");
 const btnCreateProfile = document.querySelector(".form__submit-button");
 const btnCloseEditProfile = document.querySelector(".form__close-button");
@@ -9,29 +55,24 @@ const userNameInput = document.querySelector(".input__text_type_name");
 const userProfessionInput = document.querySelector(
   ".input__text_type_about-me"
 );
+const btnAddNewPlace = document.querySelector(".add-button");
+const btnCloseNewPlace = document.querySelector(
+  ".form__close-button_type_new-place"
+);
+const popupAddNewPlace = document.querySelector(".popup_type_new-place");
 
-function openEditProfile() {
-  if (popupEditProfile.classList.contains("popup_opened")) {
-    popupEditProfile.classList.remove("popup_opened");
-  } else {
-    popupEditProfile.classList.add("popup_opened");
-    resetInput();
-    setImput();
-  }
+//funciones para abrir popup template
+function handlePopup(popup) {
+  popup.classList.toggle("popup_opened");
 }
 
-btnEditProfile.addEventListener("click", openEditProfile);
-
-//cerrar editar perfil
-function closeEditProfile() {
-  if (popupEditProfile.classList.contains("popup_opened")) {
-    popupEditProfile.classList.remove("popup_opened");
-  } else {
-    popupEditProfile.classList.add("popup_opened");
-  }
-}
-
-btnCloseEditProfile.addEventListener("click", closeEditProfile);
+//event listeners
+btnEditProfile.addEventListener("click", () => handlePopup(popupEditProfile));
+btnCloseEditProfile.addEventListener("click", () =>
+  handlePopup(popupEditProfile)
+);
+btnAddNewPlace.addEventListener("click", () => handlePopup(popupAddNewPlace));
+btnCloseNewPlace.addEventListener("click", () => handlePopup(popupAddNewPlace));
 
 //funciones para asignar información del perfil//
 btnCreateProfile.addEventListener("click", handleProfileFormSubmit);
@@ -40,9 +81,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   resetName.textContent = userNameInput.value;
   resetAboutMe.textContent = userProfessionInput.value;
-
-  //cleanProfile();
-  closeEditProfile();
+  handlePopup(popupEditProfile);
 }
 
 //limpiar inputs
@@ -57,29 +96,13 @@ function resetInput() {
   document.querySelector(".input__text_type_about-me").value =
     resetAboutMe.textContent;
 }
+//funciones new place
 
 /*
 
-//abrir add new place
-function openAddNewPlace() {
-  if (popupAddNewPlace.classList.contains("popup_opened")) {
-    popupAddNewPlace.classList.remove("popup_opened");
-  } else {
-    popupAddNewPlace.classList.add("popup_opened");
-  }
-}
 
-btnAddNewPlace.addEventListener("click", openAddNewPlace);
-//cerrar add new place
-function closeAddNewPlace() {
-  if (popupAddNewPlace.classList.contains("popup_opened")) {
-    popupAddNewPlace.classList.remove("popup_opened");
-  } else {
-    popupAddNewPlace.classList.add("popup_opened");
-  }
-}
 
-btnCloseNewPlace.addEventListener("click", closeAddNewPlace);
+
 
 //img popup
 const cardPhotos = document.querySelectorAll(".place-card__photo");

@@ -42,80 +42,7 @@
         </div>
       </section>
       <main class="content">
-        <section class="photo-grid">
-          <div class="place-card">
-            <img
-              class="place-card__photo"
-              src="images/valle-de-yosemite.jpg"
-              alt="Valle de Yosemite"
-            />
-            <div class="trash">
-              <img
-                class="trash-icon"
-                src="images/Trash-icon.svg"
-                alt="icono de bote de basura"
-              />
-            </div>
-            <div class="place-card__info-container">
-              <h3 class="place-card__name">Valle de Yosemite</h3>
-              <div class="like">
-                <img
-                  class="like__icon"
-                  src="images/like-icon.svg"
-                  alt="icono de like"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="place-card">
-            <img
-              class="place-card__photo"
-              src="images/lago-louise.jpg"
-              alt="lago Louise"
-            />
-            <div class="trash">
-              <img
-                class="trash-icon"
-                src="images/Trash-icon.svg"
-                alt="icono de bote de basura"
-              />
-            </div>
-            <div class="place-card__info-container">
-              <h3 class="place-card__name">Lago Louise</h3>
-              <div class="like">
-                <img
-                  class="like__icon"
-                  src="images/like-icon.svg"
-                  alt="icono de like"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="place-card">
-            <img
-              class="place-card__photo"
-              src="images/montañas-calvas.jpg"
-              alt="montañas calvas"
-            />
-            <div class="trash">
-              <img
-                class="trash-icon"
-                src="images/Trash-icon.svg"
-                alt="icono de bote de basura"
-              />
-            </div>
-            <div class="place-card__info-container">
-              <h3 class="place-card__name">Montañas calvas</h3>
-              <div class="like">
-                <img
-                  class="like__icon"
-                  src="images/like-icon.svg"
-                  alt="icono de like"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+        <section class="card-container"></section>
       </main>
       <section class="popups">
         <div class="popup popup_type_edit-profile">
@@ -156,11 +83,82 @@
             </div>
           </div>
         </div>
+        <div class="popup popup_type_new-place">
+          <div class="form__container">
+            <button
+              class="form__close-button form__close-button_type_new-place"
+            ></button>
+            <div class="form">
+              <h3 class="form__header">Nuevo Lugar</h3>
+              <form class="form__admin">
+                <fieldset class="form__input-container">
+                  <input
+                    type="text"
+                    class="input__text input__text_type_place-name"
+                    placeholder="Título"
+                    id="place-name"
+                    name="place-name"
+                  />
+                  <input
+                    type="text"
+                    class="input__text input__text_type_photo-link"
+                    placeholder="Enlace a la Imagen"
+                    id="photo-link"
+                    name="photo-link"
+                  />
+                </fieldset>
+                <fieldset class="form__handlers">
+                  <button
+                    type="button"
+                    class="form__submit-button form__submit-button_place"
+                  >
+                    Crear
+                  </button>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="popup popup_type_photo">
+          <div class="popup__photo-container">
+            <button
+              class="form__close-button form__close-button_type_photo"
+            ></button>
+            <img class="popup__photo" src="" />
+            <h4 class="popup__photo-caption">aquí va el nombre del lugar</h4>
+          </div>
+        </div>
       </section>
       <footer class="footer">
         <p class="footer__copyright">© 2023 Alrededor de los EEUU</p>
       </footer>
     </div>
+    <template id="card-template">
+      <div class="place-card">
+        <img
+          class="place-card__photo"
+          src="images/valle-de-yosemite.jpg"
+          alt="Valle de Yosemite"
+        />
+        <div class="trash">
+          <img
+            class="trash-icon"
+            src="images/Trash-icon.svg"
+            alt="icono de bote de basura"
+          />
+        </div>
+        <div class="place-card__info-container">
+          <h3 class="place-card__name">Valle de Yosemite</h3>
+          <div class="like">
+            <img
+              class="like__icon"
+              src="images/like-icon.svg"
+              alt="icono de like"
+            />
+          </div>
+        </div>
+      </div>
+    </template>
     <script src="/script/script.js"></script>
   </body>
 </html>
