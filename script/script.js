@@ -33,12 +33,19 @@ function createCard(name, link) {
   cardName.textContent = name;
   const cardImg = cardElement.querySelector(".place-card__photo");
   cardImg.src = link;
-  const trashIcon = cardElement.querySelector(".trash-icon");
-  trashIcon.src = "images/Trash-icon.svg";
-  const likeIcon = cardElement.querySelector(".like__icon");
-  likeIcon.src = "images/like-icon.svg";
+  const trashBtn = cardElement.querySelector(".trash-button");
+  trashBtn.addEventListener("click", function () {
+    const cardToRemove = trashBtn.closest(".place-card");
+    cardToRemove.remove();
+  });
+
+  const likeIcon = cardElement.querySelector(".like-button");
+  likeIcon.addEventListener("click", function (evt) {
+    evt.target.classList.toggle("like-button_active");
+  });
   return cardElement;
 }
+
 initialCards.forEach(function (card) {
   const newCard = createCard(card.name, card.link);
   cardsContainer.append(newCard);
@@ -73,7 +80,10 @@ btnCloseEditProfile.addEventListener("click", () =>
   handlePopup(popupEditProfile)
 );
 btnAddNewPlace.addEventListener("click", () => handlePopup(popupAddNewPlace));
-btnCloseNewPlace.addEventListener("click", () => handlePopup(popupAddNewPlace));
+btnCloseNewPlace.addEventListener("click", () => {
+  handlePopup(popupAddNewPlace);
+  resetImput();
+});
 btnSubmitNewPlace.addEventListener("click", handleNewPlaceFormSubmit);
 
 //funciones para asignar información del perfil//
@@ -96,11 +106,6 @@ function handleNewPlaceFormSubmit(evt) {
   const AddedCard = createCard(placeNameInput.value, imageLinkInput.value);
   cardsContainer.prepend(AddedCard);
   handlePopup(popupAddNewPlace);
-  resetImput();
-}
-
-//limpiar inputs
-function resetImput() {
-  document.querySelector(".input__text_type_place-name").value = " ";
-  document.querySelector(".input__text_type_photo-link").value = " ";
+  placeNameInput.value = "";
+  imageLinkInput.value = "";
 }

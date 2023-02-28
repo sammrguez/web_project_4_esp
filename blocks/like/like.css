@@ -1,4 +1,15 @@
-.like {
-  display: flex;
-  align-items: center;
+.like-button {
+  border: none;
+  background: url(/images/like_desactivado.svg) center no-repeat;
+  background-size: 100%;
+  margin: auto;
+  cursor: pointer;
+  position: absolute;
+  right: 0px;
+  width: 21px;
+  height: 19px;
+  align-self: center;
+}
+.like-button_active {
+  background: url(/images/like_activo.svg);
 }
