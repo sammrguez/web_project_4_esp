@@ -3,13 +3,10 @@
   max-height: 120px;
   border-radius: 50%;
   overflow: hidden;
-  margin-right: 30px;
 }
-@media screen and (max-width: 480px) {
-  .profile__avatar {
-    max-width: 100px;
-    max-height: 100px;
 
-    margin-right: 5px;
+@media screen and (max-width: 470px) {
+  .profile__avatar {
+    margin-bottom: 26px;
   }
 }

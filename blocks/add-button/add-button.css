@@ -1,0 +1,27 @@
+.add-button {
+  width: 150px;
+  height: 50px;
+  border: 2px solid #ffffff;
+  display: flex;
+  position: absolute;
+  right: 0px;
+}
+.add-button:hover {
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+@media screen and (max-width: 1032px) {
+  .add-button {
+    width: 80px;
+    margin-top: 0px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .add-button {
+    width: 100%;
+    margin-top: 0px;
+    position: initial;
+  }
+}

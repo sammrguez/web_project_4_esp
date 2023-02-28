@@ -1,20 +1,26 @@
-.photo-grid {
+.card-container {
   max-width: 70%;
   margin: 46.25px auto 0px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-template-rows: auto;
+  grid-auto-rows: minmax(361px, 1fr);
   grid-gap: 20px 18px;
 }
 
 @media screen and (max-width: 825px) {
-  .photo-grid {
+  .card-container {
     max-width: 80%;
   }
 }
 
 @media screen and (max-width: 725px) {
-  .photo-grid {
+  .card-container {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media screen and (max-width: 725px) {
+  .card-container {
+    max-width: 88%;
   }
 }

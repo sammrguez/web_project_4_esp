@@ -4,3 +4,9 @@
   max-height: 74px;
   border-bottom: 1px #545454 solid;
 }
+
+@media screen and (max-width: 320px) {
+  .header {
+    max-width: 100%;
+  }
+}
