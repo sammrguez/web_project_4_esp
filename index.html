@@ -23,15 +23,17 @@
           alt="aquí está tu foto de perfil"
         />
         <div class="profile__info">
-          <h2 class="profile__user-name">Jacques Cousteau</h2>
+          <h2 class="profile__user-name">
+            Jacques Cousteau
+            <span class="edit-button">
+              <img
+                class="edit-button__icon"
+                src="images/edit_button.png"
+                alt="ícono de editar"
+              />
+            </span>
+          </h2>
           <h3 class="profile__user-profession">Explorador</h3>
-        </div>
-        <div class="edit-button">
-          <img
-            class="edit-button__icon"
-            src="images/edit_button.png"
-            alt="ícono de editar"
-          />
         </div>
         <div class="add-button">
           <img
@@ -119,15 +121,6 @@
             </div>
           </div>
         </div>
-        <div class="popup popup_type_photo">
-          <div class="popup__photo-container">
-            <button
-              class="form__close-button form__close-button_type_photo"
-            ></button>
-            <img class="popup__photo" src="" />
-            <h4 class="popup__photo-caption">aquí va el nombre del lugar</h4>
-          </div>
-        </div>
       </section>
       <footer class="footer">
         <p class="footer__copyright">© 2023 Alrededor de los EEUU</p>
@@ -135,18 +128,23 @@
     </div>
     <template id="card-template">
       <div class="place-card">
-        <img
-          class="place-card__photo"
-          src="images/valle-de-yosemite.jpg"
-          alt="Valle de Yosemite"
-        />
+        <img class="place-card__photo" src="" alt=" " />
         <button class="trash-button"></button>
         <div class="place-card__info-container">
-          <h3 class="place-card__name">Valle de Yosemite</h3>
+          <h3 class="place-card__name"></h3>
           <button class="like-button"></button>
         </div>
       </div>
     </template>
+    <div class="popup popup_type_photo">
+      <div class="popup__photo-container">
+        <button
+          class="form__close-button form__close-button_type_photo"
+        ></button>
+        <img class="popup__photo" src="" />
+        <h4 class="popup__photo-caption"></h4>
+      </div>
+    </div>
     <script src="/script/script.js"></script>
   </body>
 </html>

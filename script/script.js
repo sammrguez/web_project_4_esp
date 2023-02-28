@@ -25,6 +25,7 @@ const initialCards = [
   },
 ];
 const cardsContainer = document.querySelector(".card-container");
+const popupPhoto = document.querySelector(".popup_type_photo");
 // Crear cards
 function createCard(name, link) {
   const cardTemplate = document.querySelector("#card-template").content;
@@ -33,16 +34,20 @@ function createCard(name, link) {
   cardName.textContent = name;
   const cardImg = cardElement.querySelector(".place-card__photo");
   cardImg.src = link;
+  cardImg.addEventListener("click", function () {
+    handlePopup(popupPhoto);
+    openPopupPhoto(cardName.textContent, cardImg.src);
+  });
   const trashBtn = cardElement.querySelector(".trash-button");
   trashBtn.addEventListener("click", function () {
     const cardToRemove = trashBtn.closest(".place-card");
     cardToRemove.remove();
   });
-
   const likeIcon = cardElement.querySelector(".like-button");
   likeIcon.addEventListener("click", function (evt) {
     evt.target.classList.toggle("like-button_active");
   });
+
   return cardElement;
 }
 
@@ -108,4 +113,15 @@ function handleNewPlaceFormSubmit(evt) {
   handlePopup(popupAddNewPlace);
   placeNameInput.value = "";
   imageLinkInput.value = "";
+}
+
+//zoom imagen
+const btnClosePhoto = document.querySelector(".form__close-button_type_photo");
+btnClosePhoto.addEventListener("click", () => handlePopup(popupPhoto));
+
+function openPopupPhoto(name, link) {
+  const linkPopup = document.querySelector(".popup__photo");
+  linkPopup.src = link;
+  const captionPopup = document.querySelector(".popup__photo-caption");
+  captionPopup.textContent = name;
 }
