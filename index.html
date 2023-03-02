@@ -23,18 +23,18 @@
           alt="aquí está tu foto de perfil"
         />
         <div class="profile__info">
-          <h2 class="profile__user-name">
-            Jacques Cousteau
-            <span class="edit-button">
-              <img
-                class="edit-button__icon"
-                src="images/edit_button.png"
-                alt="ícono de editar"
-              />
-            </span>
-          </h2>
+          <h2 class="profile__user-name">Jacques Cousteau</h2>
+          <div class="edit-button">
+            <img
+              class="edit-button__icon"
+              src="images/edit_button.png"
+              alt="ícono de editar"
+              button
+            />
+          </div>
           <h3 class="profile__user-profession">Explorador</h3>
         </div>
+
         <div class="add-button">
           <img
             class="add-button__icon"
@@ -48,9 +48,9 @@
       </main>
       <section class="popups">
         <div class="popup popup_type_edit-profile">
-          <div class="form__container">
+          <div class="form">
             <button class="form__close-button"></button>
-            <div class="form">
+            <div class="form__container">
               <h3 class="form__header">Editar Perfil</h3>
               <form class="form__admin">
                 <fieldset
@@ -86,11 +86,11 @@
           </div>
         </div>
         <div class="popup popup_type_new-place">
-          <div class="form__container">
+          <div class="form">
             <button
               class="form__close-button form__close-button_type_new-place"
             ></button>
-            <div class="form">
+            <div class="form__container">
               <h3 class="form__header">Nuevo Lugar</h3>
               <form class="form__admin">
                 <fieldset class="form__input-container">

@@ -1,19 +1,20 @@
 .profile__info {
-  max-width: 90%;
-  display: flex;
-  flex-direction: column;
+  max-width: 50%;
   margin-left: 17px;
+  display: grid;
+  grid-template-columns: 1fr 0.2fr;
 }
 @media screen and (max-width: 950px) {
   .profile__info {
-    max-width: 60%;
-    margin-left: 0px;
+    max-width: 65%;
+    grid-template-columns: 0.8fr 0.2fr;
     margin-bottom: 36px;
   }
 }
 
 @media screen and (max-width: 470px) {
   .profile__info {
+    grid-template-columns: 1fr 0.2fr;
     max-width: 100%;
     margin-left: 0px;
     margin-bottom: 36px;
