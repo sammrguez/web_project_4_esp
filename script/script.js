@@ -108,8 +108,8 @@ const imageLinkInput = document.querySelector(".form__input_type_photo-link");
 
 function handleNewPlaceFormSubmit(evt) {
   evt.preventDefault();
-  const AddedCard = createCard(placeNameInput.value, imageLinkInput.value);
-  cardsContainer.prepend(AddedCard);
+  const addedCard = createCard(placeNameInput.value, imageLinkInput.value);
+  cardsContainer.prepend(addedCard);
   handlePopup(popupAddNewPlace);
   placeNameInput.value = "";
   imageLinkInput.value = "";
