@@ -63,9 +63,9 @@ const btnCloseEditProfile = document.querySelector(".form__close-button");
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
 const resetName = document.querySelector(".profile__user-name");
 const resetAboutMe = document.querySelector(".profile__user-profession");
-const userNameInput = document.querySelector(".input__text_type_name");
+const userNameInput = document.querySelector(".form__input_type_name");
 const userProfessionInput = document.querySelector(
-  ".input__text_type_about-me"
+  ".form__input_type_about-me"
 );
 const btnAddNewPlace = document.querySelector(".add-button");
 const btnCloseNewPlace = document.querySelector(
@@ -103,8 +103,8 @@ function handleProfileFormSubmit(evt) {
 
 //funciones new place
 
-const placeNameInput = document.querySelector(".input__text_type_place-name");
-const imageLinkInput = document.querySelector(".input__text_type_photo-link");
+const placeNameInput = document.querySelector(".form__input_type_place-name");
+const imageLinkInput = document.querySelector(".form__input_type_photo-link");
 
 function handleNewPlaceFormSubmit(evt) {
   evt.preventDefault();
