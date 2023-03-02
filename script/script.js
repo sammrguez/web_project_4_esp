@@ -116,7 +116,7 @@ function handleNewPlaceFormSubmit(evt) {
 }
 
 //zoom imagen
-const btnClosePhoto = document.querySelector(".form__close-button_type_photo");
+const btnClosePhoto = document.querySelector(".popup__close-button");
 btnClosePhoto.addEventListener("click", () => handlePopup(popupPhoto));
 
 function openPopupPhoto(name, link) {
