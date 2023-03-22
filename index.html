@@ -48,42 +48,47 @@
       </main>
       <section class="popups">
         <div class="popup popup_type_edit-profile">
-          <div class="form">
+          <form class="form" novalidate>
             <button class="form__close-button"></button>
             <div class="form__container">
               <h3 class="form__header">Editar Perfil</h3>
-              <form class="form__admin">
-                <fieldset
-                  class="form__input-container form__input-container_ctrl_profile-info"
+
+              <fieldset
+                class="form__input-container form__input-container_ctrl_profile-info"
+              >
+                <input
+                  type="text"
+                  class="form__input"
+                  placeholder="Nombre"
+                  id="name-input"
+                  name="name"
+                  value="Jacques Cousteau"
+                  required
+                  minlength="5"
+                  maxlength="10"
+                />
+                <span class="form__input-error name-input-error"></span>
+                <input
+                  type="text"
+                  class="form__input"
+                  placeholder="Acerca de mi"
+                  id="about-me-input"
+                  name="about-me"
+                  value="Explorador"
+                  required
+                  minlength="2"
+                  maxlength="40"
+                />
+                <span class="form__input-error about-me-error"></span>
+                <button
+                  class="form__submit-button form__submit-button_edit"
+                  type="submit"
                 >
-                  <input
-                    type="text"
-                    class="form__input form__input_type_name"
-                    placeholder="Nombre"
-                    id="name"
-                    name="name"
-                    value="Jacques Cousteau"
-                  />
-                  <input
-                    type="text"
-                    class="form__input form__input_type_about-me"
-                    placeholder="Acerca de mi"
-                    id="about-me"
-                    name="about-me"
-                    value="Explorador"
-                  />
-                </fieldset>
-                <fieldset class="form__handlers">
-                  <button
-                    class="form__submit-button form__submit-button_edit"
-                    type="submit"
-                  >
-                    Crear
-                  </button>
-                </fieldset>
-              </form>
+                  Crear
+                </button>
+              </fieldset>
             </div>
-          </div>
+          </form>
         </div>
         <div class="popup popup_type_new-place">
           <div class="form">

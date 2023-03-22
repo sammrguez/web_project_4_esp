@@ -1,13 +1,12 @@
 .form {
-  max-width: 91%;
-  height: 370px;
-
+  max-width: 38%;
+  height: 415px;
   display: flex;
   flex-direction: column;
 }
 
 @media screen and (max-width: 599px) {
-  .form {
+  .form-popup {
     max-width: 65%;
   }
 }

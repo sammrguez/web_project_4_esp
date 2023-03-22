@@ -63,10 +63,8 @@ const btnCloseEditProfile = document.querySelector(".form__close-button");
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
 const resetName = document.querySelector(".profile__user-name");
 const resetAboutMe = document.querySelector(".profile__user-profession");
-const userNameInput = document.querySelector(".form__input_type_name");
-const userProfessionInput = document.querySelector(
-  ".form__input_type_about-me"
-);
+const userNameInput = document.querySelector("#name-input");
+const userProfessionInput = document.querySelector("#about-me-input");
 const btnAddNewPlace = document.querySelector(".add-button");
 const btnCloseNewPlace = document.querySelector(
   ".form__close-button_type_new-place"
@@ -98,7 +96,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   resetName.textContent = userNameInput.value;
   resetAboutMe.textContent = userProfessionInput.value;
-  handlePopup(popupEditProfile);
+  //handlePopup(popupEditProfile);
 }
 
 //funciones new place
@@ -125,3 +123,29 @@ function openPopupPhoto(name, link) {
   const captionPopup = document.querySelector(".popup__photo-caption");
   captionPopup.textContent = name;
 }
+
+//Cambiar estilos de campo
+const formElement = document.querySelector(".form");
+const inputElement = document.querySelector(".form__input");
+
+const showInputError = (input) => {
+  input.classList.add(".form__input_type_error");
+};
+
+const hideInputError = (input) => {
+  input.classList.remove(".form__input_type_error");
+};
+
+const checkInputValidity = () => {
+  if (!inputElement.validity.valid) {
+    showInputError(inputElement);
+  } else {
+    hideInputError(inputElement);
+  }
+};
+
+formElement.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+});
+
+inputElement.addEventListener("input", checkInputValidity);
