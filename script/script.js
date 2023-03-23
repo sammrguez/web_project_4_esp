@@ -66,9 +66,9 @@ const resetAboutMe = document.querySelector(".profile__user-profession");
 const userNameInput = document.querySelector("#name-input");
 const userProfessionInput = document.querySelector("#about-me-input");
 const btnAddNewPlace = document.querySelector(".add-button");
-const btnCloseNewPlace = document.querySelector(
+/*const btnCloseNewPlace = document.querySelector(
   ".form__close-button_type_new-place"
-);
+);*/
 const popupAddNewPlace = document.querySelector(".popup_type_new-place");
 const btnSubmitNewPlace = document.querySelector(".form__submit-button_place");
 
@@ -83,11 +83,11 @@ btnCloseEditProfile.addEventListener("click", () =>
   handlePopup(popupEditProfile)
 );
 btnAddNewPlace.addEventListener("click", () => handlePopup(popupAddNewPlace));
-btnCloseNewPlace.addEventListener("click", () => {
+/*btnCloseNewPlace.addEventListener("click", () => {
   handlePopup(popupAddNewPlace);
   resetImput();
 });
-btnSubmitNewPlace.addEventListener("click", handleNewPlaceFormSubmit);
+btnSubmitNewPlace.addEventListener("click", handleNewPlaceFormSubmit);*/
 
 //funciones para asignar información del perfil//
 btnCreateProfile.addEventListener("click", handleProfileFormSubmit);
@@ -95,7 +95,7 @@ btnCreateProfile.addEventListener("click", handleProfileFormSubmit);
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   resetName.textContent = userNameInput.value;
-  resetAboutMe.textContent = userProfessionInput.value;
+  //resetAboutMe.textContent = userProfessionInput.value;
   //handlePopup(popupEditProfile);
 }
 
@@ -125,22 +125,28 @@ function openPopupPhoto(name, link) {
 }
 
 //Cambiar estilos de campo
-const formElement = document.querySelector(".form");
-const inputElement = document.querySelector(".form__input");
 
-const showInputError = (input) => {
-  input.classList.add(".form__input_type_error");
+const formElement = document.querySelector(".form");
+const inputElement = formElement.querySelector(".form__input");
+const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+
+const showError = (input, errorMessage) => {
+  input.classList.add("form__input_type_error");
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add("form__input-error_active");
 };
 
-const hideInputError = (input) => {
-  input.classList.remove(".form__input_type_error");
+const hideError = (input) => {
+  input.classList.remove("form__input_type_error");
+  errorElement.classList.remove("form__input-error_active");
+  errorElement.textContent = "";
 };
 
 const checkInputValidity = () => {
   if (!inputElement.validity.valid) {
-    showInputError(inputElement);
+    showError(inputElement, inputElement.validationMessage);
   } else {
-    hideInputError(inputElement);
+    hideError(inputElement);
   }
 };
 
@@ -148,4 +154,6 @@ formElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
 });
 
-inputElement.addEventListener("input", checkInputValidity);
+inputElement.addEventListener("input", function () {
+  checkInputValidity();
+});
