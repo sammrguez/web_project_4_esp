@@ -5,10 +5,20 @@
   color: #fff;
   font-size: 18px;
   border: none;
-  margin-bottom: 36px;
+  margin-top: 10px;
 }
-
+@media screen and (max-width: 600px) {
+  .form__submit-button {
+    margin-top: 0px;
+  }
+}
 .form__submit-button:hover {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.8);
+}
+.form__submit-button_inactive {
+  border: 1px solid #000;
+  background-color: #fff;
+  color: #000;
+  pointer-events: none;
 }

@@ -53,9 +53,7 @@
             <div class="form__container">
               <h3 class="form__header">Editar Perfil</h3>
 
-              <fieldset
-                class="form__input-container form__input-container_ctrl_profile-info"
-              >
+              <fieldset class="form__input-container">
                 <input
                   type="text"
                   class="form__input"
@@ -64,10 +62,11 @@
                   name="name"
                   value="Jacques Cousteau"
                   required
-                  minlength="5"
+                  minlength="2"
+                  maxlength="40"
                 />
                 <span class="form__input-error name-input-error"></span>
-                <!--<input
+                <input
                   type="text"
                   class="form__input"
                   placeholder="Acerca de mi"
@@ -76,9 +75,9 @@
                   value="Explorador"
                   required
                   minlength="2"
-                  maxlength="40"
+                  maxlength="200"
                 />
-                <span class="form__input-error about-me-error"></span>-->
+                <span class="form__input-error about-me-input-error"></span>
                 <button
                   class="form__submit-button form__submit-button_edit"
                   type="submit"
@@ -89,42 +88,40 @@
             </div>
           </form>
         </div>
-        <!--<div class="popup popup_type_new-place">
-          <div class="form">
+        <div class="popup popup_type_new-place">
+          <form class="form" novalidate>
             <button
               class="form__close-button form__close-button_type_new-place"
             ></button>
             <div class="form__container">
               <h3 class="form__header">Nuevo Lugar</h3>
-              <form class="form__admin">
-                <fieldset class="form__input-container">
-                  <input
-                    type="text"
-                    class="form__input form__input_type_place-name"
-                    placeholder="Título"
-                    id="place-name"
-                    name="place-name"
-                  />
-                  <input
-                    type="text"
-                    class="form__input form__input_type_photo-link"
-                    placeholder="Enlace a la Imagen"
-                    id="photo-link"
-                    name="photo-link"
-                  />
-                </fieldset>
-                <fieldset class="form__handlers">
-                  <button
-                    type="submit"
-                    class="form__submit-button form__submit-button_place"
-                  >
-                    Crear
-                  </button>
-                </fieldset>
-              </form>
+              <fieldset class="form__input-container">
+                <input
+                  type="text"
+                  class="form__input"
+                  placeholder="Título"
+                  id="place-name-input"
+                  name="place-name"
+                />
+                <input
+                  type="text"
+                  class="form__input form__input_type_photo-link"
+                  placeholder="Enlace a la Imagen"
+                  id="photo-link"
+                  name="photo-link"
+                />
+              </fieldset>
+              <fieldset class="form__handlers">
+                <button
+                  type="submit"
+                  class="form__submit-button form__submit-button_place"
+                >
+                  Crear
+                </button>
+              </fieldset>
             </div>
-          </div>
-        </div>-->
+          </form>
+        </div>
       </section>
       <footer class="footer">
         <p class="footer__copyright">© 2023 Alrededor de los EEUU</p>
