@@ -48,7 +48,7 @@
       </main>
       <section class="popups">
         <div class="popup popup_type_edit-profile">
-          <form class="form" novalidate>
+          <form class="form" novalidate name="profile">
             <button class="form__close-button"></button>
             <div class="form__container">
               <h3 class="form__header">Editar Perfil</h3>
@@ -89,7 +89,7 @@
           </form>
         </div>
         <div class="popup popup_type_new-place">
-          <form class="form" novalidate>
+          <form class="form" novalidate name="place">
             <button
               class="form__close-button form__close-button_type_new-place"
             ></button>
@@ -102,16 +102,21 @@
                   placeholder="Título"
                   id="place-name-input"
                   name="place-name"
+                  requiered
+                  minlength="4"
+                  maxlength="30"
                 />
+                <span class="form__input-error place-name-input-error"></span>
                 <input
-                  type="text"
-                  class="form__input form__input_type_photo-link"
+                  type="url"
+                  class="form__input"
                   placeholder="Enlace a la Imagen"
-                  id="photo-link"
+                  id="photo-link-input"
                   name="photo-link"
+                  required
+                  minlength="4"
                 />
-              </fieldset>
-              <fieldset class="form__handlers">
+                <span class="form__input-error photo-link-input-error"></span>
                 <button
                   type="submit"
                   class="form__submit-button form__submit-button_place"
@@ -145,5 +150,6 @@
       </div>
     </div>
     <script src="/script/script.js"></script>
+    <script src="/script/validation.js"></script>
   </body>
 </html>
