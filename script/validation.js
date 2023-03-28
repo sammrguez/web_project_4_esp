@@ -1,24 +1,29 @@
 //Validacion de formulario
 
-const showError = (formElement, inputElement, errorMessage) => {
+const showError = (formElement, inputElement, errorMessage, object) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add("form__input_type_error");
+  inputElement.classList.add(object.inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add("form__input-error_active");
+  errorElement.classList.add(object.errorClass);
 };
 
-const hideError = (formElement, inputElement) => {
+const hideError = (formElement, inputElement, object) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove("form__input_type_error");
-  errorElement.classList.remove("form__input-error_active");
+  inputElement.classList.remove(object.inputErrorClass);
+  errorElement.classList.remove(object.errorClass);
   errorElement.textContent = "";
 };
 
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement, object) => {
   if (!inputElement.validity.valid) {
-    showError(formElement, inputElement, inputElement.validationMessage);
+    showError(
+      formElement,
+      inputElement,
+      inputElement.validationMessage,
+      object
+    );
   } else {
-    hideError(formElement, inputElement);
+    hideError(formElement, inputElement, object);
   }
 };
 
@@ -29,38 +34,30 @@ const hasInvalidInput = (inputsList) => {
 };
 
 //habilitando y desabilitando submit
-const toggleBtnState = (inputsList, btnElement) => {
+const toggleBtnState = (inputsList, btnElement, object) => {
   if (hasInvalidInput(inputsList)) {
-    btnElement.classList.add("form__submit-button_inactive");
+    btnElement.classList.add(object.inactiveButtonClass);
   } else {
-    btnElement.classList.remove("form__submit-button_inactive");
+    btnElement.classList.remove(object.inactiveButtonClass);
   }
 };
 //Event Listeners
 
-const setEventListeners = (formElement) => {
-  const inputsList = Array.from(formElement.querySelectorAll(".form__input"));
-  const btnElement = formElement.querySelector(".form__submit-button");
-  toggleBtnState(inputsList, btnElement);
+const setEventListeners = (formElement, object) => {
+  const inputsList = Array.from(
+    formElement.querySelectorAll(enableObject.inputSelector)
+  );
+  const btnElement = formElement.querySelector(
+    enableObject.submitButtonSelector
+  );
+  toggleBtnState(inputsList, btnElement, object);
   inputsList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
-      checkInputValidity(formElement, inputElement);
-      toggleBtnState(inputsList, btnElement);
+      checkInputValidity(formElement, inputElement, object);
+      toggleBtnState(inputsList, btnElement, object);
     });
   });
 };
-
-const enableValidation = () => {
-  const formsList = Array.from(document.querySelectorAll(".form"));
-  formsList.forEach((formElement) => {
-    formElement.addEventListener("submit", function (evt) {
-      evt.preventDefault();
-    });
-    setEventListeners(formElement);
-  });
-};
-
-enableValidation();
 
 //cerrando forms
 const closeFromEsc = (popup) => {
@@ -84,3 +81,28 @@ const closeForms = () => {
 };
 
 closeForms();
+
+// habilitar la validación llamando a enableValidation()
+// pasar todas las configuraciones en la llamada
+
+const enableValidation = (object) => {
+  const formsList = Array.from(document.querySelectorAll(object.formSelector));
+  formsList.forEach((formElement) => {
+    formElement.addEventListener("submit", function (evt) {
+      evt.preventDefault();
+    });
+    setEventListeners(formElement, object);
+  });
+};
+
+validationObject = {
+  formSelector: ".form",
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__submit-button",
+  inactiveButtonClass: "form__submit-button_inactive",
+  inputErrorClass: "form__input_type_error",
+  errorClass: "form__input-error_active",
+};
+
+const enableObject = validationObject;
+enableValidation(validationObject);
