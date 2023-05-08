@@ -123,6 +123,9 @@ function handleNewPlaceFormSubmit(evt) {
   cardsContainer.prepend(addedCard);
   handlePopup(popupAddNewPlace);
   document.forms.place.reset();
+  const btnForm = document.querySelector("#new-place");
+  btnForm.classList.add("form__submit-button_inactive");
+  btnForm.setAttribute("disable", true);
 }
 
 //zoom imagen
