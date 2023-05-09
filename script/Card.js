@@ -1,3 +1,5 @@
+import { handlePopup, openPopupPhoto } from "./utils.js";
+import { popupPhoto } from "./Data.js";
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -26,18 +28,17 @@ const initialCards = [
 ];
 const cardsContainer = document.querySelector(".card-container");
 
-class Card {
+export class Card {
   constructor(data, templateSelector) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
   }
   _getTemplate() {
-    const cardElement = document
-      .querySelector(this._templateSelector)
-      .content.querySelector(".place-card")
+    const cardTemplate = document.querySelector(this._templateSelector).content;
+    const cardElement = cardTemplate
+      .querySelector(".place-card")
       .cloneNode(true);
-
     return cardElement;
   }
   generateCard() {
@@ -45,7 +46,21 @@ class Card {
     this._cardElement.querySelector(".place-card__name").textContent =
       this._name;
     this._cardElement.querySelector(".place-card__photo").src = this._link;
-
+    this._cardElement
+      .querySelector(".place-card__photo")
+      .addEventListener("click", function () {
+        handlePopup(popupPhoto);
+        openPopupPhoto(this._name, this._link);
+      });
+    const trashBtn = this._cardElement.querySelector(".trash-button");
+    trashBtn.addEventListener("click", function () {
+      const cardToRemove = trashBtn.closest(".place-card");
+      cardToRemove.remove();
+    });
+    const likeIcon = this._cardElement.querySelector(".like-button");
+    likeIcon.addEventListener("click", function (evt) {
+      evt.target.classList.toggle("like-button_active");
+    });
     return this._cardElement;
   }
 }
