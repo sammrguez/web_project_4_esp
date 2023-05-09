@@ -62,8 +62,8 @@ const btnEditProfile = document.querySelector(".edit-button");
 const btnCreateProfile = document.querySelector(".form__submit-button");
 const btnCloseEditProfile = document.querySelector(".form__close-button");
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
-const resetName = document.querySelector(".profile__user-name");
-const resetAboutMe = document.querySelector(".profile__user-profession");
+const userName = document.querySelector(".profile__user-name");
+const userAboutMe = document.querySelector(".profile__user-profession");
 const userNameInput = document.querySelector("#name-input");
 const userProfessionInput = document.querySelector("#about-me-input");
 const btnAddNewPlace = document.querySelector(".add-button");
@@ -101,15 +101,15 @@ btnCreateProfile.addEventListener("click", handleProfileFormSubmit);
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  resetName.textContent = userNameInput.value;
-  resetAboutMe.textContent = userProfessionInput.value;
+  userName.textContent = userNameInput.value;
+  userAboutMe.textContent = userProfessionInput.value;
   handlePopup(popupEditProfile);
   resetImputs();
 }
 
 function resetImputs() {
-  userNameInput.value = resetName.textContent;
-  userProfessionInput.value = resetAboutMe.textContent;
+  userNameInput.value = userName.textContent;
+  userProfessionInput.value = userAboutMe.textContent;
 }
 
 //funciones new place
