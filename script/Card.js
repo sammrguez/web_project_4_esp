@@ -1,5 +1,4 @@
-import { handlePopup, openPopupPhoto } from "./utils.js";
-import { popupPhoto } from "./Data.js";
+import { popupPhoto, linkPopup, captionPopup, btnClosePhoto } from "./Data.js";
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -46,12 +45,8 @@ export class Card {
     this._cardElement.querySelector(".place-card__name").textContent =
       this._name;
     this._cardElement.querySelector(".place-card__photo").src = this._link;
-    this._cardElement
-      .querySelector(".place-card__photo")
-      .addEventListener("click", () => {
-        handlePopup(popupPhoto);
-        openPopupPhoto(this._name, this._link);
-      });
+    this._setEventListeners();
+
     const trashBtn = this._cardElement.querySelector(".trash-button");
     trashBtn.addEventListener("click", () => {
       const cardToRemove = trashBtn.closest(".place-card");
@@ -62,6 +57,30 @@ export class Card {
       evt.target.classList.toggle("like-button_active");
     });
     return this._cardElement;
+  }
+
+  _handleOpenPopup() {
+    linkPopup.src = this._link;
+    captionPopup.textContent = this._name;
+    popupPhoto.classList.add("popup_opened");
+    console.log(btnClosePhoto);
+  }
+
+  _handleClosePopup() {
+    linkPopup.src = " ";
+    captionPopup.textContent = " ";
+    popupPhoto.classList.remove("popup_opened");
+  }
+
+  _setEventListeners() {
+    this._cardElement
+      .querySelector(".place-card__photo")
+      .addEventListener("click", () => {
+        this._handleOpenPopup();
+      });
+    btnClosePhoto.addEventListener("click", () => {
+      this._handleClosePopup();
+    });
   }
 }
 

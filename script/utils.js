@@ -69,11 +69,3 @@ function handleNewPlaceFormSubmit(evt) {
   btnForm.classList.add("form__submit-button_inactive");
   btnForm.setAttribute("disable", true);
 }
-btnClosePhoto.addEventListener("click", () => handlePopup(popupPhoto));
-
-export function openPopupPhoto(name, link) {
-  const linkPopup = document.querySelector(".popup__photo");
-  linkPopup.src = link;
-  const captionPopup = document.querySelector(".popup__photo-caption");
-  captionPopup.textContent = name;
-}

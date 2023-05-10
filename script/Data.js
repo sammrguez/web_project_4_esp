@@ -19,6 +19,11 @@ export const popupAddNewPlace = document.querySelector(".popup_type_new-place");
 export const btnSubmitNewPlace = document.querySelector(
   ".form__submit-button_place"
 );
-export const btnClosePhoto = document.querySelector(".popup__close-button");
+
 export const cardsContainer = document.querySelector(".card-container");
 export const popupPhoto = document.querySelector(".popup_type_photo");
+
+//popup photo
+export const linkPopup = document.querySelector(".popup__photo");
+export const captionPopup = document.querySelector(".popup__photo-caption");
+export const btnClosePhoto = document.querySelector(".popup__close-button");
