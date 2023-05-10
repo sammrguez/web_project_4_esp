@@ -15,7 +15,8 @@ import {
   btnClosePhoto,
   cardsContainer,
 } from "./Data.js";
-import { Card } from "./Card.js";
+import { generateInputCard } from "./Card.js";
+
 //funciones para abrir popup template
 
 export function handlePopup(popup) {
@@ -57,20 +58,17 @@ function resetImputs() {
 }
 
 //funciones new place
-const placeNameInput = document.querySelector("#place-name-input");
-const imageLinkInput = document.querySelector("#photo-link-input");
 
 function handleNewPlaceFormSubmit(evt) {
   evt.preventDefault();
-  const addedCard = new Card(placeNameInput.value, "#card-template");
-  cardsContainer.prepend(addedCard);
+  generateInputCard();
   handlePopup(popupAddNewPlace);
   document.forms.place.reset();
+
   const btnForm = document.querySelector("#new-place");
   btnForm.classList.add("form__submit-button_inactive");
   btnForm.setAttribute("disable", true);
 }
-
 btnClosePhoto.addEventListener("click", () => handlePopup(popupPhoto));
 
 export function openPopupPhoto(name, link) {

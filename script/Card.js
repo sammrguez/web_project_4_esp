@@ -48,12 +48,12 @@ export class Card {
     this._cardElement.querySelector(".place-card__photo").src = this._link;
     this._cardElement
       .querySelector(".place-card__photo")
-      .addEventListener("click", function () {
+      .addEventListener("click", () => {
         handlePopup(popupPhoto);
         openPopupPhoto(this._name, this._link);
       });
     const trashBtn = this._cardElement.querySelector(".trash-button");
-    trashBtn.addEventListener("click", function () {
+    trashBtn.addEventListener("click", () => {
       const cardToRemove = trashBtn.closest(".place-card");
       cardToRemove.remove();
     });
@@ -71,3 +71,14 @@ initialCards.forEach((item) => {
 
   cardsContainer.append(newCard);
 });
+
+export function generateInputCard() {
+  const data = {
+    name: document.querySelector("#place-name-input").value,
+    link: document.querySelector("#photo-link-input").value,
+  };
+
+  const addedCard = new Card(data, "#card-template");
+  const getCard = addedCard.generateCard();
+  cardsContainer.prepend(getCard);
+}
