@@ -63,7 +63,6 @@ export class Card {
     linkPopup.src = this._link;
     captionPopup.textContent = this._name;
     popupPhoto.classList.add("popup_opened");
-    console.log(btnClosePhoto);
   }
 
   _handleClosePopup() {

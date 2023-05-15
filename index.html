@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/page/index.css" />
   </head>
   <body class="root">
-    <div class="page">
+    <div name-inputclass="page">
       <section class="header">
         <img
           class="header__logo"
@@ -48,7 +48,7 @@
       </main>
       <section class="popups">
         <div class="popup popup_type_edit-profile">
-          <form class="form" novalidate name="profile">
+          <form class="form" id="profile" novalidate name="profile">
             <button class="form__close-button"></button>
             <div class="form__container">
               <h3 class="form__header">Editar Perfil</h3>
@@ -89,7 +89,7 @@
           </form>
         </div>
         <div class="popup popup_type_new-place">
-          <form class="form" novalidate name="place">
+          <form class="form" id="place" novalidate name="place">
             <button
               class="form__close-button form__close-button_type_new-place"
             ></button>
@@ -156,5 +156,7 @@
   </body>
   <script type="module" src="script/utils.js"></script>
   <script type="module" src="script/Card.js"></script>
-  <script typ="module" src="/script/validation.js"></script>
+  <!--<script src="script/validation.js"></script>-->
+
+  <script typ="module" src="/script/FormValidator.js"></script>
 </html>

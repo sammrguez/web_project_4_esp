@@ -69,3 +69,26 @@ function handleNewPlaceFormSubmit(evt) {
   btnForm.classList.add("form__submit-button_inactive");
   btnForm.setAttribute("disable", true);
 }
+
+//cerrando forms
+const closeFromEsc = (popup) => {
+  document.addEventListener("keydown", function (evt) {
+    if (evt.key === "Escape") {
+      popup.classList.remove("popup_opened");
+    }
+  });
+};
+
+const closeForms = () => {
+  const popups = Array.from(document.querySelectorAll(".popup"));
+  popups.forEach((popup) => {
+    popup.addEventListener("click", function (evt) {
+      const popup = evt.target;
+      popup.classList.remove("popup_opened");
+      evt.stopImmediatePropagation();
+    });
+    closeFromEsc(popup);
+  });
+};
+
+closeForms();
