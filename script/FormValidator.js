@@ -5,25 +5,7 @@ const regEx = {
   photoLink: /^[A-Za-z\-]{4,500}$/,
 };
 
-validationObject = {
-  formSelector: "profile",
-  inputSelector: ".form__input",
-  submitButtonSelector: ".form__submit-button",
-  inactiveButtonClass: "form__submit-button_inactive",
-  inputErrorClass: "form__input_type_error",
-  errorClass: "form__input-error_active",
-};
-
-validationObject2 = {
-  formSelector: "place",
-  inputSelector: ".form__input",
-  submitButtonSelector: ".form__submit-button",
-  inactiveButtonClass: "form__submit-button_inactive",
-  inputErrorClass: "form__input_type_error",
-  errorClass: "form__input-error_active",
-};
-
-class FormValidator {
+export class FormValidator {
   constructor(objToValidate) {
     this._formSelector = objToValidate.formSelector;
     this._inputSelector = objToValidate.inputSelector;
@@ -81,17 +63,13 @@ class FormValidator {
       formElement.querySelectorAll(this._inputSelector)
     );
 
-    console.log(inputsList);
-
     if (
       inputsList.every((inputElement) => {
         return inputElement.validity.valid;
       })
     ) {
-      console.log("ambos activvos");
       valid = true;
     } else {
-      console.log("slguno inactivvos");
       valid = false;
     }
     return valid;
@@ -101,8 +79,6 @@ class FormValidator {
   toggleBtnState(formID) {
     const formElement = document.getElementById(formID);
     const btnElement = formElement.querySelector(this._submitButtonSelector);
-    console.log(btnElement);
-    //this.isValid(formID);
 
     if (this.isValid(formID) === true) {
       btnElement.classList.remove(this._inactiveButtonClass);
@@ -129,8 +105,3 @@ class FormValidator {
 }
 //termina objeto
 //  prueba Para Profile form
-const ProfileValidation = new FormValidator(validationObject);
-const test = ProfileValidation.enableValidation();
-//prueba para place form
-const PlaceValidation = new FormValidator(validationObject2);
-const test2 = PlaceValidation.enableValidation();

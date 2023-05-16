@@ -1,5 +1,5 @@
 import { popupPhoto, linkPopup, captionPopup, btnClosePhoto } from "./Data.js";
-const initialCards = [
+export const initialCards = [
   {
     name: "Valle de Yosemite",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
@@ -25,7 +25,7 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   },
 ];
-const cardsContainer = document.querySelector(".card-container");
+export const cardsContainer = document.querySelector(".card-container");
 
 export class Card {
   constructor(data, templateSelector) {
@@ -81,22 +81,4 @@ export class Card {
       this._handleClosePopup();
     });
   }
-}
-
-initialCards.forEach((item) => {
-  const card = new Card(item, "#card-template");
-  const newCard = card.generateCard();
-
-  cardsContainer.append(newCard);
-});
-
-export function generateInputCard() {
-  const data = {
-    name: document.querySelector("#place-name-input").value,
-    link: document.querySelector("#photo-link-input").value,
-  };
-
-  const addedCard = new Card(data, "#card-template");
-  const getCard = addedCard.generateCard();
-  cardsContainer.prepend(getCard);
 }

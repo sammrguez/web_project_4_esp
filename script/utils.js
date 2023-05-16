@@ -15,7 +15,7 @@ import {
   btnClosePhoto,
   cardsContainer,
 } from "./Data.js";
-import { generateInputCard } from "./Card.js";
+import { generateInputCard } from "./index.js";
 
 //funciones para abrir popup template
 
