@@ -111,13 +111,14 @@ class FormValidator {
     }
   }
 
-  //prueba enable validstion
+  //prueba enable validation
   enableValidation() {
     const formElement = document.getElementById(this._formSelector);
 
     const inputsList = Array.from(
       formElement.querySelectorAll(this._inputSelector)
     );
+    this.toggleBtnState(this._formSelector);
     inputsList.forEach((input) => {
       input.addEventListener("input", (evt) => {
         this.switchingInput(evt);
@@ -130,110 +131,6 @@ class FormValidator {
 //  prueba Para Profile form
 const ProfileValidation = new FormValidator(validationObject);
 const test = ProfileValidation.enableValidation();
-//const formElement = document.getElementById("profile");
-//console.log(formElement);
-//checkinput
-/*
-function checkInputValidity(expresion, inputElement, formID) {
-  const formElement = document.getElementById(formID);
-
-  if (expresion.test(inputElement.value)) {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-
-    errorElement.classList.remove(validationObject.errorClass);
-
-    errorElement.textContent = "";
-    inputElement.classList.remove(validationObject.inputErrorClass);
-  } else {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-
-    errorElement.textContent = inputElement.validationMessage;
-    errorElement.classList.add(validationObject.errorClass);
-    inputElement.classList.add(validationObject.inputErrorClass);
-  }
-}
-
-function addEvent() {
-  const inputs = Array.from(document.querySelectorAll("form__input"));
-  console.log(inputs);
-  inputs.forEach((input) => {
-    input.addEventListener("input", (evt) => {
-      switchingInput(evt);
-    });
-  });
-}
-// termina obj
-
-function addEvent() {
-  const inputs = Array.from(document.querySelectorAll("form__input"));
-  console.log(inputs);
-  inputs.forEach((input) => {
-    input.addEventListener("input", (evt) => {
-      switchingInput(evt);
-      isValid(validationObject.formSelector);
-    });
-  });
-}
-
-// forms
-const formList = Array.from(document.querySelectorAll(".form"));
-
-formList.forEach((form) => {
-  form.addEventListener("submit", (evt) => {
-    evt.preventDefault();
-  });
-});
-
-const inputs = Array.from(document.querySelectorAll(".form__input"));
-//console.log(inputs);
-inputs.forEach((input) => {
-  input.addEventListener("keyup", switchingInput);
-});
-
-let valid = "";
-
-function isValid(formID) {
-  const formElement = document.getElementById(formID);
-  const inputsList = Array.from(
-    formElement.querySelectorAll(validationObject.inputSelector)
-  );
-  console.log(inputsList);
-
-  if (
-    inputsList.every((inputElement) => {
-      return inputElement.validity.valid;
-    })
-  ) {
-    console.log("ambos activvos");
-    valid = true;
-  } else {
-    console.log("slguno inactivvos");
-    valid = false;
-  }
-}
-function toggleBtnState(formID) {
-  const formElement = document.getElementById(formID);
-  const btnElement = formElement.querySelector(
-    validationObject.submitButtonSelector
-  );
-  isValid(formID);
-  if (valid === true) {
-    console.log(valid);
-    btnElement.classList.remove(validationObject.inactiveButtonClass);
-  } else {
-    console.log(valid);
-    btnElement.classList.add(validationObject.inactiveButtonClass);
-  }
-}
-
-const formElement = document.getElementById(validationObject.formSelector);
-console.log(formElement);
-const inputsList = Array.from(
-  formElement.querySelectorAll(validationObject.inputSelector)
-);
-inputsList.forEach((input) => {
-  input.addEventListener("input", () => {
-    toggleBtnState(validationObject.formSelector);
-  });
-});
-*/
+//prueba para place form
+const PlaceValidation = new FormValidator(validationObject2);
+const test2 = PlaceValidation.enableValidation();
