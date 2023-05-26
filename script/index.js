@@ -1,5 +1,6 @@
 import { FormValidator } from "./FormValidator.js";
-import { Card, initialCards, cardsContainer } from "./Card.js";
+import { Card, cardsContainer } from "./Card.js";
+import { initialCards } from "./Data.js";
 // objetos para validar
 const validationObject = {
   formSelector: "profile",
