@@ -24,7 +24,7 @@ export function handlePopup(popup) {
 }
 
 //event listeners
-btnEditProfile.addEventListener("click", () => {
+/*btnEditProfile.addEventListener("click", () => {
   handlePopup(popupEditProfile);
   resetImputs();
 });
@@ -42,7 +42,7 @@ btnCloseNewPlace.addEventListener("click", () => {
 
 btnSubmitNewPlace.addEventListener("click", handleNewPlaceFormSubmit);
 btnCreateProfile.addEventListener("click", handleProfileFormSubmit);
-
+*/
 // funciones perfil
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
