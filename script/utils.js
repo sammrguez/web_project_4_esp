@@ -24,21 +24,6 @@ export function handlePopup(popup) {
 }
 
 //event listeners
-btnEditProfile.addEventListener("click", () => {
-  handlePopup(popupEditProfile);
-  resetImputs();
-});
-btnCloseEditProfile.addEventListener("click", () => {
-  handlePopup(popupEditProfile);
-  resetImputs();
-});
-btnAddNewPlace.addEventListener("click", () => {
-  handlePopup(popupAddNewPlace);
-});
-
-btnCloseNewPlace.addEventListener("click", () => {
-  handlePopup(popupAddNewPlace);
-});
 
 btnSubmitNewPlace.addEventListener("click", handleNewPlaceFormSubmit);
 btnCreateProfile.addEventListener("click", handleProfileFormSubmit);
