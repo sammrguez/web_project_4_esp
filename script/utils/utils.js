@@ -15,18 +15,11 @@ import {
   btnClosePhoto,
   cardsContainer,
 } from "./Data.js";
-import { generateInputCard } from "./index.js";
+import { generateInputCard } from "../pages/index.js";
 
 //funciones para abrir popup template
 
-export function handlePopup(popup) {
-  popup.classList.toggle("popup_opened");
-}
-
 //event listeners
-
-btnSubmitNewPlace.addEventListener("click", handleNewPlaceFormSubmit);
-btnCreateProfile.addEventListener("click", handleProfileFormSubmit);
 
 // funciones perfil
 function handleProfileFormSubmit(evt) {
@@ -56,23 +49,16 @@ function handleNewPlaceFormSubmit(evt) {
 }
 
 //cerrando forms
-const closeFromEsc = (popup) => {
-  document.addEventListener("keydown", function (evt) {
-    if (evt.key === "Escape") {
-      popup.classList.remove("popup_opened");
-    }
-  });
-};
 
 const closeForms = () => {
   const popups = Array.from(document.querySelectorAll(".popup"));
   popups.forEach((popup) => {
     popup.addEventListener("click", function (evt) {
       const popup = evt.target;
+      console.log(popup);
       popup.classList.remove("popup_opened");
       evt.stopImmediatePropagation();
     });
-    closeFromEsc(popup);
   });
 };
 

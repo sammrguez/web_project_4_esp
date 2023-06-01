@@ -1,4 +1,9 @@
-import { popupPhoto, linkPopup, captionPopup, btnClosePhoto } from "./Data.js";
+import {
+  popupPhoto,
+  linkPopup,
+  captionPopup,
+  btnClosePhoto,
+} from "../utils/Data.js";
 
 export const cardsContainer = document.querySelector(".card-container");
 

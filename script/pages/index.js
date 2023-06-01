@@ -1,6 +1,15 @@
-import { FormValidator } from "./FormValidator.js";
-import { Card, cardsContainer } from "./Card.js";
-import { initialCards } from "./Data.js";
+import {
+  btnEditProfile,
+  btnAddNewPlace,
+  popupEditProfile,
+  popupAddNewPlace,
+  initialCards,
+} from "../utils/Data.js";
+import Section from "../components/Section.js";
+import Popup from "../components/Popup.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { Card, cardsContainer } from "../components/Card.js";
+
 // objetos para validar
 const validationObject = {
   formSelector: "profile",
@@ -45,3 +54,43 @@ export function generateInputCard() {
   const getCard = addedCard.generateCard();
   cardsContainer.prepend(getCard);
 }
+
+// Poryecto 9
+
+const defaultCardList = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const card = new Card(item, "#card-template");
+      const newCard = card.generateCard();
+      defaultCardList;
+      defaultCardList.addItem(newCard);
+    },
+  },
+  cardsContainer
+);
+
+// popup with form
+
+const form1 = new Popup(popupEditProfile);
+const form2 = form1.setEventListeners(btnEditProfile);
+
+/*const formProfile = new PopupWithForm(
+  {
+    formSubmitHandler: (formData) => {
+      const user = new userInfo({ formData });
+    },
+  },
+  popupEditProfile
+);
+const formgenerate = formProfile.setEventListeners(btnEditProfile);
+
+const formPlace = new PopupWithForm(popupAddNewPlace);
+const formPlaceGenerate = formPlace.setEventListeners(btnAddNewPlace);
+
+const submit = new submitForm({
+  popup: popupEditProfile,
+  handleFormSubmit: (formData) => {},
+});
+const submit2 = submit.generateForm();
+*/
