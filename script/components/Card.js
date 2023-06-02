@@ -1,30 +1,10 @@
-import { popupPhoto, linkPopup, captionPopup, btnClosePhoto } from "./Data.js";
-export const initialCards = [
-  {
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
-  },
-  {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
-  },
-  {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
-  },
-  {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
-  },
-];
+import {
+  popupPhoto,
+  linkPopup,
+  captionPopup,
+  btnClosePhoto,
+} from "../utils/Data.js";
+
 export const cardsContainer = document.querySelector(".card-container");
 
 export class Card {
@@ -59,7 +39,7 @@ export class Card {
     return this._cardElement;
   }
 
-  _handleOpenPopup() {
+  handleOpenPopup() {
     linkPopup.src = this._link;
     captionPopup.textContent = this._name;
     popupPhoto.classList.add("popup_opened");
@@ -75,7 +55,7 @@ export class Card {
     this._cardElement
       .querySelector(".place-card__photo")
       .addEventListener("click", () => {
-        this._handleOpenPopup();
+        this.handleOpenPopup();
       });
     btnClosePhoto.addEventListener("click", () => {
       this._handleClosePopup();
