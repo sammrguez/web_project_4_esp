@@ -39,7 +39,7 @@ export class Card {
     return this._cardElement;
   }
 
-  _handleOpenPopup() {
+  handleOpenPopup() {
     linkPopup.src = this._link;
     captionPopup.textContent = this._name;
     popupPhoto.classList.add("popup_opened");
@@ -55,7 +55,7 @@ export class Card {
     this._cardElement
       .querySelector(".place-card__photo")
       .addEventListener("click", () => {
-        this._handleOpenPopup();
+        this.handleOpenPopup();
       });
     btnClosePhoto.addEventListener("click", () => {
       this._handleClosePopup();

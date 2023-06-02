@@ -1,18 +1,28 @@
-export default class submitForm {
-  constructor({ popupSelector, handleFormSubmit }) {
+export default class SubmitForm {
+  constructor({ popupSelector }) {
     this._popupSelector = popupSelector;
-    this._form = this._popupSelector.querySelector(".form");
-    this._handleFormSubmit = handleFormSubmit;
   }
-  _getTemplate() {
-    const submitButton = this._form.content
-      .querySelector(".form__submit-button")
-      .cloneNode(true);
-    return submitButton;
+
+  getTemplate() {
+    const popup = document.querySelector(this._popupSelector);
+    console.log(popup);
+    const formElement = popup.querySelector(".form");
+
+    console.log(formElement);
+  }
+
+  _setEventListeners() {
+    this._element.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+
+      this._element.reset();
+    });
   }
 
   generateForm() {
     this._element = this._getTemplate();
+    this._setEventListeners();
+
     return this._element;
   }
 }

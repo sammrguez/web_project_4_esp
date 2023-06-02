@@ -14,7 +14,7 @@ import {
   userAboutMe,
   btnClosePhoto,
   cardsContainer,
-} from "./Data.js";
+} from "../utils/Data.js";
 import { generateInputCard } from "../pages/index.js";
 
 //funciones para abrir popup template
@@ -22,14 +22,14 @@ import { generateInputCard } from "../pages/index.js";
 //event listeners
 
 // funciones perfil
-function handleProfileFormSubmit(evt) {
+/*function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   userName.textContent = userNameInput.value;
   userAboutMe.textContent = userProfessionInput.value;
   handlePopup(popupEditProfile);
   resetImputs();
 }
-
+*/
 function resetImputs() {
   userNameInput.value = userName.textContent;
   userProfessionInput.value = userAboutMe.textContent;
@@ -50,16 +50,14 @@ function handleNewPlaceFormSubmit(evt) {
 
 //cerrando forms
 
-const closeForms = () => {
+/*const closeForms = () => {
   const popups = Array.from(document.querySelectorAll(".popup"));
   popups.forEach((popup) => {
     popup.addEventListener("click", function (evt) {
-      const popup = evt.target;
-      console.log(popup);
       popup.classList.remove("popup_opened");
       evt.stopImmediatePropagation();
     });
   });
 };
 
-closeForms();
+closeForms();*/

@@ -4,11 +4,15 @@ import {
   popupEditProfile,
   popupAddNewPlace,
   initialCards,
+  popupPhoto,
 } from "../utils/Data.js";
 import Section from "../components/Section.js";
 import Popup from "../components/Popup.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Card, cardsContainer } from "../components/Card.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import submitForm from "../components/SubmitForm.js";
 
 // objetos para validar
 const validationObject = {
@@ -69,28 +73,20 @@ const defaultCardList = new Section(
   },
   cardsContainer
 );
-
-// popup with form
-
-const form1 = new Popup(popupEditProfile);
-const form2 = form1.setEventListeners(btnEditProfile);
-
-/*const formProfile = new PopupWithForm(
+//popup w image
+const popupimg = new PopupWithImage(
   {
-    formSubmitHandler: (formData) => {
-      const user = new userInfo({ formData });
+    rederer: (item) => {
+      const card = new Card(item, "#card-template");
+      const cardPopup = card.handleOpenPopup();
     },
   },
-  popupEditProfile
+  popupPhoto
 );
-const formgenerate = formProfile.setEventListeners(btnEditProfile);
+// popup with form
 
-const formPlace = new PopupWithForm(popupAddNewPlace);
-const formPlaceGenerate = formPlace.setEventListeners(btnAddNewPlace);
-
-const submit = new submitForm({
-  popup: popupEditProfile,
-  handleFormSubmit: (formData) => {},
+//submit
+const profileForm = new submitForm({
+  popupSelector: ".popup_type_new-place",
 });
-const submit2 = submit.generateForm();
-*/
+const profileSumit = profileForm.getTemplate(popupEditProfile);

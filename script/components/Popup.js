@@ -22,7 +22,12 @@ export default class Popup {
       this.open();
     });
     this._handleEscClose();
-
+    this._form
+      .querySelector(".form__close-button")
+      .addEventListener("click", (evt) => {
+        evt.preventDefault();
+        this.close();
+      });
     /*this._popup.addEventListener("click", (evt) => {
       this.close();
       evt.stopImmediatePropagation();
