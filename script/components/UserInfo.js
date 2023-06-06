@@ -1,9 +1,9 @@
 import { userNameInput, userProfessionInput } from "./Data.js";
 
-export default class userInfo {
+export default class UserInfo {
   constructor({ userData }) {
-    this._userName = userData.userName;
-    this._userAboutMe = userData.userAboutMe;
+    this._userName = userData.name;
+    this._userAboutMe = userData.profession;
   }
   getUserInfo() {
     console.log(this._userName);
