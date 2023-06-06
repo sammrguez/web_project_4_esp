@@ -22,7 +22,7 @@ import { generateInputCard } from "../pages/index.js";
 //event listeners
 
 // funciones perfil
-function handleProfileFormSubmit(evt) {
+/*function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   userName.textContent = userNameInput.value;
   userAboutMe.textContent = userProfessionInput.value;
@@ -63,3 +63,4 @@ const closeForms = () => {
 };
 
 closeForms();
+*/
