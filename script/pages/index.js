@@ -11,7 +11,6 @@ import {
   userAboutMe,
 } from "../utils/Data.js";
 import Section from "../components/Section.js";
-import Popup from "../components/Popup.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Card, cardsContainer } from "../components/Card.js";
 import PopupWithImage from "../components/PopupWithImage.js";
