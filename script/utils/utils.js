@@ -29,7 +29,7 @@ import { generateInputCard } from "../pages/index.js";
   handlePopup(popupEditProfile);
   resetImputs();
 }
-*/
+/*
 function resetImputs() {
   userNameInput.value = userName.textContent;
   userProfessionInput.value = userAboutMe.textContent;
