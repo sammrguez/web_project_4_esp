@@ -5,12 +5,17 @@ import {
   popupAddNewPlace,
   initialCards,
   popupPhoto,
+  userNameInput,
+  userProfessionInput,
+  userName,
+  userAboutMe,
 } from "../utils/Data.js";
 import Section from "../components/Section.js";
 import Popup from "../components/Popup.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Card, cardsContainer } from "../components/Card.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 // objetos para validar
 const validationObject = {
@@ -84,7 +89,16 @@ const defaultCardList = new Section(
 
 // popup normal
 
-const form1 = new Popup(popupEditProfile);
-const form2 = form1.setEventListeners(btnEditProfile);
+//const form1 = new Popup(popupEditProfile);
+//const form2 = form1.setEventListeners(btnEditProfile);
 
-//popup image
+//popup form
+const formpopup1 = new PopupWithForm(
+  {
+    formSubmitHandler: () => {
+      const userInfo 
+    },
+  },
+  popupEditProfile
+);
+const formpopup2 = formpopup1.setEventListeners(btnEditProfile);

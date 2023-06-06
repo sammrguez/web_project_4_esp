@@ -6,7 +6,8 @@ export default class userInfo {
     this._userAboutMe = userData.userAboutMe;
   }
   getUserInfo() {
-    console.log(userNameInput.value);
+    console.log(this._userName);
+    console.log(this._userAboutMe);
     //this._userInfoValues = {
 
     //userNameInput.value = this._userName.textContent;
