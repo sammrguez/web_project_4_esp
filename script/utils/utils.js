@@ -50,7 +50,7 @@ function handleNewPlaceFormSubmit(evt) {
 
 //cerrando forms
 
-/*const closeForms = () => {
+const closeForms = () => {
   const popups = Array.from(document.querySelectorAll(".popup"));
   popups.forEach((popup) => {
     popup.addEventListener("click", function (evt) {
@@ -60,4 +60,4 @@ function handleNewPlaceFormSubmit(evt) {
   });
 };
 
-closeForms();*/
+closeForms();

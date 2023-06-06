@@ -74,19 +74,3 @@ const defaultCardList = new Section(
   cardsContainer
 );
 //popup w image
-const popupimg = new PopupWithImage(
-  {
-    rederer: (item) => {
-      const card = new Card(item, "#card-template");
-      const cardPopup = card.handleOpenPopup();
-    },
-  },
-  popupPhoto
-);
-// popup with form
-
-//submit
-const profileForm = new submitForm({
-  popupSelector: ".popup_type_new-place",
-});
-const profileSumit = profileForm.getTemplate(popupEditProfile);
