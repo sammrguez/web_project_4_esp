@@ -1,13 +1,15 @@
 import { userNameInput, userProfessionInput } from "./Data.js";
 
 export default class UserInfo {
-  constructor({ userData }) {
+  constructor() {
     this._userName = userData.name;
     this._userAboutMe = userData.profession;
   }
   getUserInfo() {
-    console.log(this._userName);
-    console.log(this._userAboutMe);
+    // console.log(this._userName);
+
+    //console.log(this._userAboutMe);
+    console.log("desde getUserInfo");
     //this._userInfoValues = {
 
     //userNameInput.value = this._userName.textContent;

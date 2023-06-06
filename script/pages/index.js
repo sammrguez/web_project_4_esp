@@ -16,7 +16,6 @@ import { FormValidator } from "../components/FormValidator.js";
 import { Card, cardsContainer } from "../components/Card.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import UserInfo from "../components/UserInfo.js";
 
 // objetos para validar
 const validationObject = {
@@ -103,10 +102,3 @@ const formpopup1 = new PopupWithForm(
   popupEditProfile
 );
 const formpopup2 = formpopup1.setEventListeners(btnEditProfile);
-
-// user info
-const user = new UserInfo({
-  name: "susan",
-  profession: "writter",
-});
-const UserActive = user.getUserInfo();
