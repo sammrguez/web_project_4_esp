@@ -4,14 +4,16 @@ import {
   captionPopup,
   btnClosePhoto,
 } from "../utils/Data.js";
+import PopupWithImage from "./PopupWithImage.js";
 
 export const cardsContainer = document.querySelector(".card-container");
 
 export class Card {
-  constructor(data, templateSelector) {
+  constructor({ data, photoHandler }, templateSelector) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
+    this._photoHandler = photoHandler;
   }
   _getTemplate() {
     const cardTemplate = document.querySelector(this._templateSelector).content;
@@ -39,10 +41,8 @@ export class Card {
     return this._cardElement;
   }
 
-  handleOpenPopup() {
-    linkPopup.src = this._link;
-    captionPopup.textContent = this._name;
-    popupPhoto.classList.add("popup_opened");
+  _handleOpenPopup() {
+    this._photoHandler(this._link, this._name);
   }
 
   _handleClosePopup() {

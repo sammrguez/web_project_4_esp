@@ -11,8 +11,6 @@ import Popup from "../components/Popup.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Card, cardsContainer } from "../components/Card.js";
 import PopupWithImage from "../components/PopupWithImage.js";
-import PopupWithForm from "../components/PopupWithForm.js";
-import submitForm from "../components/SubmitForm.js";
 
 // objetos para validar
 const validationObject = {
@@ -42,7 +40,17 @@ const test2 = PlaceValidation.enableValidation();
 // Creando Cards
 
 initialCards.forEach((item) => {
-  const card = new Card(item, "#card-template");
+  const card = new Card(
+    {
+      data: item,
+      photoHandler: (src, name) => {
+        const photo = new PopupWithImage(popupPhoto);
+        const newPhoto = photo.open(src, name);
+      },
+    },
+
+    "#card-template"
+  );
   const newCard = card.generateCard();
 
   cardsContainer.append(newCard);
@@ -73,4 +81,8 @@ const defaultCardList = new Section(
   },
   cardsContainer
 );
-//popup w image
+
+// popup with form
+
+const form1 = new Popup(popupEditProfile);
+const form2 = form1.setEventListeners(btnEditProfile);
