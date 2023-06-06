@@ -96,7 +96,7 @@ const defaultCardList = new Section(
 const formpopup1 = new PopupWithForm(
   {
     formSubmitHandler: () => {
-      const userInfo 
+      console.log("desde declaracion de instancias");
     },
   },
   popupEditProfile
