@@ -82,7 +82,9 @@ const defaultCardList = new Section(
   cardsContainer
 );
 
-// popup with form
+// popup normal
 
 const form1 = new Popup(popupEditProfile);
 const form2 = form1.setEventListeners(btnEditProfile);
+
+//popup image

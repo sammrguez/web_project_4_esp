@@ -55,7 +55,7 @@ export class Card {
     this._cardElement
       .querySelector(".place-card__photo")
       .addEventListener("click", () => {
-        this.handleOpenPopup();
+        this._handleOpenPopup();
       });
     btnClosePhoto.addEventListener("click", () => {
       this._handleClosePopup();
