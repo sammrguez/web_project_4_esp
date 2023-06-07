@@ -1,21 +1,24 @@
-import { userNameInput, userProfessionInput } from "./Data.js";
-
+import { userName, userAboutMe } from "../utils/Data.js";
 export default class userInfo {
-  constructor({ userData }) {
-    this._userName = userData.userName;
-    this._userAboutMe = userData.userAboutMe;
+  constructor({ data }) {
+    this._userName = data.name;
+    this._userAboutMe = data["about-me"];
   }
   getUserInfo() {
-    console.log(this._userName);
-    console.log(this._userAboutMe);
-    //this._userInfoValues = {
-
-    //userNameInput.value = this._userName.textContent;
-    //      userProfessionInput.value = this._userAboutMe.textContent;
-    // };
+    this._userName = userName.textContent;
+    this._userAboutMe = userAboutMe.textContent;
   }
+
   setUserInfo() {
-    this._userName.textContent = userNameInput.value;
-    this._userAboutMe.textContent = userProfessionInput.value;
+    userName.textContent = this._userName;
+    userAboutMe.textContent = this._userAboutMe;
+    console.log("desde set user info");
+  }
+  returnInfo() {
+    this.getUserInfo();
+    //this._userInfo = this.getUserInfo();
+    this.setUserInfo();
+    console.log("desde return info, user info");
+    // console.log(this._userInfo);
   }
 }

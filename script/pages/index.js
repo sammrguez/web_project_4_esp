@@ -1,21 +1,16 @@
 import {
   btnEditProfile,
-  btnAddNewPlace,
   popupEditProfile,
-  popupAddNewPlace,
   initialCards,
   popupPhoto,
-  userNameInput,
-  userProfessionInput,
-  userName,
-  userAboutMe,
 } from "../utils/Data.js";
 import Section from "../components/Section.js";
-import Popup from "../components/Popup.js";
+
 import { FormValidator } from "../components/FormValidator.js";
 import { Card, cardsContainer } from "../components/Card.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import userInfo from "../components/UserInfo.js";
 
 // objetos para validar
 const validationObject = {
@@ -95,10 +90,22 @@ const defaultCardList = new Section(
 //popup form
 const formpopup1 = new PopupWithForm(
   {
-    formSubmitHandler: () => {
-      console.log("desde declaracion de instancias");
-    },
+    formSubmitHandler: (data) => {
+      // aqui empieza callback
+      console.log("desde declaracion de instancias form, index");
+      const user = new userInfo({ data: data });
+      const newUser = user.setUserInfo();
+    }, //aqui terminck
   },
   popupEditProfile
 );
 const formpopup2 = formpopup1.setEventListeners(btnEditProfile);
+
+//user
+/*const user = new userInfo({
+  data: {
+    name: "susan",
+    profession: "writter",
+  },
+});
+const userActive = user.returnInfo();*/
