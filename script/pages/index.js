@@ -3,6 +3,8 @@ import {
   popupEditProfile,
   initialCards,
   popupPhoto,
+  popupAddNewPlace,
+  btnAddNewPlace,
 } from "../utils/Data.js";
 import Section from "../components/Section.js";
 
@@ -87,25 +89,30 @@ const defaultCardList = new Section(
 //const form1 = new Popup(popupEditProfile);
 //const form2 = form1.setEventListeners(btnEditProfile);
 
-//popup form
-const formpopup1 = new PopupWithForm(
+//popup form profile
+const formPopupProfile = new PopupWithForm(
   {
     formSubmitHandler: (data) => {
       // aqui empieza callback
-      console.log("desde declaracion de instancias form, index");
+
       const user = new userInfo({ data: data });
       const newUser = user.setUserInfo();
+      const resetUser = user.getUserInfo();
     }, //aqui terminck
   },
   popupEditProfile
 );
-const formpopup2 = formpopup1.setEventListeners(btnEditProfile);
-
-//user
-/*const user = new userInfo({
-  data: {
-    name: "susan",
-    profession: "writter",
+const newFormPopupP = formPopupProfile.setEventListeners(btnEditProfile);
+//  popup form place
+const formPopupPlace = new PopupWithForm(
+  {
+    formSubmitHandler: (item) => {
+      const card = new Card(item, "#card-template");
+      const newCard = card.generateCard();
+      defaultCardList;
+      defaultCardList.addItem(newCard);
+    },
   },
-});
-const userActive = user.returnInfo();*/
+  popupAddNewPlace
+);
+const newPopupPlace = formPopupPlace.setEventListeners(btnAddNewPlace);
