@@ -10,12 +10,12 @@ export const cardsContainer = document.querySelector(".card-container");
 
 export class Card {
   constructor({ data, photoHandler }, templateSelector) {
-    this._name = data.name;
+    this._name = data.placeName;
     this._link = data.link;
     this._templateSelector = templateSelector;
     this._photoHandler = photoHandler;
   }
-  _getTemplate() {
+  getTemplate() {
     const cardTemplate = document.querySelector(this._templateSelector).content;
     const cardElement = cardTemplate
       .querySelector(".place-card")
@@ -23,7 +23,7 @@ export class Card {
     return cardElement;
   }
   generateCard() {
-    this._cardElement = this._getTemplate();
+    this._cardElement = this.getTemplate();
     this._cardElement.querySelector(".place-card__name").textContent =
       this._name;
     this._cardElement.querySelector(".place-card__photo").src = this._link;
@@ -38,6 +38,7 @@ export class Card {
     likeIcon.addEventListener("click", function (evt) {
       evt.target.classList.toggle("like-button_active");
     });
+
     return this._cardElement;
   }
 
@@ -60,5 +61,8 @@ export class Card {
     btnClosePhoto.addEventListener("click", () => {
       this._handleClosePopup();
     });
+  }
+  test() {
+    this.generateCard();
   }
 }

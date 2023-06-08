@@ -12,4 +12,7 @@ export default class Section {
       this._renderer(item);
     });
   }
+  test() {
+    console.log(this._itemsArray);
+  }
 }

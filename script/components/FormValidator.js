@@ -2,7 +2,7 @@ const regEx = {
   name: /^[A-Za-z\-]{2,100}$/,
   aboutMe: /^[A-Za-z\-]{2,20}$/,
   placeName: /^[A-Za-z\-]{4,20}$/,
-  photoLink: /^[A-Za-z\-]{4,500}$/,
+  link: /^[A-Za-z\-]{4,500}$/,
 };
 
 export class FormValidator {
@@ -23,19 +23,15 @@ export class FormValidator {
       case "about-me":
         this._checkInputValidity(regEx.aboutMe, evt.target, this._formSelector);
         break;
-      case "place-name":
+      case "placeName":
         this._checkInputValidity(
           regEx.placeName,
           evt.target,
           this._formSelector
         );
         break;
-      case "photo-link":
-        this._checkInputValidity(
-          regEx.photoLink,
-          evt.target,
-          this._formSelector
-        );
+      case "link":
+        this._checkInputValidity(regEx.link, evt.target, this._formSelector);
         break;
     }
   }

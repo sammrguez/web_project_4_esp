@@ -41,7 +41,7 @@ const test2 = PlaceValidation.enableValidation();
 
 // Creando Cards
 
-initialCards.forEach((item) => {
+/*initialCards.forEach((item) => {
   const card = new Card(
     {
       data: item,
@@ -56,11 +56,11 @@ initialCards.forEach((item) => {
   const newCard = card.generateCard();
 
   cardsContainer.append(newCard);
-});
+});*/
 
-export function generateInputCard() {
+/*export function generateInputCard() {
   const data = {
-    name: document.querySelector("#place-name-input").value,
+    placeNname: document.querySelector("#place-name-input").value,
     link: document.querySelector("#photo-link-input").value,
   };
 
@@ -68,21 +68,30 @@ export function generateInputCard() {
   const getCard = addedCard.generateCard();
   cardsContainer.prepend(getCard);
 }
-
+*/
 // Poryecto 9
 
 const defaultCardList = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const card = new Card(item, "#card-template");
+      const card = new Card(
+        {
+          data: item,
+          photoHandler: (src, name) => {
+            const photo = new PopupWithImage(popupPhoto);
+            const newPhoto = photo.open(src, name);
+          },
+        },
+        "#card-template"
+      );
       const newCard = card.generateCard();
-      defaultCardList;
       defaultCardList.addItem(newCard);
     },
   },
   cardsContainer
 );
+defaultCardList.renderItems();
 
 // popup normal
 
@@ -102,17 +111,25 @@ const formPopupProfile = new PopupWithForm(
   },
   popupEditProfile
 );
-const newFormPopupP = formPopupProfile.setEventListeners(btnEditProfile);
+const newFormPopup = formPopupProfile.setEventListeners(btnEditProfile);
+
 //  popup form place
 const formPopupPlace = new PopupWithForm(
   {
-    formSubmitHandler: (item) => {
-      const card = new Card(item, "#card-template");
-      const newCard = card.generateCard();
-      defaultCardList;
-      defaultCardList.addItem(newCard);
+    formSubmitHandler: (data) => {
+      const inputCard = new Card(
+        {
+          data: data,
+          photoHandler: (src, name) => {
+            const photo = new PopupWithImage(popupPhoto); // declarando image
+            const newPhoto = photo.open(src, name); //llamando image
+          },
+        },
+        "#card-template"
+      ); // declarando card
+      const newInputCard = inputCard.getTemplate(); // llamando a card
     },
   },
   popupAddNewPlace
 );
-const newPopupPlace = formPopupPlace.setEventListeners(btnAddNewPlace);
+const newPopupPlace = formPopupPlace.setEventListeners(btnAddNewPlace); // se acciona  popuop with form

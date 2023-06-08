@@ -12,4 +12,7 @@ export default class PopupWithImage extends Popup {
       ".popup__photo-caption"
     ).textContent = name;
   }
+  test() {
+    console.log("desde test de popimage");
+  }
 }
