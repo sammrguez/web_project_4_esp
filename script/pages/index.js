@@ -39,25 +39,6 @@ const test = ProfileValidation.enableValidation();
 const PlaceValidation = new FormValidator(validationObject2);
 const test2 = PlaceValidation.enableValidation();
 
-// Creando Cards
-
-/*initialCards.forEach((item) => {
-  const card = new Card(
-    {
-      data: item,
-      photoHandler: (src, name) => {
-        const photo = new PopupWithImage(popupPhoto);
-        const newPhoto = photo.open(src, name);
-      },
-    },
-
-    "#card-template"
-  );
-  const newCard = card.generateCard();
-
-  cardsContainer.append(newCard);
-});*/
-
 /*export function generateInputCard() {
   const data = {
     placeNname: document.querySelector("#place-name-input").value,
@@ -93,11 +74,6 @@ const defaultCardList = new Section(
 );
 defaultCardList.renderItems();
 
-// popup normal
-
-//const form1 = new Popup(popupEditProfile);
-//const form2 = form1.setEventListeners(btnEditProfile);
-
 //popup form profile
 const formPopupProfile = new PopupWithForm(
   {
@@ -114,22 +90,39 @@ const formPopupProfile = new PopupWithForm(
 const newFormPopup = formPopupProfile.setEventListeners(btnEditProfile);
 
 //  popup form place
-const formPopupPlace = new PopupWithForm(
+const formPopupPlace = new PopupWithForm( // declarando form
   {
     formSubmitHandler: (data) => {
-      const inputCard = new Card(
+      const newItem = data;
+      // console.log(newItem);
+      const addedCardList = [];
+      // console.log(addedCardList);
+      addedCardList.push(newItem);
+      console.log(addedCardList);
+
+      const inputSection = new Section(
         {
-          data: data,
-          photoHandler: (src, name) => {
-            const photo = new PopupWithImage(popupPhoto); // declarando image
-            const newPhoto = photo.open(src, name); //llamando image
+          items: addedCardList,
+          renderer: (data) => {
+            const inputCard = new Card(
+              {
+                data: data,
+                photoHandler: (src, name) => {
+                  const photo = new PopupWithImage(popupPhoto);
+                  const newPhoto = photo.open(src, name);
+                },
+              },
+              "#card-template"
+            );
+            const newCard = inputCard.generateCard();
+            inputSection.addItem(newCard);
           },
         },
-        "#card-template"
-      ); // declarando card
-      const newInputCard = inputCard.getTemplate(); // llamando a card
+        cardsContainer
+      );
+      inputSection.renderItems();
     },
   },
   popupAddNewPlace
 );
-const newPopupPlace = formPopupPlace.setEventListeners(btnAddNewPlace); // se acciona  popuop with form
+formPopupPlace.setEventListeners(btnAddNewPlace); // se acciona  popuop with form
