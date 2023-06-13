@@ -28,10 +28,5 @@ export default class Popup {
         evt.preventDefault();
         this.close();
       });
-    /*  this._popup.addEventListener("click", (evt) => {
-      this.close();
-      evt.stopImmediatePropagation();
-      evt.preventDefault();
-    });*/
   }
 }

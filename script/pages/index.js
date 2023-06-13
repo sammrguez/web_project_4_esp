@@ -5,6 +5,7 @@ import {
   popupPhoto,
   popupAddNewPlace,
   btnAddNewPlace,
+  btnSubmitNewPlace,
 } from "../utils/Data.js";
 import Section from "../components/Section.js";
 
@@ -39,17 +40,6 @@ const test = ProfileValidation.enableValidation();
 const PlaceValidation = new FormValidator(validationObject2);
 const test2 = PlaceValidation.enableValidation();
 
-/*export function generateInputCard() {
-  const data = {
-    placeNname: document.querySelector("#place-name-input").value,
-    link: document.querySelector("#photo-link-input").value,
-  };
-
-  const addedCard = new Card(data, "#card-template");
-  const getCard = addedCard.generateCard();
-  cardsContainer.prepend(getCard);
-}
-*/
 // Poryecto 9
 
 const defaultCardList = new Section(
@@ -94,12 +84,11 @@ const formPopupPlace = new PopupWithForm( // declarando form
   {
     formSubmitHandler: (data) => {
       const newItem = data;
-      // console.log(newItem);
-      const addedCardList = [];
-      // console.log(addedCardList);
-      addedCardList.push(newItem);
-      console.log(addedCardList);
 
+      const addedCardList = [];
+
+      addedCardList.push(newItem);
+      btnSubmitNewPlace.classList.add("form__submit-button_inactive");
       const inputSection = new Section(
         {
           items: addedCardList,
@@ -125,4 +114,4 @@ const formPopupPlace = new PopupWithForm( // declarando form
   },
   popupAddNewPlace
 );
-formPopupPlace.setEventListeners(btnAddNewPlace); // se acciona  popuop with form
+formPopupPlace.setEventListeners(btnAddNewPlace, ".form__submit-button_place"); // se acciona  popuop with form

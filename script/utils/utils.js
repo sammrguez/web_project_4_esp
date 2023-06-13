@@ -22,14 +22,14 @@ import { generateInputCard } from "../pages/index.js";
 //event listeners
 
 // funciones perfil
-/*function handleProfileFormSubmit(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   userName.textContent = userNameInput.value;
   userAboutMe.textContent = userProfessionInput.value;
   handlePopup(popupEditProfile);
   resetImputs();
 }
-/*
+
 function resetImputs() {
   userNameInput.value = userName.textContent;
   userProfessionInput.value = userAboutMe.textContent;
@@ -61,4 +61,3 @@ const closeForms = () => {
 };
 
 closeForms();
-*/

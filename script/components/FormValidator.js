@@ -19,9 +19,11 @@ export class FormValidator {
     switch (evt.target.name) {
       case "name":
         this._checkInputValidity(regEx.name, evt.target, this._formSelector);
+        // console.log(errorElement);
         break;
-      case "about-me":
+      case " aboutMe":
         this._checkInputValidity(regEx.aboutMe, evt.target, this._formSelector);
+        // console.log(errorElement);
         break;
       case "placeName":
         this._checkInputValidity(
@@ -29,15 +31,18 @@ export class FormValidator {
           evt.target,
           this._formSelector
         );
+        //console.log(errorElement);
         break;
       case "link":
         this._checkInputValidity(regEx.link, evt.target, this._formSelector);
+
         break;
     }
   }
   _checkInputValidity(expresion, inputElement, formID) {
     const formElement = document.getElementById(formID);
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+
     if (expresion.test(inputElement.value)) {
       errorElement.classList.remove(this._errorClass);
 
@@ -97,6 +102,13 @@ export class FormValidator {
         this.toggleBtnState(this._formSelector);
       });
     });
+  }
+
+  test() {
+    const formElement = document.getElementById(this._formSelector);
+
+    const errorElement = formElement.querySelector(`.${evt.target.id}-error`);
+    console.log(errorElement);
   }
 }
 //termina objeto

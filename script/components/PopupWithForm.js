@@ -9,6 +9,9 @@ export default class PopupWithForm extends Popup {
 
   close() {
     super.close();
+    if (this._form.id == "place") {
+      this._form.reset();
+    }
   }
   getInputValues() {
     this._inputList = this._form.querySelectorAll(".form__input");
@@ -19,19 +22,16 @@ export default class PopupWithForm extends Popup {
     return formValues;
   }
 
-  close() {
-    super.close();
-  }
-
   setEventListeners(openButton) {
     this.getInputValues();
     super.setEventListeners(openButton);
+
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
       evt.stopImmediatePropagation();
       this._formSubmitHandler(this.getInputValues());
       this.close();
-      this.getInputValues();
+      document.forms.place.reset();
     });
   }
 }
