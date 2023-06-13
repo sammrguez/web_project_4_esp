@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alrededor de los Estados Unidos</title>
+    <link rel="stylesheet" href="./page/index.css" />
+  </head>
+  <body class="root">
+    <div name-inputclass="page">
+      <section class="header">
+        <img
+          class="header__logo"
+          src="../src/images/logo-vector.svg"
+          alt="logo del proyecto"
+        />
+      </section>
+      <section class="profile">
+        <img
+          class="profile__avatar"
+          src="../src/images/avatar.jpg"
+          alt="aquí está tu foto de perfil"
+        />
+        <div class="profile__info">
+          <h2 class="profile__user-name">Jacques Cousteau</h2>
+          <div class="edit-button">
+            <img
+              class="edit-button__icon"
+              src="../src/images/edit_button.png"
+              alt="ícono de editar"
+              button
+            />
+          </div>
+          <h3 class="profile__user-profession">Explorador</h3>
+        </div>
+
+        <div class="add-button">
+          <img
+            class="add-button__icon"
+            src="../src/images/add_button.svg"
+            alt="ícono de agregar"
+          />
+        </div>
+      </section>
+      <main class="content">
+        <section class="card-container"></section>
+      </main>
+      <section class="popups">
+        <div class="popup popup_type_edit-profile">
+          <div class="overlay"></div>
+          <form class="form" id="profile" novalidate name="profile">
+            <button class="form__close-button"></button>
+            <div class="form__container">
+              <h3 class="form__header">Editar Perfil</h3>
+
+              <fieldset class="form__input-container">
+                <input
+                  type="text"
+                  class="form__input"
+                  placeholder="Nombre"
+                  id="name-input"
+                  name="name"
+                  value="Jacques Cousteau"
+                  required
+                  minlength="2"
+                  maxlength="40"
+                />
+                <span class="form__input-error name-input-error"></span>
+                <input
+                  type="text"
+                  class="form__input"
+                  placeholder="Acerca de mi"
+                  id="about-me-input"
+                  name="about-me"
+                  value="Explorador"
+                  required
+                  minlength="2"
+                  maxlength="200"
+                />
+                <span class="form__input-error about-me-input-error"></span>
+                <button
+                  class="form__submit-button form__submit-button_edit"
+                  type="submit"
+                >
+                  Crear
+                </button>
+              </fieldset>
+            </div>
+          </form>
+        </div>
+        <div class="popup popup_type_new-place">
+          <form class="form" id="place" novalidate name="place">
+            <button
+              class="form__close-button form__close-button_type_new-place"
+            ></button>
+            <div class="form__container">
+              <h3 class="form__header">Nuevo Lugar</h3>
+              <fieldset class="form__input-container">
+                <input
+                  type="text"
+                  class="form__input"
+                  placeholder="Título"
+                  id="place-name-input"
+                  name="placeName"
+                  minlength="4"
+                  maxlength="30"
+                  required
+                />
+                <span class="form__input-error place-name-input-error"></span>
+                <input
+                  type="url"
+                  class="form__input"
+                  placeholder="Enlace a la Imagen"
+                  id="photo-link-input"
+                  name="link"
+                  required
+                  minlength="4"
+                />
+                <span class="form__input-error photo-link-input-error"></span>
+                <button
+                  type="submit"
+                  class="form__submit-button form__submit-button_place"
+                  id="new-place"
+                >
+                  Crear
+                </button>
+              </fieldset>
+            </div>
+          </form>
+        </div>
+      </section>
+      <footer class="footer">
+        <p class="footer__copyright">© 2023 Alrededor de los EEUU</p>
+      </footer>
+    </div>
+    <template id="card-template">
+      <div class="place-card">
+        <img class="place-card__photo" src=" " alt=" " />
+        <button class="trash-button"></button>
+        <div class="place-card__info-container">
+          <h3 class="place-card__name"></h3>
+          <button class="like-button"></button>
+        </div>
+      </div>
+    </template>
+    <div class="popup popup_type_photo">
+      <div class="popup__photo-container">
+        <button class="popup__close-button"></button>
+        <img class="popup__photo" src=" " />
+        <h4 class="popup__photo-caption"></h4>
+      </div>
+    </div>
+  </body>
+</html>
