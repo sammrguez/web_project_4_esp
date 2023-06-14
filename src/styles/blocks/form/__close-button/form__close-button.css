@@ -1,5 +1,5 @@
 .form__close-button {
-  background-image: url(/images/Close-Icon.svg);
+  background-image: url(/src/images/Close-Icon.svg);
   background-size: contain;
   background-repeat: no-repeat;
   width: 40px;

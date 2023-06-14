@@ -7,10 +7,10 @@
   right: 15px;
   background-size: 100%;
   cursor: pointer;
-  background: url(/images/Trash-icon.svg);
+  background: url(/src/images/Trash-icon.svg);
 }
 
 .trash-button:hover {
-  background: url(/images/Trash_hover.svg) center no-repeat;
+  background: url(/src/images/Trash_hover.svg) center no-repeat;
   cursor: pointer;
 }

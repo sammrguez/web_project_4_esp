@@ -1,6 +1,6 @@
 .like-button {
   border: none;
-  background: url(/images/like_desactivado.svg) center no-repeat;
+  background: url(/src/images/like_desactivado.svg) center no-repeat;
   background-size: 100%;
   margin: auto;
   cursor: pointer;
@@ -11,5 +11,5 @@
   align-self: center;
 }
 .like-button_active {
-  background: url(/images/like_activo.svg);
+  background: url(/src/images/like_activo.svg);
 }
