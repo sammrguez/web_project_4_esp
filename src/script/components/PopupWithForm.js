@@ -1,5 +1,4 @@
 import Popup from "./Popup.js";
-import userInfo from "./UserInfo.js";
 export default class PopupWithForm extends Popup {
   constructor({ formSubmitHandler }, popup) {
     super(popup);
@@ -12,6 +11,10 @@ export default class PopupWithForm extends Popup {
     if (this._form.id == "place") {
       this._form.reset();
     }
+    this._popup.querySelector(".overlay").addEventListener("click", (evt) => {
+      this._popup.classList.remove("popup_opened");
+      evt.stopImmediatePropagation();
+    });
   }
   getInputValues() {
     this._inputList = this._form.querySelectorAll(".form__input");

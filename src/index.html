@@ -11,14 +11,14 @@
       <section class="header">
         <img
           class="header__logo"
-          src="<%= require('../src/images/logo-vector.svg')%>"
+          src="<%=require('../src/images/logo-vector.svg')%>"
           alt="logo del proyecto"
         />
       </section>
       <section class="profile">
         <img
           class="profile__avatar"
-          src="../src/images/avatar.jpg"
+          src="<%=require('../src/images/avatar.jpg')%>"
           alt="aquí está tu foto de perfil"
         />
         <div class="profile__info">
@@ -26,7 +26,7 @@
           <div class="edit-button">
             <img
               class="edit-button__icon"
-              src="../src/images/edit_button.png"
+              src="<%=require('../src/images/edit_button.png')%>"
               alt="ícono de editar"
               button
             />
@@ -37,7 +37,7 @@
         <div class="add-button">
           <img
             class="add-button__icon"
-            src="../src/images/add_button.svg"
+            src="<%=require('../src/images/add_button.svg')%>"
             alt="ícono de agregar"
           />
         </div>
@@ -89,6 +89,7 @@
           </form>
         </div>
         <div class="popup popup_type_new-place">
+          <div class="overlay"></div>
           <form class="form" id="place" novalidate name="place">
             <button
               class="form__close-button form__close-button_type_new-place"

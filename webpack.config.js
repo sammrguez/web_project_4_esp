@@ -14,7 +14,8 @@ module.exports = {
     filename: "main.js",
     publicPath: "",
   },
-  target: ["web", "es5"], // asegúrate de que el código glue de Webpack sea también compatible con ES5
+  target: ["web", "es5"],
+  stats: { children: true }, // asegúrate de que el código glue de Webpack sea también compatible con ES5
   mode: "development",
   devServer: {
     static: path.resolve(__dirname, "./dist"),
@@ -37,6 +38,10 @@ module.exports = {
             loader: "css-loader",
           },
         ],
+      },
+      {
+        test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
+        type: "asset/resource",
       },
     ],
   },
