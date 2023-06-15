@@ -7,14 +7,14 @@ import {
   popupAddNewPlace,
   btnAddNewPlace,
   btnSubmitNewPlace,
-} from "../script/utils/Data.js";
-import Section from "../script/components/Section.js";
+} from "./script/utils/Data.js";
+import Section from "./script/components/Section.js";
 
-import { FormValidator } from "../script/components/FormValidator.js";
-import { Card, cardsContainer } from "../script/components/Card.js";
-import PopupWithImage from "../script/components/PopupWithImage.js";
-import PopupWithForm from "../script/components/PopupWithForm.js";
-import userInfo from "../script/components/UserInfo.js";
+import { FormValidator } from "./script/components/FormValidator.js";
+import { Card, cardsContainer } from "./script/components/Card.js";
+import PopupWithImage from "./script/components/PopupWithImage.js";
+import PopupWithForm from "./script/components/PopupWithForm.js";
+import userInfo from "./script/components/UserInfo.js";
 
 // objetos para validar
 const validationObject = {
