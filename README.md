@@ -9,4 +9,4 @@ Proyecto de una página web con perfil personalizable, accesible mediante un pop
 ## futuros upgrades:
 En la siguiente etapa de este proyecto se pretende agregar las funciuones correspondientes para poder agregar cards manualmente, activar el botón de like y eliminar, todo esto mediante Javascript.
 ### Enlace al proyecto :
-* https://github.com/sammrguez/web_project_4_esp
+* https://sammrguez.github.io/web_project_4_esp/
