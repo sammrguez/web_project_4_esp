@@ -16,6 +16,7 @@ import PopupWithImage from "./script/components/PopupWithImage.js";
 import PopupWithForm from "./script/components/PopupWithForm.js";
 import userInfo from "./script/components/UserInfo.js";
 
+console.log("working");
 // objetos para validar
 const validationObject = {
   formSelector: "profile",
@@ -116,3 +117,5 @@ const formPopupPlace = new PopupWithForm( // declarando form
   popupAddNewPlace
 );
 formPopupPlace.setEventListeners(btnAddNewPlace, ".form__submit-button_place"); // se acciona  popuop with form
+
+//Proyecto 10
