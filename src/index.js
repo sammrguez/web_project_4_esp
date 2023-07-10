@@ -139,9 +139,9 @@ fetch("https://around.nomoreparties.co/v1/web_es_07/users/me ", {
     console.log("todo ok");
   })
   .then((res) => {
-    userName.textContent = res.name;
-    userAboutMe.textContent = res.about;
-    userAvatar.src = res.avatar;
+    console.log(res.name);
+    console.log(res.about);
+    console.log(res.avatar);
   })
 
   .catch((error) => {
