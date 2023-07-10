@@ -35,6 +35,7 @@ export const popupEditProfile = document.querySelector(
 );
 export const userName = document.querySelector(".profile__user-name");
 export const userAboutMe = document.querySelector(".profile__user-profession");
+export const userAvatar = document.querySelector(".profile__avatar");
 export const userNameInput = document.querySelector("#name-input");
 export const userProfessionInput = document.querySelector("#about-me-input");
 export const btnAddNewPlace = document.querySelector(".add-button");

@@ -7,6 +7,9 @@ import {
   popupAddNewPlace,
   btnAddNewPlace,
   btnSubmitNewPlace,
+  userAvatar,
+  userName,
+  userAboutMe,
 } from "./script/utils/Data.js";
 import Section from "./script/components/Section.js";
 
@@ -127,5 +130,10 @@ fetch("https://around.nomoreparties.co/v1/web_es_07/users/me ", {
   .then((result) => {
     console.log(result);
   });
-
+//renderProfile
+function renderResults(userData) {
+  userName.textContent = userData.name;
+  userAboutMe.textContent = userData.about;
+  userAvatar.src = userData.avatar;
+}
 console.log("working test2");
