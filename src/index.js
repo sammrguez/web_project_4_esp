@@ -136,14 +136,10 @@ fetch("https://around.nomoreparties.co/v1/web_es_07/users/me ", {
   })
   .then((res) => {
     console.log(res);
-    console.log("todo ok");
-  })
-  .then((res) => {
     console.log(res.name);
     console.log(res.about);
     console.log(res.avatar);
   })
-
   .catch((error) => {
     console.log(`Error: ${error}`);
   });
