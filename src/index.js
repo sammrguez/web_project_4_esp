@@ -145,4 +145,3 @@ function renderResults(userData) {
   userAboutMe.textContent = userData.about;
   userAvatar.src = userData.avatar;
 }
-console.log("working test2");
