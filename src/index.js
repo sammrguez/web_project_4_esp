@@ -122,11 +122,6 @@ formPopupPlace.setEventListeners(btnAddNewPlace, ".form__submit-button_place"); 
 
 //Proyecto 10
 //renderProfile
-function renderResults(userData) {
-  userName.textContent = userData.name;
-  userAboutMe.textContent = userData.about;
-  userAvatar.src = userData.avatar;
-}
 
 fetch("https://around.nomoreparties.co/v1/web_es_07/users/me ", {
   headers: {
@@ -144,7 +139,9 @@ fetch("https://around.nomoreparties.co/v1/web_es_07/users/me ", {
     console.log("todo ok");
   })
   .then((res) => {
-    renderResults(res);
+    userName.textContent = res.name;
+    userAboutMe.textContent = res.about;
+    userAvatar.src = res.avatar;
   })
 
   .catch((error) => {
