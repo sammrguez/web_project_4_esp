@@ -121,6 +121,13 @@ const formPopupPlace = new PopupWithForm( // declarando form
 formPopupPlace.setEventListeners(btnAddNewPlace, ".form__submit-button_place"); // se acciona  popuop with form
 
 //Proyecto 10
+//renderProfile
+function renderResults(userData) {
+  userName.textContent = userData.name;
+  userAboutMe.textContent = userData.about;
+  userAvatar.src = userData.avatar;
+}
+
 fetch("https://around.nomoreparties.co/v1/web_es_07/users/me ", {
   headers: {
     authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
@@ -136,12 +143,10 @@ fetch("https://around.nomoreparties.co/v1/web_es_07/users/me ", {
     console.log(res);
     console.log("todo ok");
   })
+  .then((res) => {
+    renderResults(res);
+  })
+
   .catch((error) => {
     console.log(`Error: ${error}`);
   });
-//renderProfile
-function renderResults(userData) {
-  userName.textContent = userData.name;
-  userAboutMe.textContent = userData.about;
-  userAvatar.src = userData.avatar;
-}
