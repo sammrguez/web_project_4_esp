@@ -16,7 +16,6 @@ import PopupWithImage from "./script/components/PopupWithImage.js";
 import PopupWithForm from "./script/components/PopupWithForm.js";
 import userInfo from "./script/components/UserInfo.js";
 
-console.log("working");
 // objetos para validar
 const validationObject = {
   formSelector: "profile",
@@ -119,7 +118,7 @@ const formPopupPlace = new PopupWithForm( // declarando form
 formPopupPlace.setEventListeners(btnAddNewPlace, ".form__submit-button_place"); // se acciona  popuop with form
 
 //Proyecto 10
-fetch("https://around.nomoreparties.co/v1/web_es_07/cards", {
+fetch("https://around.nomoreparties.co/v1/web_es_07/users/me ", {
   headers: {
     authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e68476",
   },
@@ -128,3 +127,5 @@ fetch("https://around.nomoreparties.co/v1/web_es_07/cards", {
   .then((result) => {
     console.log(result);
   });
+
+console.log("working test2");
