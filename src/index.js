@@ -120,7 +120,7 @@ formPopupPlace.setEventListeners(btnAddNewPlace, ".form__submit-button_place"); 
 //Proyecto 10
 fetch("https://around.nomoreparties.co/v1/web_es_07/users/me ", {
   headers: {
-    authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e68476",
+    authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
   },
 })
   .then((res) => res.json())
