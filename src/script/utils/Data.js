@@ -11,7 +11,6 @@ fetch("https://around.nomoreparties.co/v1/web_es_07/cards", {
   })
   .then((res) => {
     console.log(res);
-    console.log("todo ok");
   });
 
 export const initialCards = [

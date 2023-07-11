@@ -14,3 +14,14 @@ export default class userInfo {
     userAboutMe.textContent = this._userAboutMe;
   }
 }
+fetch("https://around.nomoreparties.co/v1/web_es_07/users/me", {
+  method: "PATCH",
+  headers: {
+    authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    name: `${userName.textContent}`,
+    about: `${userAboutMe.textContent}`,
+  }),
+});
