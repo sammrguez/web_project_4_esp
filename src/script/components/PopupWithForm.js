@@ -1,4 +1,5 @@
 import Popup from "./Popup.js";
+import { userName, userAboutMe } from "../utils/Data.js";
 export default class PopupWithForm extends Popup {
   constructor({ formSubmitHandler }, popup) {
     super(popup);
@@ -28,11 +29,21 @@ export default class PopupWithForm extends Popup {
   setEventListeners(openButton) {
     this.getInputValues();
     super.setEventListeners(openButton);
-
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
       evt.stopImmediatePropagation();
       this._formSubmitHandler(this.getInputValues());
+      fetch("https://around.nomoreparties.co/v1/web_es_07/users/me", {
+        method: "PATCH",
+        headers: {
+          authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: this._form.name.value,
+          about: this._form["about-me"].value,
+        }),
+      });
       this.close();
       document.forms.place.reset();
     });

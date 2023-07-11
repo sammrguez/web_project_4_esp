@@ -77,7 +77,7 @@ const formPopupProfile = new PopupWithForm(
       const user = new userInfo({ data: data });
       const newUser = user.setUserInfo();
       const resetUser = user.getUserInfo();
-    }, //aqui terminck
+    }, //aqui termina
   },
   popupEditProfile
 );
@@ -128,7 +128,7 @@ function renderResults(userData) {
   userAvatar.src = userData.avatar;
 }
 
-fetch("https://around.nomoreparties.co/v1/web_es_07/users/me ", {
+fetch("https://around.nomoreparties.co/v1/web_es_07/users/me", {
   headers: {
     authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
   },
