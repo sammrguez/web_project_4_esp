@@ -1,3 +1,19 @@
+fetch("https://around.nomoreparties.co/v1/web_es_07/cards", {
+  headers: {
+    authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
+  },
+})
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(res.status);
+  })
+  .then((res) => {
+    console.log(res);
+    console.log("todo ok");
+  });
+
 export const initialCards = [
   {
     placeName: "Valle de Yosemite",

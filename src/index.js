@@ -141,14 +141,14 @@ fetch("https://around.nomoreparties.co/v1/web_es_07/users/me ", {
   })
   .then((res) => {
     renderResults(res);
-    console.log("todo ok");
+    console.log(res);
   })
   .then((res) => {
     userName.textContent = res.name;
     userAboutMe.textContent = res.about;
     userAvatar.src = res.avatar;
   })
-
   .catch((error) => {
     console.log(`Error: ${error}`);
   });
+//cargar Cards
