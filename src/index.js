@@ -78,6 +78,17 @@ const formPopupProfile = new PopupWithForm(
       const user = new userInfo({ data: data });
       const newUser = user.setUserInfo();
       const resetUser = user.getUserInfo();
+      const newProfileApi = new Api({
+        baseUrl: "https://around.nomoreparties.co/v1/web_es_07/",
+        headers: {
+          authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
+          "content-Type": "application/json",
+        },
+      });
+      newProfileApi.edithProfile({
+        name: data.name,
+        about: data["about-me"],
+      });
     }, //aqui termina
   },
   popupEditProfile
@@ -91,7 +102,14 @@ const formPopupPlace = new PopupWithForm( // declarando form
       const newItem = data;
 
       const addedCardList = [];
-
+      const newCardApi = new Api({
+        baseUrl: "https://around.nomoreparties.co/v1/web_es_07/",
+        headers: {
+          authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
+          "content-Type": "application/json",
+        },
+      });
+      newCardApi.addNewCard(data);
       addedCardList.push(newItem);
       btnSubmitNewPlace.classList.add("form__submit-button_inactive");
       const inputSection = new Section(
