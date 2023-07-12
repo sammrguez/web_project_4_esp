@@ -18,6 +18,7 @@ import { Card, cardsContainer } from "./script/components/Card.js";
 import PopupWithImage from "./script/components/PopupWithImage.js";
 import PopupWithForm from "./script/components/PopupWithForm.js";
 import userInfo from "./script/components/UserInfo.js";
+import { Api } from "./script/components/API.js";
 
 // objetos para validar
 const validationObject = {
@@ -119,36 +120,12 @@ const formPopupPlace = new PopupWithForm( // declarando form
   popupAddNewPlace
 );
 formPopupPlace.setEventListeners(btnAddNewPlace, ".form__submit-button_place"); // se acciona  popuop with form
-
-//Proyecto 10
-//renderProfile
-function renderResults(userData) {
-  userName.textContent = userData.name;
-  userAboutMe.textContent = userData.about;
-  userAvatar.src = userData.avatar;
-}
-
-fetch("https://around.nomoreparties.co/v1/web_es_07/users/me", {
+// Proyecto 10 llamandp a API
+const api = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/web_es_07/",
   headers: {
     authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
+    "content-Type": "application/json",
   },
-})
-  .then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(res.status);
-  })
-  .then((res) => {
-    renderResults(res);
-    console.log(res);
-  })
-  .then((res) => {
-    userName.textContent = res.name;
-    userAboutMe.textContent = res.about;
-    userAvatar.src = res.avatar;
-  })
-  .catch((error) => {
-    console.log(`Error: ${error}`);
-  });
-//cargar Cards
+});
+api.defaultProfile();
