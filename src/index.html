@@ -7,7 +7,7 @@
     <title>Alrededor de los Estados Unidos</title>
   </head>
   <body class="root">
-    <div name-inputclass="page">
+    <div class="page">
       <section class="header">
         <img
           class="header__logo"
@@ -127,8 +127,68 @@
         </div>
 
         <!--delete popup-->
-
+        <div class="popup popup_type_delete popup_opened">
+          <div class="overlay"></div>
+          <form
+            class="form form_action_delete"
+            id="delete"
+            novalidate
+            name="delete"
+          >
+            <button
+              class="form__close-button form__close-button_type_delete"
+            ></button>
+            <div class="form__container">
+              <h3 class="form__header">¿Estás seguro?</h3>
+              <button
+                type="submit"
+                class="form__submit-button form__submit-button_delete"
+                id="delete"
+              >
+                Sí
+              </button>
+            </div>
+          </form>
+        </div>
         <!--delete popup-->
+        <!--change avatar-->
+        <div class="popup popup_type_update-avatar">
+          <div class="overlay"></div>
+          <form
+            class="form form_action_avatar"
+            id="updateAvatar"
+            novalidate
+            name="updateAvatar"
+          >
+            <button
+              class="form__close-button form__close-button_type_new-place"
+            ></button>
+            <div class="form__container">
+              <h3 class="form__header">Editar foto de perfil</h3>
+              <fieldset class="form__input-container">
+                <input
+                  type="text"
+                  class="form__input"
+                  placeholder="Link de foto"
+                  id="avatar-input"
+                  name="updateAvatar"
+                  minlength="4"
+                  maxlength="30"
+                  required
+                />
+                <span class="form__input-error avatar-input-error"></span>
+                <button
+                  type="submit"
+                  class="form__submit-button form__submit-button_avatar"
+                  id="updateAvatar"
+                >
+                  Guardar
+                </button>
+              </fieldset>
+            </div>
+          </form>
+        </div>
+        <!--change photo-->
       </section>
       <footer class="footer">
         <p class="footer__copyright">© 2023 Alrededor de los EEUU</p>

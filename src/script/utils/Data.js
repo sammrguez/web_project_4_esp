@@ -65,3 +65,7 @@ export const popupPhoto = document.querySelector(".popup_type_photo");
 export const linkPopup = document.querySelector(".popup__photo");
 export const captionPopup = document.querySelector(".popup__photo-caption");
 export const btnClosePhoto = document.querySelector(".popup__close-button");
+
+//delete popup
+export const btnDeleteCard = document.querySelector(".trash-button");
+export const popupDeleteCard = document.querySelector(".popup_type_delete");

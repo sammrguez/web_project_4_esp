@@ -36,7 +36,7 @@ export class Api {
     cardList.forEach((card) => {
       cardListArray.push(card);
     });*/
-    console.log("api");
+
     //console.log(cardListArray);
     //return cardListArray;
   }
@@ -134,6 +134,28 @@ export class Api {
       body: JSON.stringify({
         likes: likes,
       }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log("todo ok");
+          return res.json();
+        }
+        return Promise.reject(res.status);
+      })
+      .then((res) => {
+        return res._id;
+      })
+      .catch((error) => {
+        console.log(`Error: ${error}`);
+      });
+  }
+  deleteCard() {
+    fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: this._authorization,
+        "content-Type": "application/json",
+      },
     })
       .then((res) => {
         if (res.ok) {

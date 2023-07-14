@@ -11,6 +11,8 @@ import {
   userAvatar,
   userName,
   userAboutMe,
+  popupDeleteCard,
+  btnDeleteCard,
 } from "./script/utils/Data.js";
 import Section from "./script/components/Section.js";
 
@@ -106,7 +108,17 @@ const formPopupProfile = new PopupWithForm(
 );
 const newFormPopup = formPopupProfile.setEventListeners(btnEditProfile);
 
-//  popup form place
+/*/popup form delete
+const formPopupDelete = new PopupWithForm(
+  {
+    formSubmitHandler: () => {
+      console.log("desde delete handler");
+    },
+  },
+  popupDeleteCard
+);
+formPopupDelete.setEventListeners(btnDeleteCard);
+//  popup form place*/
 const formPopupPlace = new PopupWithForm( // declarando form
   {
     formSubmitHandler: (data) => {

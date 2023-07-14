@@ -27,6 +27,7 @@
 @import url(./blocks/like/like.css);
 
 @import url(./blocks/form/form.css);
+@import url(./blocks/form/_action/form_action_delete.css);
 @import url(./blocks/form/__container/form__container.css);
 @import url(./blocks/form/__header/form__header.css);
 @import url(./blocks/form/__input-container/form__input-container.css);
