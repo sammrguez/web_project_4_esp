@@ -1,0 +1,6 @@
+.form_action_delete {
+  width: 100%;
+  height: 231px;
+
+  flex-direction: column;
+}

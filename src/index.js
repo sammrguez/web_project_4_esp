@@ -3,6 +3,7 @@ import {
   btnEditProfile,
   popupEditProfile,
   initialCards,
+  defaultCards,
   popupPhoto,
   popupAddNewPlace,
   btnAddNewPlace,
@@ -50,6 +51,16 @@ const test2 = PlaceValidation.enableValidation();
 const defaultCardList = new Section(
   {
     items: initialCards,
+    /* items: () => {
+      const apiCard = new Api({
+        baseUrl: "https://around.nomoreparties.co/v1/web_es_07/",
+        headers: {
+          authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
+          "content-Type": "application/json",
+        },
+      });
+      const apiCardsArray = apiCard.getCards();
+    } */
     renderer: (item) => {
       const card = new Card(
         {
@@ -100,8 +111,8 @@ const formPopupPlace = new PopupWithForm( // declarando form
   {
     formSubmitHandler: (data) => {
       const newItem = data;
-
       const addedCardList = [];
+      console.log(addedCardList);
       const newCardApi = new Api({
         baseUrl: "https://around.nomoreparties.co/v1/web_es_07/",
         headers: {
@@ -139,7 +150,7 @@ const formPopupPlace = new PopupWithForm( // declarando form
 );
 formPopupPlace.setEventListeners(btnAddNewPlace, ".form__submit-button_place"); // se acciona  popuop with form
 // Proyecto 10 llamandp a API
-const api = new Api({
+export const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/web_es_07/",
   headers: {
     authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",

@@ -1,3 +1,14 @@
+import { Api } from "../components/API.js";
+const apiCards = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/web_es_07/",
+  headers: {
+    authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
+    "content-Type": "application/json",
+  },
+});
+
+console.log("data");
+
 export const initialCards = [
   {
     placeName: "Valle de Yosemite",
@@ -46,7 +57,7 @@ export const popupAddNewPlace = document.querySelector(".popup_type_new-place");
 export const btnSubmitNewPlace = document.querySelector(
   ".form__submit-button_place"
 );
-
+export const likeCounter = document.querySelector(".like-button-counter");
 export const cardsContainer = document.querySelector(".card-container");
 export const popupPhoto = document.querySelector(".popup_type_photo");
 

@@ -1,4 +1,4 @@
-import { userName, userAboutMe, userAvatar } from "../utils/Data";
+import { userName, userAboutMe, userAvatar, likeCounter } from "../utils/Data";
 
 export class Api {
   constructor({ baseUrl, headers }) {
@@ -6,8 +6,44 @@ export class Api {
     this._headers = headers;
     this._authorization = headers.authorization;
   }
-  test() {
-    console.log(this._authorization);
+
+  getCards() {
+    fetch(`${this._baseUrl}/cards`, {
+      headers: {
+        authorization: this._authorization,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log("todo ok");
+          return res.json();
+        }
+        return Promise.reject(res.status);
+      })
+      .then((res) => {
+        this.getCardsList(res);
+      })
+      .catch((error) => {
+        console.log(`Error: ${error}`);
+      });
+  }
+
+  getCardsList(cardList = []) {
+    const testapi = Array.from(cardList);
+    console.log(testapi);
+    return testapi;
+    /*const cardListArray = [];
+    cardList.forEach((card) => {
+      cardListArray.push(card);
+    });*/
+    console.log("api");
+    //console.log(cardListArray);
+    //return cardListArray;
+  }
+  getArray() {
+    const initial = [];
+    initial = this.getCardsList();
+    console.log(initial);
   }
   renderResults(userData) {
     userName.textContent = userData.name;
@@ -29,6 +65,9 @@ export class Api {
       })
       .then((res) => {
         this.renderResults(res);
+      })
+      .catch((error) => {
+        console.log(`Error: ${error}`);
       });
   }
 
@@ -79,6 +118,32 @@ export class Api {
       })
       .then((res) => {
         console.log(res);
+      })
+      .catch((error) => {
+        console.log(`Error: ${error}`);
+      });
+  }
+
+  like(cardId, likes) {
+    fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "PATCH",
+      headers: {
+        authorization: this._authorization,
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        likes: likes,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log("todo ok");
+          return res.json();
+        }
+        return Promise.reject(res.status);
+      })
+      .then((res) => {
+        return res._id;
       })
       .catch((error) => {
         console.log(`Error: ${error}`);

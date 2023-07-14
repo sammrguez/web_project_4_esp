@@ -4,7 +4,6 @@ import {
   captionPopup,
   btnClosePhoto,
 } from "../utils/Data.js";
-import PopupWithImage from "./PopupWithImage.js";
 
 export const cardsContainer = document.querySelector(".card-container");
 
@@ -22,6 +21,7 @@ export class Card {
       .cloneNode(true);
     return cardElement;
   }
+
   generateCard() {
     this._cardElement = this.getTemplate();
     this._cardElement.querySelector(".place-card__name").textContent =
@@ -35,8 +35,12 @@ export class Card {
       cardToRemove.remove();
     });
     const likeIcon = this._cardElement.querySelector(".like-button");
+    const likeCounter = this._cardElement.querySelector(".like-button-counter");
+    let setupLikes = 0;
     likeIcon.addEventListener("click", function (evt) {
       evt.target.classList.toggle("like-button_active");
+      setupLikes = +1;
+      likeCounter.textContent = setupLikes;
     });
 
     return this._cardElement;
