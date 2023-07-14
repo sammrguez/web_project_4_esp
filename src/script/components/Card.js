@@ -35,14 +35,9 @@ export class Card {
     const trashBtn = this._cardElement.querySelector(".trash-button");
     trashBtn.addEventListener("click", (evt) => {
       const cardToRemove = trashBtn.closest(".place-card");
-      const deleteApi = new Api({
-        baseUrl: "https://around.nomoreparties.co/v1/web_es_07/",
-        headers: {
-          authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
-          "content-Type": "application/json",
-        },
-      });
-      deleteApi.deleteCard(this._cardElement.id);
+      console.log(evt.target);
+      this.apiDelete(this._cardElement.id);
+      //this.handlePopupDelete(this._cardElement.id, evt.target);
       cardToRemove.remove();
     });
     const likeIcon = this._cardElement.querySelector(".like-button");
@@ -56,7 +51,19 @@ export class Card {
 
     return this._cardElement;
   }
-
+  apiDelete(cardId) {
+    const deleteApi = new Api({
+      baseUrl: "https://around.nomoreparties.co/v1/web_es_07/",
+      headers: {
+        authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
+        "content-Type": "application/json",
+      },
+    });
+    deleteApi.deleteCard(cardId);
+  }
+  handlePopupDelete(cardId, openForm) {
+    this._deleteHandler(cardId, openForm);
+  }
   _handleOpenPopup() {
     this._photoHandler(this._link, this._name);
   }

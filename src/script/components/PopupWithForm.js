@@ -38,4 +38,13 @@ export default class PopupWithForm extends Popup {
       document.forms.place.reset();
     });
   }
+  aceptForm(openForm) {
+    super.setEventListeners(openForm);
+    this._form.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      evt.stopImmediatePropagation();
+      this.close();
+      this._formSubmitHandler();
+    });
+  }
 }

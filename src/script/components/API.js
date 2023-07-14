@@ -4,10 +4,12 @@ import {
   userAboutMe,
   userAvatar,
   likeCounter,
+  popupDeleteCard,
 } from "../utils/Data";
 import Section from "./Section.js";
 import { Card, cardsContainer } from "./Card.js";
 import PopupWithImage from "./PopupWithImage.js";
+import PopupWithForm from "./PopupWithForm";
 export class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
@@ -62,6 +64,26 @@ export class Api {
               photoHandler: (src, name) => {
                 const photo = new PopupWithImage(popupPhoto);
                 const newPhoto = photo.open(src, name);
+              },
+              deleteHandler: (cardId, openForm) => {
+                const popupDelete = new PopupWithForm(
+                  {
+                    formSubmitHandler: () => {
+                      const deleteApi = new Api({
+                        baseUrl:
+                          "https://around.nomoreparties.co/v1/web_es_07/",
+                        headers: {
+                          authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
+                          "content-Type": "application/json",
+                        },
+                      });
+                      deleteApi.deleteCard(cardId);
+                    },
+                  },
+                  popupDeleteCard
+                );
+                popupDelete.aceptForm(openForm);
+                // console.log("desde API delete handler");
               },
             },
             "#card-template"
