@@ -1,5 +1,13 @@
-import { userName, userAboutMe, userAvatar, likeCounter } from "../utils/Data";
-
+import {
+  userName,
+  popupPhoto,
+  userAboutMe,
+  userAvatar,
+  likeCounter,
+} from "../utils/Data";
+import Section from "./Section.js";
+import { Card, cardsContainer } from "./Card.js";
+import PopupWithImage from "./PopupWithImage.js";
 export class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
@@ -8,6 +16,7 @@ export class Api {
   }
 
   getCards() {
+    const cardsBuenas = [];
     fetch(`${this._baseUrl}/cards`, {
       headers: {
         authorization: this._authorization,
@@ -21,29 +30,49 @@ export class Api {
         return Promise.reject(res.status);
       })
       .then((res) => {
-        this.getCardsList(res);
+        console.log(res);
+        this.tester(res);
       })
       .catch((error) => {
         console.log(`Error: ${error}`);
       });
   }
 
-  getCardsList(cardList = []) {
-    const testapi = Array.from(cardList);
-    console.log(testapi);
-    return testapi;
-    /*const cardListArray = [];
-    cardList.forEach((card) => {
-      cardListArray.push(card);
-    });*/
+  tester(arraylist) {
+    const cardsBuenas = [];
+    arraylist.forEach((obj) => {
+      const cardApi = {
+        name: obj.name,
+        link: obj.link,
+        id: obj._id,
+        likes: obj.likes,
+      };
+      cardsBuenas.push(cardApi);
 
-    //console.log(cardListArray);
-    //return cardListArray;
-  }
-  getArray() {
-    const initial = [];
-    initial = this.getCardsList();
-    console.log(initial);
+      // console.log(cardApi);
+    });
+    //console.log(cardsBuenas);
+    const defaultCardList = new Section(
+      {
+        items: cardsBuenas,
+        renderer: (item) => {
+          const card = new Card(
+            {
+              data: item,
+              photoHandler: (src, name) => {
+                const photo = new PopupWithImage(popupPhoto);
+                const newPhoto = photo.open(src, name);
+              },
+            },
+            "#card-template"
+          );
+          const newCard = card.generateCard();
+          defaultCardList.addItem(newCard);
+        },
+      },
+      cardsContainer
+    );
+    defaultCardList.renderItems();
   }
   renderResults(userData) {
     userName.textContent = userData.name;
@@ -149,7 +178,7 @@ export class Api {
         console.log(`Error: ${error}`);
       });
   }
-  deleteCard() {
+  deleteCard(cardId) {
     fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: {
@@ -165,7 +194,7 @@ export class Api {
         return Promise.reject(res.status);
       })
       .then((res) => {
-        return res._id;
+        console.log(res);
       })
       .catch((error) => {
         console.log(`Error: ${error}`);

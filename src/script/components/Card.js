@@ -4,13 +4,14 @@ import {
   captionPopup,
   btnClosePhoto,
 } from "../utils/Data.js";
-
+import { Api } from "./API.js";
 export const cardsContainer = document.querySelector(".card-container");
 
 export class Card {
   constructor({ data, photoHandler }, templateSelector) {
-    this._name = data.placeName;
+    this._name = data.name;
     this._link = data.link;
+    this._id = data.id;
     this._templateSelector = templateSelector;
     this._photoHandler = photoHandler;
   }
@@ -27,11 +28,20 @@ export class Card {
     this._cardElement.querySelector(".place-card__name").textContent =
       this._name;
     this._cardElement.querySelector(".place-card__photo").src = this._link;
+    this._cardElement.id = this._id;
     this._setEventListeners();
 
     const trashBtn = this._cardElement.querySelector(".trash-button");
-    trashBtn.addEventListener("click", () => {
+    trashBtn.addEventListener("click", (evt) => {
       const cardToRemove = trashBtn.closest(".place-card");
+      const deleteApi = new Api({
+        baseUrl: "https://around.nomoreparties.co/v1/web_es_07/",
+        headers: {
+          authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
+          "content-Type": "application/json",
+        },
+      });
+      deleteApi.deleteCard(this._cardElement.id);
       cardToRemove.remove();
     });
     const likeIcon = this._cardElement.querySelector(".like-button");
