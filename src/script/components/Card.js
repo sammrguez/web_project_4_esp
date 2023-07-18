@@ -9,7 +9,7 @@ export const cardsContainer = document.querySelector(".card-container");
 
 export class Card {
   constructor({ data, photoHandler, deleteHandler }, templateSelector) {
-    this._name = data.name;
+    this._name = data.placeName;
     this._link = data.link;
     this._id = data.id;
     this._templateSelector = templateSelector;

@@ -5,14 +5,11 @@ export default class Section {
     this._container = containerSelector;
   }
   addItem(item) {
-    this._container.append(item);
+    this._container.prepend(item);
   }
   renderItems() {
     this._itemsArray.forEach((item) => {
       this._renderer(item);
     });
-  }
-  test() {
-    console.log(this._itemsArray);
   }
 }

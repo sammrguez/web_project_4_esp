@@ -5,6 +5,7 @@ import {
   userAvatar,
   likeCounter,
   popupDeleteCard,
+  api,
 } from "../utils/Data";
 import Section from "./Section.js";
 import { Card, cardsContainer } from "./Card.js";
@@ -16,13 +17,44 @@ export class Api {
     this._headers = headers;
     this._authorization = headers.authorization;
   }
-
-  getCards() {
-    const cardsBuenas = [];
-    fetch(`${this._baseUrl}/cards`, {
+  // Profile API
+  renderResults(userData) {
+    userName.textContent = userData.name;
+    userAboutMe.textContent = userData.about;
+    userAvatar.src = userData.avatar;
+  }
+  defaultProfile() {
+    fetch(`${this._baseUrl}/users/me`, {
       headers: {
         authorization: this._authorization,
       },
+    })
+      .then((res) => {
+        if (res.ok) {
+          //console.log("todo ok");
+          return res.json();
+        }
+        return Promise.reject(res.status);
+      })
+      .then((res) => {
+        this.renderResults(res);
+      })
+      .catch((error) => {
+        console.log(`Error: ${error}`);
+      });
+  }
+
+  edithProfile(newProfile) {
+    fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: {
+        authorization: this._authorization,
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: newProfile.name,
+        about: newProfile.about,
+      }),
     })
       .then((res) => {
         if (res.ok) {
@@ -33,30 +65,37 @@ export class Api {
       })
       .then((res) => {
         console.log(res);
-        this.tester(res);
       })
       .catch((error) => {
         console.log(`Error: ${error}`);
       });
   }
+  // termina profile functions
+  cardsAddedPedido() {
+    return fetch(`${this._baseUrl}/cards`, {
+      headers: {
+        authorization: this._authorization,
+      },
+    });
+  }
 
-  tester(arraylist) {
-    const cardsBuenas = [];
-    arraylist.forEach((obj) => {
+  tester(arraylist, data) {
+    arraylist = [];
+    data.forEach((obj) => {
       const cardApi = {
-        name: obj.name,
+        name: obj.placeNamname,
         link: obj.link,
         id: obj._id,
         likes: obj.likes,
       };
-      cardsBuenas.push(cardApi);
+      arraylist.push(cardApi);
 
       // console.log(cardApi);
     });
-    //console.log(cardsBuenas);
+    //console.log(cardsAdded);
     const defaultCardList = new Section(
       {
-        items: cardsBuenas,
+        items: cardsAdded,
         renderer: (item) => {
           const card = new Card(
             {
@@ -96,58 +135,7 @@ export class Api {
     );
     defaultCardList.renderItems();
   }
-  renderResults(userData) {
-    userName.textContent = userData.name;
-    userAboutMe.textContent = userData.about;
-    userAvatar.src = userData.avatar;
-  }
-  defaultProfile() {
-    fetch(`${this._baseUrl}/users/me`, {
-      headers: {
-        authorization: this._authorization,
-      },
-    })
-      .then((res) => {
-        if (res.ok) {
-          console.log("todo ok");
-          return res.json();
-        }
-        return Promise.reject(res.status);
-      })
-      .then((res) => {
-        this.renderResults(res);
-      })
-      .catch((error) => {
-        console.log(`Error: ${error}`);
-      });
-  }
 
-  edithProfile(newProfile) {
-    fetch(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
-      headers: {
-        authorization: this._authorization,
-        "content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: newProfile.name,
-        about: newProfile.about,
-      }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          console.log("todo ok");
-          return res.json();
-        }
-        return Promise.reject(res.status);
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(`Error: ${error}`);
-      });
-  }
   addNewCard(newCard) {
     fetch(`${this._baseUrl}/cards`, {
       method: "POST",

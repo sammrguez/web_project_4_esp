@@ -13,6 +13,7 @@ import {
   userAboutMe,
   popupDeleteCard,
   btnDeleteCard,
+  api,
 } from "./script/utils/Data.js";
 import Section from "./script/components/Section.js";
 
@@ -21,7 +22,6 @@ import { Card, cardsContainer } from "./script/components/Card.js";
 import PopupWithImage from "./script/components/PopupWithImage.js";
 import PopupWithForm from "./script/components/PopupWithForm.js";
 import userInfo from "./script/components/UserInfo.js";
-import { Api } from "./script/components/API.js";
 
 // objetos para validar
 const validationObject = {
@@ -48,21 +48,76 @@ const test = ProfileValidation.enableValidation();
 const PlaceValidation = new FormValidator(validationObject2);
 const test2 = PlaceValidation.enableValidation();
 
-// Poryecto 9
+function renderCards(dataArray) {
+  const addedCardsArray = [];
+  dataArray.forEach((item) => {
+    addedCardsArray.push(item);
+  });
+  console.log(addedCardsArray);
+  // return addedCardsArray;
+  const defaultCardList = new Section(
+    {
+      items: addedCardsArray,
+      renderer: (item) => {
+        const card = new Card(
+          {
+            data: item,
+            photoHandler: (src, name) => {
+              const photo = new PopupWithImage(popupPhoto);
+              const newPhoto = photo.open(src, name);
+            },
+          },
+          "#card-template"
+        );
+        const newCard = card.generateCard();
+        defaultCardList.addItem(newCard);
+      },
+    },
+    cardsContainer
+  );
+  defaultCardList.renderItems();
+}
 
-/*const defaultCardList = new Section(
+function initialCardsRequest() {
+  const testRC = api.cardsAddedPedido();
+  testRC
+    .then((res) => {
+      if (res.ok) {
+        console.log("todo ok");
+        return res.json();
+      }
+      return Promise.reject(res.status);
+    })
+    .then((res) => {
+      renderCards(res);
+      console.log("desde segundo then");
+    })
+    .catch((error) => {
+      console.log(`Error: ${error}`);
+    });
+}
+initialCardsRequest();
+
+/*
+const defaultCardList = new Section(
   {
-    items: initialCards,
-    /* items: () => {
-      const apiCard = new Api({
-        baseUrl: "https://around.nomoreparties.co/v1/web_es_07/",
-        headers: {
-          authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
-          "content-Type": "application/json",
-        },
-      });
-      const apiCardsArray = apiCard.getCards();
-    } 
+    items: () => {
+      const testRC = new api.cardsAddedPedido();
+      testRC
+        .then((res) => {
+          if (res.ok) {
+            console.log("todo ok");
+            return res.json();
+          }
+          return Promise.reject(res.status);
+        })
+        .then((res) => {
+          usingCardsInfo(res);
+        })
+        .catch((error) => {
+          console.log(`Error: ${error}`);
+        });
+    },
     renderer: (item) => {
       const card = new Card(
         {
@@ -75,30 +130,26 @@ const test2 = PlaceValidation.enableValidation();
         "#card-template"
       );
       const newCard = card.generateCard();
-      defaultCardList.addItem(newCard);
+      defaultCardList.test();
+      //addItem(newCard);
     },
   },
   cardsContainer
 );
-defaultCardList.renderItems();*/
-
+defaultCardList.test();
+*/
 //popup form profile
+api.defaultProfile();
 const formPopupProfile = new PopupWithForm(
   {
     formSubmitHandler: (data) => {
       // aqui empieza callback
 
       const user = new userInfo({ data: data });
-      const newUser = user.setUserInfo();
-      const resetUser = user.getUserInfo();
-      const newProfileApi = new Api({
-        baseUrl: "https://around.nomoreparties.co/v1/web_es_07/",
-        headers: {
-          authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
-          "content-Type": "application/json",
-        },
-      });
-      newProfileApi.edithProfile({
+      user.setUserInfo();
+      user.getUserInfo();
+
+      api.edithProfile({
         name: data.name,
         about: data["about-me"],
       });
@@ -106,33 +157,16 @@ const formPopupProfile = new PopupWithForm(
   },
   popupEditProfile
 );
-const newFormPopup = formPopupProfile.setEventListeners(btnEditProfile);
+formPopupProfile.setEventListeners(btnEditProfile);
+// funciones de perfil
 
-/*/popup form delete
-const formPopupDelete = new PopupWithForm(
-  {
-    formSubmitHandler: () => {
-      console.log("desde delete handler");
-    },
-  },
-  popupDeleteCard
-);
-formPopupDelete.setEventListeners(btnDeleteCard);
-//  popup form place*/
-const formPopupPlace = new PopupWithForm( // declarando form
+/*const formPopupPlace = new PopupWithForm( // declarando form
   {
     formSubmitHandler: (data) => {
       const newItem = data;
       const addedCardList = [];
       console.log(addedCardList);
-      const newCardApi = new Api({
-        baseUrl: "https://around.nomoreparties.co/v1/web_es_07/",
-        headers: {
-          authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
-          "content-Type": "application/json",
-        },
-      });
-      newCardApi.addNewCard(data);
+      api.addNewCard(data);
       addedCardList.push(newItem);
       btnSubmitNewPlace.classList.add("form__submit-button_inactive");
       const inputSection = new Section(
@@ -160,25 +194,9 @@ const formPopupPlace = new PopupWithForm( // declarando form
   },
   popupAddNewPlace
 );
-formPopupPlace.setEventListeners(btnAddNewPlace, ".form__submit-button_place"); // se acciona  popuop with form
+formPopupPlace.setEventListeners(btnAddNewPlace, ".form__submit-button_place");*/ // se acciona  popuop with form
 // Proyecto 10 llamandp a API
-export const api = new Api({
-  baseUrl: "https://around.nomoreparties.co/v1/web_es_07/",
-  headers: {
-    authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
-    "content-Type": "application/json",
-  },
-});
-api.defaultProfile();
 
-const apiCards = new Api({
-  baseUrl: "https://around.nomoreparties.co/v1/web_es_07/",
-  headers: {
-    authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
-    "content-Type": "application/json",
-  },
-});
+//api.cardsAdded();
 
-apiCards.getCards();
-
-// test function
+//using cards info
