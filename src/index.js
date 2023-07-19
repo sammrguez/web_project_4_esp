@@ -48,13 +48,36 @@ const test = ProfileValidation.enableValidation();
 const PlaceValidation = new FormValidator(validationObject2);
 const test2 = PlaceValidation.enableValidation();
 
-function renderCards(dataArray) {
-  const addedCardsArray = [];
+//popup form profile
+api.defaultProfile();
+const formPopupProfile = new PopupWithForm(
+  {
+    formSubmitHandler: (data) => {
+      // aqui empieza callback
+
+      const user = new userInfo({ data: data });
+      user.setUserInfo();
+      user.getUserInfo();
+
+      api.edithProfile({
+        name: data.name,
+        about: data["about-me"],
+      });
+    }, //aqui termina
+  },
+  popupEditProfile
+);
+formPopupProfile.setEventListeners(btnEditProfile);
+// funciones de perfil
+
+// Rendeizar initial Cards
+export const addedCardsArray = [];
+
+export function renderCards(dataArray) {
   dataArray.forEach((item) => {
     addedCardsArray.push(item);
   });
-  console.log(addedCardsArray);
-  // return addedCardsArray;
+  // console.log(addedCardsArray);
   const defaultCardList = new Section(
     {
       items: addedCardsArray,
@@ -79,18 +102,17 @@ function renderCards(dataArray) {
 }
 
 function initialCardsRequest() {
-  const testRC = api.cardsAddedPedido();
-  testRC
+  const initialCardsApi = api.cardsAddedRequest();
+  initialCardsApi
     .then((res) => {
       if (res.ok) {
-        console.log("todo ok");
+        // console.log("todo ok");
         return res.json();
       }
       return Promise.reject(res.status);
     })
     .then((res) => {
       renderCards(res);
-      console.log("desde segundo then");
     })
     .catch((error) => {
       console.log(`Error: ${error}`);
@@ -98,12 +120,25 @@ function initialCardsRequest() {
 }
 initialCardsRequest();
 
-/*
-const defaultCardList = new Section(
+/*const testForm = new PopupWithForm(
   {
-    items: () => {
-      const testRC = new api.cardsAddedPedido();
-      testRC
+    formSubmitHandler: (inputs) => {
+      console.log("desde form handler index");
+      console.log(inputs);
+    },
+  },
+  popupAddNewPlace
+);
+testForm.requestTest();
+testForm.setEventListeners(btnAddNewPlace);
+*/
+//new card functions
+/*
+const formPopupPlace = new PopupWithForm(
+  {
+    formSubmitHandler: (newCard) => {
+      let somepetition = api.addNewCardPetition(newCard);
+      somepetition
         .then((res) => {
           if (res.ok) {
             console.log("todo ok");
@@ -112,91 +147,27 @@ const defaultCardList = new Section(
           return Promise.reject(res.status);
         })
         .then((res) => {
-          usingCardsInfo(res);
+          console.log("desde card petition en index");
+          console.log(res);
         })
         .catch((error) => {
           console.log(`Error: ${error}`);
         });
     },
-    renderer: (item) => {
-      const card = new Card(
-        {
-          data: item,
-          photoHandler: (src, name) => {
-            const photo = new PopupWithImage(popupPhoto);
-            const newPhoto = photo.open(src, name);
-          },
-        },
-        "#card-template"
-      );
-      const newCard = card.generateCard();
-      defaultCardList.test();
-      //addItem(newCard);
-    },
-  },
-  cardsContainer
-);
-defaultCardList.test();
-*/
-//popup form profile
-api.defaultProfile();
-const formPopupProfile = new PopupWithForm(
-  {
-    formSubmitHandler: (data) => {
-      // aqui empieza callback
-
-      const user = new userInfo({ data: data });
-      user.setUserInfo();
-      user.getUserInfo();
-
-      api.edithProfile({
-        name: data.name,
-        about: data["about-me"],
-      });
-    }, //aqui termina
-  },
-  popupEditProfile
-);
-formPopupProfile.setEventListeners(btnEditProfile);
-// funciones de perfil
-
-/*const formPopupPlace = new PopupWithForm( // declarando form
-  {
-    formSubmitHandler: (data) => {
-      const newItem = data;
-      const addedCardList = [];
-      console.log(addedCardList);
-      api.addNewCard(data);
-      addedCardList.push(newItem);
-      btnSubmitNewPlace.classList.add("form__submit-button_inactive");
-      const inputSection = new Section(
-        {
-          items: addedCardList,
-          renderer: (data) => {
-            const inputCard = new Card(
-              {
-                data: data,
-                photoHandler: (src, name) => {
-                  const photo = new PopupWithImage(popupPhoto);
-                  const newPhoto = photo.open(src, name);
-                },
-              },
-              "#card-template"
-            );
-            const newCard = inputCard.generateCard();
-            inputSection.addItem(newCard);
-          },
-        },
-        cardsContainer
-      );
-      inputSection.renderItems();
-    },
   },
   popupAddNewPlace
 );
-formPopupPlace.setEventListeners(btnAddNewPlace, ".form__submit-button_place");*/ // se acciona  popuop with form
-// Proyecto 10 llamandp a API
-
-//api.cardsAdded();
-
-//using cards info
+formPopupPlace.setEventListeners(btnAddNewPlace);*/
+function usingNewCard() {
+  const formPopupPlace = new PopupWithForm( // declarando form
+    {
+      formSubmitHandler: (newCard) => {
+        console.log(newCard);
+        api.addNewCardPetition(newCard);
+      },
+    },
+    popupAddNewPlace
+  );
+  formPopupPlace.setEventListeners(btnAddNewPlace);
+}
+usingNewCard();

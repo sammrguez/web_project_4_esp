@@ -8,13 +8,13 @@ import { Api } from "./API.js";
 export const cardsContainer = document.querySelector(".card-container");
 
 export class Card {
-  constructor({ data, photoHandler, deleteHandler }, templateSelector) {
-    this._name = data.placeName;
+  constructor({ data, photoHandler }, templateSelector) {
+    this._name = data.name;
     this._link = data.link;
     this._id = data.id;
     this._templateSelector = templateSelector;
     this._photoHandler = photoHandler;
-    this._deleteHandler = deleteHandler;
+    // this._deleteHandler = deleteHandler;
   }
   getTemplate() {
     const cardTemplate = document.querySelector(this._templateSelector).content;

@@ -7,10 +7,8 @@ import {
   popupDeleteCard,
   api,
 } from "../utils/Data";
-import Section from "./Section.js";
-import { Card, cardsContainer } from "./Card.js";
-import PopupWithImage from "./PopupWithImage.js";
-import PopupWithForm from "./PopupWithForm";
+import { renderCards, addedCardsArray } from "../../index.js";
+
 export class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
@@ -71,7 +69,7 @@ export class Api {
       });
   }
   // termina profile functions
-  cardsAddedPedido() {
+  cardsAddedRequest() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: {
         authorization: this._authorization,
@@ -79,64 +77,7 @@ export class Api {
     });
   }
 
-  tester(arraylist, data) {
-    arraylist = [];
-    data.forEach((obj) => {
-      const cardApi = {
-        name: obj.placeNamname,
-        link: obj.link,
-        id: obj._id,
-        likes: obj.likes,
-      };
-      arraylist.push(cardApi);
-
-      // console.log(cardApi);
-    });
-    //console.log(cardsAdded);
-    const defaultCardList = new Section(
-      {
-        items: cardsAdded,
-        renderer: (item) => {
-          const card = new Card(
-            {
-              data: item,
-              photoHandler: (src, name) => {
-                const photo = new PopupWithImage(popupPhoto);
-                const newPhoto = photo.open(src, name);
-              },
-              deleteHandler: (cardId, openForm) => {
-                const popupDelete = new PopupWithForm(
-                  {
-                    formSubmitHandler: () => {
-                      const deleteApi = new Api({
-                        baseUrl:
-                          "https://around.nomoreparties.co/v1/web_es_07/",
-                        headers: {
-                          authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
-                          "content-Type": "application/json",
-                        },
-                      });
-                      deleteApi.deleteCard(cardId);
-                    },
-                  },
-                  popupDeleteCard
-                );
-                popupDelete.aceptForm(openForm);
-                // console.log("desde API delete handler");
-              },
-            },
-            "#card-template"
-          );
-          const newCard = card.generateCard();
-          defaultCardList.addItem(newCard);
-        },
-      },
-      cardsContainer
-    );
-    defaultCardList.renderItems();
-  }
-
-  addNewCard(newCard) {
+  addNewCardPetition(newCard) {
     fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: {
@@ -150,44 +91,25 @@ export class Api {
     })
       .then((res) => {
         if (res.ok) {
-          console.log("todo ok");
+          // console.log("todo ok");
           return res.json();
         }
         return Promise.reject(res.status);
       })
       .then((res) => {
         console.log(res);
+        console.log("desde segundo then");
+        this.renderNewCard(res);
       })
       .catch((error) => {
         console.log(`Error: ${error}`);
       });
+  }
+  renderNewCard(newCard) {
+    addedCardsArray.push(newCard);
+    console.log(addedCardsArray);
   }
 
-  like(cardId, likes) {
-    fetch(`${this._baseUrl}/cards/${cardId}`, {
-      method: "PATCH",
-      headers: {
-        authorization: this._authorization,
-        "content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        likes: likes,
-      }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          console.log("todo ok");
-          return res.json();
-        }
-        return Promise.reject(res.status);
-      })
-      .then((res) => {
-        return res._id;
-      })
-      .catch((error) => {
-        console.log(`Error: ${error}`);
-      });
-  }
   deleteCard(cardId) {
     fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",

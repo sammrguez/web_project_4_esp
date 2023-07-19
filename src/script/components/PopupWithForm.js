@@ -1,5 +1,4 @@
 import Popup from "./Popup.js";
-import { userName, userAboutMe } from "../utils/Data.js";
 export default class PopupWithForm extends Popup {
   constructor({ formSubmitHandler }, popup) {
     super(popup);
@@ -23,7 +22,6 @@ export default class PopupWithForm extends Popup {
     this._inputList.forEach((input) => {
       formValues[input.name] = input.value;
     });
-    //   console.log(formValues);
     return formValues;
   }
 
@@ -37,15 +35,7 @@ export default class PopupWithForm extends Popup {
 
       this.close();
       document.forms.place.reset();
-    });
-  }
-  aceptForm(openForm) {
-    super.setEventListeners(openForm);
-    this._form.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-      evt.stopImmediatePropagation();
-      this.close();
-      this._formSubmitHandler();
+      console.log("desde stEventListener");
     });
   }
 }
