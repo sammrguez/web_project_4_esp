@@ -9,6 +9,7 @@ export default class PopupWithForm extends Popup {
   close() {
     super.close();
     if (this._form.id == "place") {
+      console.log("desde popup form l12");
       this._form.reset();
     }
     this._popup.querySelector(".overlay").addEventListener("click", (evt) => {
@@ -27,6 +28,7 @@ export default class PopupWithForm extends Popup {
 
   setEventListeners(openButton) {
     this.getInputValues();
+    console.log(openButton);
     super.setEventListeners(openButton);
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();

@@ -158,16 +158,38 @@ const formPopupPlace = new PopupWithForm(
   popupAddNewPlace
 );
 formPopupPlace.setEventListeners(btnAddNewPlace);*/
-function usingNewCard() {
-  const formPopupPlace = new PopupWithForm( // declarando form
+function usingNewCard(item) {
+  console.log(item);
+  const apiCard = new Card(
     {
-      formSubmitHandler: (newCard) => {
-        console.log(newCard);
-        api.addNewCardPetition(newCard);
+      data: item,
+      photoHandler: (src, name) => {
+        const photo = new PopupWithImage(popupPhoto);
+        const newPhoto = photo.open(src, name);
       },
     },
-    popupAddNewPlace
+    "#card-template"
   );
-  formPopupPlace.setEventListeners(btnAddNewPlace);
+  return apiCard.generateCard();
 }
-usingNewCard();
+const formPopupPlace = new PopupWithForm( // declarando form
+  {
+    formSubmitHandler: (newCard) => {
+      // console.log(newCard);
+      api
+        .addNewCardPetition(newCard)
+        .then((result) => {
+          // console.log(res);
+          document
+            .querySelector(".card-container")
+            .prepend(usingNewCard(result));
+          formPopupPlace.close();
+        })
+        .finally(() => {
+          console.log("llegó aquí");
+        });
+    },
+  },
+  popupAddNewPlace
+);
+formPopupPlace.setEventListeners(btnAddNewPlace);
