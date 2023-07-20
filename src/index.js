@@ -22,6 +22,7 @@ import { Card, cardsContainer } from "./script/components/Card.js";
 import PopupWithImage from "./script/components/PopupWithImage.js";
 import PopupWithForm from "./script/components/PopupWithForm.js";
 import userInfo from "./script/components/UserInfo.js";
+import PopupConfirmation from "./script/components/PopupConfirmation";
 
 // objetos para validar
 const validationObject = {
@@ -89,6 +90,22 @@ export function renderCards(dataArray) {
               const photo = new PopupWithImage(popupPhoto);
               const newPhoto = photo.open(src, name);
             },
+            deleteHandler: (id) => {
+              const confirmation = new PopupConfirmation(
+                {
+                  submitHandler: () => {
+                    api.deleteCard(id);
+                    card.trashBtnFunctions();
+                    console.log(id);
+                  },
+                },
+                popupDeleteCard
+              );
+              confirmation.submitFunctions();
+              console.log(id); // esta funcion si regresa al id de vard
+              confirmation.open();
+              // console.log(argumento);
+            },
           },
           "#card-template"
         );
@@ -120,45 +137,7 @@ function initialCardsRequest() {
 }
 initialCardsRequest();
 
-/*const testForm = new PopupWithForm(
-  {
-    formSubmitHandler: (inputs) => {
-      console.log("desde form handler index");
-      console.log(inputs);
-    },
-  },
-  popupAddNewPlace
-);
-testForm.requestTest();
-testForm.setEventListeners(btnAddNewPlace);
-*/
-//new card functions
-/*
-const formPopupPlace = new PopupWithForm(
-  {
-    formSubmitHandler: (newCard) => {
-      let somepetition = api.addNewCardPetition(newCard);
-      somepetition
-        .then((res) => {
-          if (res.ok) {
-            console.log("todo ok");
-            return res.json();
-          }
-          return Promise.reject(res.status);
-        })
-        .then((res) => {
-          console.log("desde card petition en index");
-          console.log(res);
-        })
-        .catch((error) => {
-          console.log(`Error: ${error}`);
-        });
-    },
-  },
-  popupAddNewPlace
-);
-formPopupPlace.setEventListeners(btnAddNewPlace);*/
-function usingNewCard(item) {
+function createNewCard(item) {
   console.log(item);
   const apiCard = new Card(
     {
@@ -167,29 +146,42 @@ function usingNewCard(item) {
         const photo = new PopupWithImage(popupPhoto);
         const newPhoto = photo.open(src, name);
       },
+      deleteHandler: (cardId) => {
+        const confirmation = new PopupConfirmation(popupDeleteCard);
+        confirmation.setEventListenersOpen();
+
+        confirmation.submitEventListener(cardId);
+      },
     },
     "#card-template"
   );
+  apiCard.test();
   return apiCard.generateCard();
 }
-const formPopupPlace = new PopupWithForm( // declarando form
-  {
-    formSubmitHandler: (newCard) => {
-      // console.log(newCard);
-      api
-        .addNewCardPetition(newCard)
-        .then((result) => {
+function newCardApi() {
+  const formPopupPlace = new PopupWithForm( // declarando form
+    {
+      formSubmitHandler: (newCard) => {
+        // console.log(newCard);
+        api.addNewCardPetition(newCard).then((result) => {
           // console.log(res);
           document
             .querySelector(".card-container")
-            .prepend(usingNewCard(result));
+            .prepend(createNewCard(result));
           formPopupPlace.close();
-        })
-        .finally(() => {
-          console.log("llegó aquí");
         });
+      },
     },
+    popupAddNewPlace
+  );
+  formPopupPlace.setEventListeners(btnAddNewPlace);
+}
+newCardApi();
+
+/*const testconfirmation = new PopupConfirmation({
+  confirmationHandler: () => {
+    console.log("desde confirmation test en Index");
   },
-  popupAddNewPlace
-);
-formPopupPlace.setEventListeners(btnAddNewPlace);
+});
+testconfirmation.setEventListeners();
+*/

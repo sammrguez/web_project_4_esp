@@ -3,18 +3,19 @@ import {
   linkPopup,
   captionPopup,
   btnClosePhoto,
+  api,
 } from "../utils/Data.js";
-import { Api } from "./API.js";
+
 export const cardsContainer = document.querySelector(".card-container");
 
 export class Card {
-  constructor({ data, photoHandler }, templateSelector) {
+  constructor({ data, photoHandler, deleteHandler }, templateSelector) {
     this._name = data.name;
     this._link = data.link;
-    this._id = data.id;
+    this._id = data._id;
     this._templateSelector = templateSelector;
     this._photoHandler = photoHandler;
-    // this._deleteHandler = deleteHandler;
+    this._deleteHandler = deleteHandler;
   }
   getTemplate() {
     const cardTemplate = document.querySelector(this._templateSelector).content;
@@ -33,13 +34,14 @@ export class Card {
     this._setEventListeners();
 
     const trashBtn = this._cardElement.querySelector(".trash-button");
-    trashBtn.addEventListener("click", (evt) => {
+    // this._deleteHandler(trashBtn);
+    /*trashBtn.addEventListener("click", (evt) => {
       const cardToRemove = trashBtn.closest(".place-card");
-      console.log(evt.target);
-      this.apiDelete(this._cardElement.id);
-      //this.handlePopupDelete(this._cardElement.id, evt.target);
+      //console.log(evt.target);
+      this._deleteHandler(this._id);
+      //api.deleteCard(this._id); //this._deleteHandler() en el handler que se debe declarar en index
       cardToRemove.remove();
-    });
+    });¨*/
     const likeIcon = this._cardElement.querySelector(".like-button");
     const likeCounter = this._cardElement.querySelector(".like-button-counter");
     let setupLikes = 0;
@@ -51,19 +53,7 @@ export class Card {
 
     return this._cardElement;
   }
-  apiDelete(cardId) {
-    const deleteApi = new Api({
-      baseUrl: "https://around.nomoreparties.co/v1/web_es_07/",
-      headers: {
-        authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
-        "content-Type": "application/json",
-      },
-    });
-    deleteApi.deleteCard(cardId);
-  }
-  handlePopupDelete(cardId, openForm) {
-    this._deleteHandler(cardId, openForm);
-  }
+
   _handleOpenPopup() {
     this._photoHandler(this._link, this._name);
   }
@@ -83,8 +73,19 @@ export class Card {
     btnClosePhoto.addEventListener("click", () => {
       this._handleClosePopup();
     });
+    const trashBtn = this._cardElement.querySelector(".trash-button");
+    trashBtn.addEventListener("click", (evt) => {
+      console.log("enviado desde setevent de card open handler");
+      this._deleteHandler(this._cardElement.id);
+      // console.log(this._cardElement.id);
+    });
+  }
+  trashBtnFunctions() {
+    const trashBtn = this._cardElement.querySelector(".trash-button");
+    const cardToRemove = trashBtn.closest(".place-card");
+    cardToRemove.remove();
   }
   test() {
-    this.generateCard();
+    console.log(this._id);
   }
 }

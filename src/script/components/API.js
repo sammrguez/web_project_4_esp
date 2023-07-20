@@ -78,38 +78,28 @@ export class Api {
   }
 
   addNewCardPetition(newCard) {
-    return (
-      fetch(`${this._baseUrl}/cards`, {
-        method: "POST",
-        headers: {
-          authorization: this._authorization,
-          "content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: newCard.placeName,
-          link: newCard.link,
-        }),
-      })
-        .then((res) =>
-          res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-        )
-        /* .then((res) => {
-        console.log(res);
-        console.log("desde segundo then");
-        this.renderNewCard(res);
-      })*/
-        .catch((error) => {
-          console.log(`Error: ${error}`);
-        })
-    );
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: {
+        authorization: this._authorization,
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: newCard.placeName,
+        link: newCard.link,
+      }),
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+      )
+
+      .catch((error) => {
+        console.log(`Error: ${error}`);
+      });
   }
-  /* renderNewCard(newCard) {
-    addedCardsArray.push(newCard);
-    console.log(addedCardsArray);
-  }*/
 
   deleteCard(cardId) {
-    fetch(`${this._baseUrl}/cards/${cardId}`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: {
         authorization: this._authorization,
@@ -123,9 +113,7 @@ export class Api {
         }
         return Promise.reject(res.status);
       })
-      .then((res) => {
-        console.log(res);
-      })
+
       .catch((error) => {
         console.log(`Error: ${error}`);
       });

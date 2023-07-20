@@ -39,5 +39,7 @@ export const captionPopup = document.querySelector(".popup__photo-caption");
 export const btnClosePhoto = document.querySelector(".popup__close-button");
 
 //delete popup
-export const btnDeleteCard = document.querySelector(".trash-button");
+export const btnDeleteConfirmation = document.querySelector(
+  ".form__submit-button_delete"
+);
 export const popupDeleteCard = document.querySelector(".popup_type_delete");
