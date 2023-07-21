@@ -29,7 +29,7 @@ export const popupAddNewPlace = document.querySelector(".popup_type_new-place");
 export const btnSubmitNewPlace = document.querySelector(
   ".form__submit-button_place"
 );
-export const likeCounter = document.querySelector(".like-button-counter");
+
 export const cardsContainer = document.querySelector(".card-container");
 export const popupPhoto = document.querySelector(".popup_type_photo");
 
@@ -43,3 +43,6 @@ export const btnDeleteConfirmation = document.querySelector(
   ".form__submit-button_delete"
 );
 export const popupDeleteCard = document.querySelector(".popup_type_delete");
+export const closeDeletePopup = document.querySelector(
+  ".form__close-button_type_delete"
+);

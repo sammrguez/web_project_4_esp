@@ -101,8 +101,8 @@ export function renderCards(dataArray) {
                 },
                 popupDeleteCard
               );
-              confirmation.submitFunctions();
-              console.log(id); // esta funcion si regresa al id de vard
+              confirmation.simpleTest2();
+              // console.log(id); // esta funcion si regresa al id de vard
               confirmation.open();
               // console.log(argumento);
             },
@@ -146,11 +146,21 @@ function createNewCard(item) {
         const photo = new PopupWithImage(popupPhoto);
         const newPhoto = photo.open(src, name);
       },
-      deleteHandler: (cardId) => {
-        const confirmation = new PopupConfirmation(popupDeleteCard);
-        confirmation.setEventListenersOpen();
-
-        confirmation.submitEventListener(cardId);
+      deleteHandler: (id) => {
+        const confirmation = new PopupConfirmation(
+          {
+            submitHandler: () => {
+              api.deleteCard(id);
+              apiCard.trashBtnFunctions();
+              console.log(id);
+            },
+          },
+          popupDeleteCard
+        );
+        confirmation.submitFunctions();
+        console.log(id); // esta funcion si regresa al id de vard
+        confirmation.open();
+        // console.log(argumento);
       },
     },
     "#card-template"

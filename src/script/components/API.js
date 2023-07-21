@@ -118,4 +118,31 @@ export class Api {
         console.log(`Error: ${error}`);
       });
   }
+  addLike(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      headers: {
+        authorization: this._authorization,
+        "content-Type": "application/json",
+      },
+    });
+  }
+  returnCardInfo(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "GET",
+      headers: {
+        authorization: this._authorization,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log("todo ok");
+          return res.json();
+        }
+        return Promise.reject(res.status);
+      })
+
+      .catch((error) => {
+        console.log(`Error: ${error}`);
+      });
+  }
 }

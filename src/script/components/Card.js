@@ -13,6 +13,7 @@ export class Card {
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
+    this._likes = data.likes;
     this._templateSelector = templateSelector;
     this._photoHandler = photoHandler;
     this._deleteHandler = deleteHandler;
@@ -30,27 +31,10 @@ export class Card {
     this._cardElement.querySelector(".place-card__name").textContent =
       this._name;
     this._cardElement.querySelector(".place-card__photo").src = this._link;
+    // console.log(this._cardElement);
     this._cardElement.id = this._id;
+
     this._setEventListeners();
-
-    const trashBtn = this._cardElement.querySelector(".trash-button");
-    // this._deleteHandler(trashBtn);
-    /*trashBtn.addEventListener("click", (evt) => {
-      const cardToRemove = trashBtn.closest(".place-card");
-      //console.log(evt.target);
-      this._deleteHandler(this._id);
-      //api.deleteCard(this._id); //this._deleteHandler() en el handler que se debe declarar en index
-      cardToRemove.remove();
-    });¨*/
-    const likeIcon = this._cardElement.querySelector(".like-button");
-    const likeCounter = this._cardElement.querySelector(".like-button-counter");
-    let setupLikes = 0;
-    likeIcon.addEventListener("click", function (evt) {
-      evt.target.classList.toggle("like-button_active");
-      setupLikes = +1;
-      likeCounter.textContent = setupLikes;
-    });
-
     return this._cardElement;
   }
 
@@ -63,6 +47,7 @@ export class Card {
     captionPopup.textContent = " ";
     popupPhoto.classList.remove("popup_opened");
   }
+  likeadding() {}
 
   _setEventListeners() {
     this._cardElement
@@ -75,11 +60,24 @@ export class Card {
     });
     const trashBtn = this._cardElement.querySelector(".trash-button");
     trashBtn.addEventListener("click", (evt) => {
-      console.log("enviado desde setevent de card open handler");
+      // console.log("enviado desde setevent de card open handler");
       this._deleteHandler(this._cardElement.id);
-      // console.log(this._cardElement.id);
+      console.log(this._cardElement.id);
+    });
+    //const likeNumber = this._cardElement.querySelector(".like-button-counter");
+    const likeIcon = this._cardElement.querySelector(".like-button");
+    likeIcon.addEventListener("click", (evt) => {
+      evt.target.classList.toggle("like-button_active");
+      if (evt.target.classList.contains("like-button_active")) {
+        console.log(`se suma un like en la card${this._cardElement.id}`);
+        api.returnCardInfo(cardId);
+      } else {
+        console.log(`se resta un like en la card${this._cardElement.id}`);
+      }
+      // this.likeadding();
     });
   }
+
   trashBtnFunctions() {
     const trashBtn = this._cardElement.querySelector(".trash-button");
     const cardToRemove = trashBtn.closest(".place-card");
