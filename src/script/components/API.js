@@ -22,7 +22,7 @@ export class Api {
     userAvatar.src = userData.avatar;
   }
   defaultProfile() {
-    fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       headers: {
         authorization: this._authorization,
       },
@@ -64,6 +64,55 @@ export class Api {
       .then((res) => {
         console.log(res);
       })
+      .catch((error) => {
+        console.log(`Error: ${error}`);
+      });
+  }
+  //likes
+  addLike(cardId) {
+    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+      method: "PUT",
+      headers: {
+        authorization: this._authorization,
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: profile.name,
+        about: profile.about,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log("todo ok");
+          return res.json();
+        }
+        return Promise.reject(res.status);
+      })
+
+      .catch((error) => {
+        console.log(`Error: ${error}`);
+      });
+  }
+  deleteLike(cardId) {
+    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: this._authorization,
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: profile.name,
+        about: profile.about,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log("todo ok");
+          return res.json();
+        }
+        return Promise.reject(res.status);
+      })
+
       .catch((error) => {
         console.log(`Error: ${error}`);
       });
@@ -118,14 +167,7 @@ export class Api {
         console.log(`Error: ${error}`);
       });
   }
-  addLike(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}`, {
-      headers: {
-        authorization: this._authorization,
-        "content-Type": "application/json",
-      },
-    });
-  }
+
   returnCardInfo(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "GET",

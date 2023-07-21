@@ -17,6 +17,7 @@ export class Card {
     this._templateSelector = templateSelector;
     this._photoHandler = photoHandler;
     this._deleteHandler = deleteHandler;
+    this._likes = data.likes;
   }
   getTemplate() {
     const cardTemplate = document.querySelector(this._templateSelector).content;
@@ -33,13 +34,15 @@ export class Card {
     this._cardElement.querySelector(".place-card__photo").src = this._link;
     // console.log(this._cardElement);
     this._cardElement.id = this._id;
-
+    this._cardElement.querySelector(".like-button-counter").textContent =
+      this._likes.length;
     this._setEventListeners();
     return this._cardElement;
   }
 
   _handleOpenPopup() {
     this._photoHandler(this._link, this._name);
+    console.log(this._likes.length);
   }
 
   _handleClosePopup() {
@@ -69,10 +72,21 @@ export class Card {
     likeIcon.addEventListener("click", (evt) => {
       evt.target.classList.toggle("like-button_active");
       if (evt.target.classList.contains("like-button_active")) {
-        console.log(`se suma un like en la card${this._cardElement.id}`);
-        api.returnCardInfo(cardId);
+        api.addLike(this._cardElement.id).then((res) => {
+          let likesinitArray = res.likes;
+          // console.log(likesinitArray);
+
+          this._cardElement.querySelector(".like-button-counter").textContent =
+            likesinitArray.length;
+        });
       } else {
-        console.log(`se resta un like en la card${this._cardElement.id}`);
+        api.deleteLike(this._cardElement.id).then((res) => {
+          console.log(res);
+          const likesinitArray = res.likes;
+          this._cardElement.querySelector(".like-button-counter").textContent =
+            likesinitArray.length;
+        });
+        // console.log("borraste un like");
       }
       // this.likeadding();
     });

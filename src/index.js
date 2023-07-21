@@ -187,11 +187,3 @@ function newCardApi() {
   formPopupPlace.setEventListeners(btnAddNewPlace);
 }
 newCardApi();
-
-/*const testconfirmation = new PopupConfirmation({
-  confirmationHandler: () => {
-    console.log("desde confirmation test en Index");
-  },
-});
-testconfirmation.setEventListeners();
-*/
