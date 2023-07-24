@@ -65,7 +65,7 @@ export class Card {
     trashBtn.addEventListener("click", (evt) => {
       // console.log("enviado desde setevent de card open handler");
       this._deleteHandler(this._cardElement.id);
-      console.log(this._cardElement.id);
+      // console.log(this._cardElement.id);
     });
     //const likeNumber = this._cardElement.querySelector(".like-button-counter");
     const likeIcon = this._cardElement.querySelector(".like-button");

@@ -46,3 +46,10 @@ export const popupDeleteCard = document.querySelector(".popup_type_delete");
 export const closeDeletePopup = document.querySelector(
   ".form__close-button_type_delete"
 );
+//edit Avatar
+export const popupUpdateAvatar = document.querySelector(
+  ".popup_type_update-avatar"
+);
+export const btnUpdateAvatar = document.querySelector(
+  ".profile__avatar-overlay"
+);

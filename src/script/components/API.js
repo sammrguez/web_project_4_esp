@@ -42,7 +42,7 @@ export class Api {
       });
   }
 
-  edithProfile(newProfile) {
+  editProfile(newProfile) {
     fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: {
@@ -52,6 +52,31 @@ export class Api {
       body: JSON.stringify({
         name: newProfile.name,
         about: newProfile.about,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log("todo ok");
+          return res.json();
+        }
+        return Promise.reject(res.status);
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(`Error: ${error}`);
+      });
+  }
+  updateAvatar(data) {
+    fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: {
+        authorization: this._authorization,
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        avatar: data.avatar,
       }),
     })
       .then((res) => {

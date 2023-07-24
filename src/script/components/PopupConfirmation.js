@@ -22,8 +22,12 @@ export default class PopupConfirmation extends Popup {
       this._submitHandler();
       this.close();
     });
-    // api.deleteCard(cardId);
-    // this.close();
+    closeDeletePopup.addEventListener("click", (evt) => {
+      evt.preventDefault();
+      console.log("diste click a cverrar popup");
+      // evt.stopImmediatePropagation();
+      this.close();
+    });
   }
   simpleTest() {
     closeDeletePopup.addEventListener("click", (evt) => {

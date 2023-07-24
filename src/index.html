@@ -16,7 +16,14 @@
         />
       </section>
       <section class="profile">
-        <img class="profile__avatar" src="" alt="aquí está tu foto de perfil" />
+        <div class="profile__avatar-container">
+          <img
+            class="profile__avatar"
+            src=""
+            alt="aquí está tu foto de perfil"
+          />
+          <div class="profile__avatar-overlay"></div>
+        </div>
         <div class="profile__info">
           <h2 class="profile__user-name"></h2>
           <div class="edit-button">
@@ -153,7 +160,7 @@
         </div>
         <!--delete popup-->
         <!--change avatar-->
-        <div class="popup popup_type_update-avatar">
+        <div class="popup popup_type_update-avatar popup-opened">
           <div class="overlay"></div>
           <form
             class="form form_action_avatar"

@@ -14,6 +14,9 @@ import {
   popupDeleteCard,
   btnDeleteCard,
   api,
+  updateAvatar,
+  popupUpdateAvatar,
+  btnUpdateAvatar,
 } from "./script/utils/Data.js";
 import Section from "./script/components/Section.js";
 
@@ -60,7 +63,7 @@ const formPopupProfile = new PopupWithForm(
       user.setUserInfo();
       user.getUserInfo();
 
-      api.edithProfile({
+      api.editProfile({
         name: data.name,
         about: data["about-me"],
       });
@@ -69,6 +72,7 @@ const formPopupProfile = new PopupWithForm(
   popupEditProfile
 );
 formPopupProfile.setEventListeners(btnEditProfile);
+
 // funciones de perfil
 
 // Rendeizar initial Cards
@@ -101,7 +105,7 @@ export function renderCards(dataArray) {
                 },
                 popupDeleteCard
               );
-              confirmation.simpleTest2();
+              confirmation.submitFunctions();
               // console.log(id); // esta funcion si regresa al id de vard
               confirmation.open();
               // console.log(argumento);
@@ -187,3 +191,10 @@ function newCardApi() {
   formPopupPlace.setEventListeners(btnAddNewPlace);
 }
 newCardApi();
+/*const updateAvatar = new PopupWithForm({
+  formSubmitHandler: () => {
+    console.log("desde form handler");
+  },
+  popupUpdateAvatar,
+});
+updateAvatar.test();*/

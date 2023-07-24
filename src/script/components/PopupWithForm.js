@@ -40,4 +40,7 @@ export default class PopupWithForm extends Popup {
       //  console.log("desde stEventListener");
     });
   }
+  test() {
+    console.log("desde test popup with form");
+  }
 }
