@@ -2,19 +2,11 @@ import "./styles/index.css";
 import {
   btnEditProfile,
   popupEditProfile,
-  initialCards,
-  defaultCards,
   popupPhoto,
   popupAddNewPlace,
   btnAddNewPlace,
-  btnSubmitNewPlace,
-  userAvatar,
-  userName,
-  userAboutMe,
   popupDeleteCard,
-  btnDeleteCard,
   api,
-  updateAvatar,
   popupUpdateAvatar,
   btnUpdateAvatar,
 } from "./script/utils/Data.js";
@@ -26,6 +18,7 @@ import PopupWithImage from "./script/components/PopupWithImage.js";
 import PopupWithForm from "./script/components/PopupWithForm.js";
 import userInfo from "./script/components/UserInfo.js";
 import PopupConfirmation from "./script/components/PopupConfirmation";
+import { Api } from "./script/components/API.js";
 
 // objetos para validar
 const validationObject = {
@@ -191,10 +184,19 @@ function newCardApi() {
   formPopupPlace.setEventListeners(btnAddNewPlace);
 }
 newCardApi();
-/*const updateAvatar = new PopupWithForm({
-  formSubmitHandler: () => {
-    console.log("desde form handler");
-  },
-  popupUpdateAvatar,
-});
-updateAvatar.test();*/
+
+function editAvatar() {
+  const editAvatar = new PopupWithForm(
+    {
+      formSubmitHandler: (data) => {
+        api.updateAvatar({
+          avatar: data.avatar,
+        });
+      },
+    },
+    popupUpdateAvatar
+  );
+  editAvatar.setEventListeners(btnUpdateAvatar);
+  console.log("edit avatar ejeutabndose");
+}
+editAvatar();

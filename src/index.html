@@ -160,16 +160,12 @@
         </div>
         <!--delete popup-->
         <!--change avatar-->
-        <div class="popup popup_type_update-avatar popup-opened">
+        <div class="popup popup_type_update-avatar">
           <div class="overlay"></div>
-          <form
-            class="form form_action_avatar"
-            id="updateAvatar"
-            novalidate
-            name="updateAvatar"
-          >
+
+          <form class="form" id="updateAvatar" novalidate name="updateAvatar">
             <button
-              class="form__close-button form__close-button_type_new-place"
+              class="form__close-button form__close-button_type_update-avatar"
             ></button>
             <div class="form__container">
               <h3 class="form__header">Editar foto de perfil</h3>
@@ -179,9 +175,9 @@
                   class="form__input"
                   placeholder="Link de foto"
                   id="avatar-input"
-                  name="updateAvatar"
+                  name="avatar"
                   minlength="4"
-                  maxlength="30"
+                  maxlength="300"
                   required
                 />
                 <span class="form__input-error avatar-input-error"></span>

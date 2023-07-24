@@ -8,7 +8,7 @@ export default class PopupWithForm extends Popup {
 
   close() {
     super.close();
-    if (this._form.id == "place") {
+    if (this._form.id == "place" || "updateAvatar") {
       // console.log("desde popup form l12");
       this._form.reset();
     }
@@ -34,13 +34,10 @@ export default class PopupWithForm extends Popup {
       evt.preventDefault();
       evt.stopImmediatePropagation();
       this._formSubmitHandler(this.getInputValues());
-
       this.close();
-      document.forms.place.reset();
+
+      // document.forms.reset();
       //  console.log("desde stEventListener");
     });
-  }
-  test() {
-    console.log("desde test popup with form");
   }
 }

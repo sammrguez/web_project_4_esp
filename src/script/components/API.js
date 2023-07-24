@@ -68,8 +68,11 @@ export class Api {
         console.log(`Error: ${error}`);
       });
   }
+  renderAvatar(data) {
+    userAvatar.src = data;
+  }
   updateAvatar(data) {
-    fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: {
         authorization: this._authorization,
@@ -79,20 +82,18 @@ export class Api {
         avatar: data.avatar,
       }),
     })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+      )
       .then((res) => {
-        if (res.ok) {
-          console.log("todo ok");
-          return res.json();
-        }
-        return Promise.reject(res.status);
-      })
-      .then((res) => {
-        console.log(res);
+        console.log("desde api");
+        this.renderAvatar(res.avatar);
       })
       .catch((error) => {
         console.log(`Error: ${error}`);
       });
   }
+
   //likes
   addLike(cardId) {
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
