@@ -98,14 +98,16 @@ export function renderCards(dataArray) {
               const confirmation = new PopupConfirmation(
                 {
                   submitHandler: () => {
-                    api.deleteCard(id);
-                    card.trashBtnFunctions();
                     console.log(id);
+                    api.deleteCard(id).then((res) => {
+                      console.log(res);
+                    });
+                    card.trashBtnFunctions();
                   },
                 },
                 popupDeleteCard
               );
-              confirmation.submitFunctions();
+              confirmation.setEventListeners();
               // console.log(id); // esta funcion si regresa al id de vard
               confirmation.open();
               // console.log(argumento);

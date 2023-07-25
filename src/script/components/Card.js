@@ -42,7 +42,6 @@ export class Card {
 
   _handleOpenPopup() {
     this._photoHandler(this._link, this._name);
-    console.log(this._likes.length);
   }
 
   _handleClosePopup() {
