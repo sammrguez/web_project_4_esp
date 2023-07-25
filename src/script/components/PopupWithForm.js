@@ -35,12 +35,21 @@ export default class PopupWithForm extends Popup {
       evt.stopImmediatePropagation();
       this._formSubmitHandler(this.getInputValues());
 
-      this.close();
+      //this.close();
       document.forms.place.reset();
       //  console.log("desde stEventListener");
     });
   }
   test() {
     console.log("desde test popup with form");
+  }
+  renderLoading(isLoading) {
+    if (isLoading) {
+      this._form.querySelector(".form__submit-button").textContent =
+        "Guardando...";
+    } else {
+      this._form.querySelector(".form__submit-button").textContent = "Guardado";
+      this.close();
+    }
   }
 }
