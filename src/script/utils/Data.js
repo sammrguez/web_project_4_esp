@@ -1,29 +1,12 @@
-export const initialCards = [
-  {
-    placeName: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
+import { Api } from "../components/API.js";
+export const api = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/web_es_07/",
+  headers: {
+    authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
+    "content-Type": "application/json",
   },
-  {
-    placeName: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
-  },
-  {
-    placeName: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
-  },
-  {
-    placeName: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
-  },
-  {
-    placeName: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
-  },
-  {
-    placeName: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
-  },
-];
+});
+
 //constantes universales
 export const btnEditProfile = document.querySelector(".edit-button");
 export const btnCreateProfile = document.querySelector(".form__submit-button");
@@ -54,3 +37,19 @@ export const popupPhoto = document.querySelector(".popup_type_photo");
 export const linkPopup = document.querySelector(".popup__photo");
 export const captionPopup = document.querySelector(".popup__photo-caption");
 export const btnClosePhoto = document.querySelector(".popup__close-button");
+
+//delete popup
+export const btnDeleteConfirmation = document.querySelector(
+  ".form__submit-button_delete"
+);
+export const popupDeleteCard = document.querySelector(".popup_type_delete");
+export const closeDeletePopup = document.querySelector(
+  ".form__close-button_type_delete"
+);
+//edit Avatar
+export const popupUpdateAvatar = document.querySelector(
+  ".popup_type_update-avatar"
+);
+export const btnUpdateAvatar = document.querySelector(
+  ".profile__avatar-overlay"
+);
