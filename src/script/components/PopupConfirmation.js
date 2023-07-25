@@ -4,6 +4,7 @@ export default class PopupConfirmation extends Popup {
   constructor({ submitHandler }, popup) {
     super(popup);
     this._submitHandler = submitHandler;
+    this._form = this._popup.querySelector(".form");
   }
 
   setEventListeners() {

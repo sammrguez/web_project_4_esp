@@ -17,6 +17,7 @@ import {
   updateAvatar,
   popupUpdateAvatar,
   btnUpdateAvatar,
+  profileAvatar,
 } from "./script/utils/Data.js";
 import Section from "./script/components/Section.js";
 
@@ -58,15 +59,19 @@ const formPopupProfile = new PopupWithForm(
   {
     formSubmitHandler: (data) => {
       // aqui empieza callback
+      formPopupProfile.renderLoading(true);
 
+      api
+        .editProfile({
+          name: data.name,
+          about: data["about-me"],
+        })
+        .finally(() => {
+          formPopupProfile.renderLoading(false);
+        });
       const user = new userInfo({ data: data });
       user.setUserInfo();
       user.getUserInfo();
-
-      api.editProfile({
-        name: data.name,
-        about: data["about-me"],
-      });
     }, //aqui termina
   },
   popupEditProfile
@@ -98,19 +103,15 @@ export function renderCards(dataArray) {
               const confirmation = new PopupConfirmation(
                 {
                   submitHandler: () => {
-                    console.log(id);
-                    api.deleteCard(id).then((res) => {
-                      console.log(res);
-                    });
+                    api.deleteCard(id).then((res) => {});
                     card.trashBtnFunctions();
                   },
                 },
                 popupDeleteCard
               );
               confirmation.setEventListeners();
-              // console.log(id); // esta funcion si regresa al id de vard
+
               confirmation.open();
-              // console.log(argumento);
             },
           },
           "#card-template"
@@ -144,7 +145,6 @@ function initialCardsRequest() {
 initialCardsRequest();
 
 function createNewCard(item) {
-  console.log(item);
   const apiCard = new Card(
     {
       data: item,
@@ -171,21 +171,27 @@ function createNewCard(item) {
     },
     "#card-template"
   );
-  apiCard.test();
+
   return apiCard.generateCard();
 }
 function newCardApi() {
   const formPopupPlace = new PopupWithForm( // declarando form
     {
       formSubmitHandler: (newCard) => {
+        formPopupPlace.renderLoading(true);
         // console.log(newCard);
-        api.addNewCardPetition(newCard).then((result) => {
-          // console.log(res);
-          document
-            .querySelector(".card-container")
-            .prepend(createNewCard(result));
-          formPopupPlace.close();
-        });
+        api
+          .addNewCardPetition(newCard)
+          .then((result) => {
+            // console.log(res);
+            document
+              .querySelector(".card-container")
+              .prepend(createNewCard(result));
+            formPopupPlace.close();
+          })
+          .finally(() => {
+            formPopupProfile.renderLoading(false);
+          });
       },
     },
     popupAddNewPlace
@@ -193,10 +199,26 @@ function newCardApi() {
   formPopupPlace.setEventListeners(btnAddNewPlace);
 }
 newCardApi();
-/*const updateAvatar = new PopupWithForm({
-  formSubmitHandler: () => {
-    console.log("desde form handler");
+function renderAvatar(avatarUrl) {
+  profileAvatar.src = avatarUrl;
+}
+const newPpdateAvatar = new PopupWithForm(
+  {
+    formSubmitHandler: (data) => {
+      newPpdateAvatar.renderLoading(true);
+
+      api
+        .updateAvatar({
+          avatar: data.updateAvatar,
+        })
+        .then((res) => {
+          renderAvatar(res.avatar);
+        })
+        .finally(() => {
+          newPpdateAvatar.renderLoading(false);
+        });
+    },
   },
-  popupUpdateAvatar,
-});
-updateAvatar.test();*/
+  popupUpdateAvatar
+);
+newPpdateAvatar.setEventListeners(btnUpdateAvatar);

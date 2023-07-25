@@ -103,13 +103,6 @@ export class FormValidator {
       });
     });
   }
-
-  test() {
-    const formElement = document.getElementById(this._formSelector);
-
-    const errorElement = formElement.querySelector(`.${evt.target.id}-error`);
-    console.log(errorElement);
-  }
 }
 //termina objeto
 //  prueba Para Profile form
