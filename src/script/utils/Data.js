@@ -53,3 +53,4 @@ export const popupUpdateAvatar = document.querySelector(
 export const btnUpdateAvatar = document.querySelector(
   ".profile__avatar-overlay"
 );
+export const profileAvatar = document.querySelector(".profile__avatar");

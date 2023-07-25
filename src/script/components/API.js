@@ -69,7 +69,7 @@ export class Api {
       });
   }
   updateAvatar(data) {
-    fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: {
         authorization: this._authorization,
@@ -86,9 +86,7 @@ export class Api {
         }
         return Promise.reject(res.status);
       })
-      .then((res) => {
-        console.log(res);
-      })
+
       .catch((error) => {
         console.log(`Error: ${error}`);
       });

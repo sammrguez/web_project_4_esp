@@ -17,6 +17,7 @@ import {
   updateAvatar,
   popupUpdateAvatar,
   btnUpdateAvatar,
+  profileAvatar,
 } from "./script/utils/Data.js";
 import Section from "./script/components/Section.js";
 
@@ -108,9 +109,8 @@ export function renderCards(dataArray) {
                 popupDeleteCard
               );
               confirmation.setEventListeners();
-              // console.log(id); // esta funcion si regresa al id de vard
+
               confirmation.open();
-              // console.log(argumento);
             },
           },
           "#card-template"
@@ -193,10 +193,23 @@ function newCardApi() {
   formPopupPlace.setEventListeners(btnAddNewPlace);
 }
 newCardApi();
-/*const updateAvatar = new PopupWithForm({
-  formSubmitHandler: () => {
-    console.log("desde form handler");
+function renderAvatar(avatarUrl) {
+  profileAvatar.src = avatarUrl;
+}
+const newPpdateAvatar = new PopupWithForm(
+  {
+    formSubmitHandler: (data) => {
+      console.log("desde form handler");
+
+      api
+        .updateAvatar({
+          avatar: data.updateAvatar,
+        })
+        .then((res) => {
+          renderAvatar(res.avatar);
+        });
+    },
   },
-  popupUpdateAvatar,
-});
-updateAvatar.test();*/
+  popupUpdateAvatar
+);
+newPpdateAvatar.setEventListeners(btnUpdateAvatar);

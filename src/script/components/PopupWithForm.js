@@ -8,7 +8,7 @@ export default class PopupWithForm extends Popup {
 
   close() {
     super.close();
-    if (this._form.id == "place") {
+    if (this._form.id == "place" || "avatar") {
       // console.log("desde popup form l12");
       this._form.reset();
     }
