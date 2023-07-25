@@ -46,13 +46,23 @@ const validationObject2 = {
   inputErrorClass: "form__input_type_error",
   errorClass: "form__input-error_active",
 };
+const validationObjectAvatar = {
+  formSelector: "avatar",
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__submit-button",
+  inactiveButtonClass: "form__submit-button_inactive",
+  inputErrorClass: "form__input_type_error",
+  errorClass: "form__input-error_active",
+};
+
 //llamando a FormValidator
 const ProfileValidation = new FormValidator(validationObject);
 const test = ProfileValidation.enableValidation();
 //prueba para place form
 const PlaceValidation = new FormValidator(validationObject2);
 const test2 = PlaceValidation.enableValidation();
-
+const avatarValidation = new FormValidator(validationObjectAvatar);
+avatarValidation.enableValidation();
 //popup form profile
 api.defaultProfile();
 const formPopupProfile = new PopupWithForm(

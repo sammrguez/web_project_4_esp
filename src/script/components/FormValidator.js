@@ -1,8 +1,9 @@
 const regEx = {
   name: /^[A-Za-z\-]{2,100}$/,
   aboutMe: /^[A-Za-z\-]{2,20}$/,
-  placeName: /^[A-Za-z\-]{4,20}$/,
+  placeName: /^[A-Za-z\-]{3,20}$/,
   link: /^[A-Za-z\-]{4,500}$/,
+  updateAvatar: /^[A-Za-z\-]{4,500}$/,
 };
 
 export class FormValidator {
@@ -37,6 +38,13 @@ export class FormValidator {
         this._checkInputValidity(regEx.link, evt.target, this._formSelector);
 
         break;
+      case "updateAvatar":
+        this._checkInputValidity(
+          regEx.updateAvatar,
+          evt.target,
+          this._formSelector
+        );
+        break;
     }
   }
   _checkInputValidity(expresion, inputElement, formID) {
@@ -45,9 +53,8 @@ export class FormValidator {
 
     if (expresion.test(inputElement.value)) {
       errorElement.classList.remove(this._errorClass);
-
-      errorElement.textContent = "";
       inputElement.classList.remove(this._inputErrorClass);
+      errorElement.textContent = "";
     } else {
       errorElement.textContent = inputElement.validationMessage;
       errorElement.classList.add(this._errorClass);
