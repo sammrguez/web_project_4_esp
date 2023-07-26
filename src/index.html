@@ -31,7 +31,6 @@
               class="edit-button__icon"
               src="<%=require('../src/images/edit_button.png')%>"
               alt="ícono de editar"
-              button
             />
           </div>
           <h3 class="profile__user-profession"></h3>
@@ -134,12 +133,7 @@
         <!--delete popup-->
         <div class="popup popup_type_delete">
           <div class="overlay"></div>
-          <div
-            class="form form_action_delete"
-            id="deleteForm"
-            novalidate
-            name="delete"
-          >
+          <div class="form form_action_delete" id="deleteForm">
             <button
               class="form__close-button form__close-button_type_delete"
               type="submit"
@@ -216,7 +210,11 @@
     <div class="popup popup_type_photo">
       <div class="popup__photo-container">
         <button class="popup__close-button"></button>
-        <img class="popup__photo" src=" " />
+        <img
+          class="popup__photo"
+          src=" "
+          alt="zoom a la foto de la card seleccionada"
+        />
         <h4 class="popup__photo-caption"></h4>
       </div>
     </div>

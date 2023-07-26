@@ -12,8 +12,6 @@ const presets = [
         safari: "11.1",
       },
 
-      // utiliza polyfills para los navegadores especificados en la opción targets anterior
-      // Babel utiliza polyfills de la librería core-js
       useBuiltIns: "entry",
       corejs: "^3",
     },

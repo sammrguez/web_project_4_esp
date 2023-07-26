@@ -29,7 +29,6 @@ export class Api {
     })
       .then((res) => {
         if (res.ok) {
-          //console.log("todo ok");
           return res.json();
         }
         return Promise.reject(res.status);
@@ -56,7 +55,6 @@ export class Api {
     })
       .then((res) => {
         if (res.ok) {
-          console.log("todo ok");
           return res.json();
         }
         return Promise.reject(res.status);
@@ -81,7 +79,6 @@ export class Api {
     })
       .then((res) => {
         if (res.ok) {
-          console.log("todo ok");
           return res.json();
         }
         return Promise.reject(res.status);
@@ -106,7 +103,6 @@ export class Api {
     })
       .then((res) => {
         if (res.ok) {
-          console.log("todo ok");
           return res.json();
         }
         return Promise.reject(res.status);
@@ -130,7 +126,6 @@ export class Api {
     })
       .then((res) => {
         if (res.ok) {
-          console.log("todo ok");
           return res.json();
         }
         return Promise.reject(res.status);
@@ -180,7 +175,6 @@ export class Api {
     })
       .then((res) => {
         if (res.ok) {
-          console.log("todo ok");
           return res.json();
         }
         return Promise.reject(res.status);
@@ -200,7 +194,6 @@ export class Api {
     })
       .then((res) => {
         if (res.ok) {
-          console.log("todo ok");
           return res.json();
         }
         return Promise.reject(res.status);

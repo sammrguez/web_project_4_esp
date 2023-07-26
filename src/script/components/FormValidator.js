@@ -20,11 +20,11 @@ export class FormValidator {
     switch (evt.target.name) {
       case "name":
         this._checkInputValidity(regEx.name, evt.target, this._formSelector);
-        // console.log(errorElement);
+
         break;
       case " aboutMe":
         this._checkInputValidity(regEx.aboutMe, evt.target, this._formSelector);
-        // console.log(errorElement);
+
         break;
       case "placeName":
         this._checkInputValidity(
@@ -32,7 +32,7 @@ export class FormValidator {
           evt.target,
           this._formSelector
         );
-        //console.log(errorElement);
+
         break;
       case "link":
         this._checkInputValidity(regEx.link, evt.target, this._formSelector);
@@ -65,22 +65,12 @@ export class FormValidator {
   // is valid
 
   isValid(formID) {
-    let valid = "";
     const formElement = document.getElementById(formID);
-    const inputsList = Array.from(
-      formElement.querySelectorAll(this._inputSelector)
-    );
+    const inputsList = formElement.querySelectorAll(this._inputSelector);
 
-    if (
-      inputsList.every((inputElement) => {
-        return inputElement.validity.valid;
-      })
-    ) {
-      valid = true;
-    } else {
-      valid = false;
-    }
-    return valid;
+    return inputsList.every((inputElement) => {
+      return inputElement.validity.valid;
+    });
   }
 
   // toggleBtn
