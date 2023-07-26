@@ -12,8 +12,11 @@
   "author": "Samantha Rodríguez",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.22.5",
-    "@babel/preset-env": "^7.22.5",
+    "@babel/cli": "^7.22.9",
+    "@babel/core": "^7.22.9",
+    "@babel/node": "^7.22.6",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.22.9",
     "autoprefixer": "^10.4.5",
     "babel-loader": "^7.1.5",
     "clean-webpack-plugin": "^4.0.0",
@@ -27,7 +30,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "core-js": "^3.31.0",
+    "core-js": "^3.31.1",
     "mini-css-extract-plugin": "^2.7.6"
   }
 }

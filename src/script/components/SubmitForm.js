@@ -5,7 +5,7 @@ export default class SubmitForm {
 
   getTemplate() {
     const popup = document.querySelector(this._popupSelector);
-    console.log(popup);
+
     const formElement = popup.querySelector(".form");
 
     console.log(formElement);

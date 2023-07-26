@@ -2,19 +2,11 @@ import "./styles/index.css";
 import {
   btnEditProfile,
   popupEditProfile,
-  initialCards,
-  defaultCards,
   popupPhoto,
   popupAddNewPlace,
   btnAddNewPlace,
-  btnSubmitNewPlace,
-  userAvatar,
-  userName,
-  userAboutMe,
   popupDeleteCard,
-  btnDeleteCard,
   api,
-  updateAvatar,
   popupUpdateAvatar,
   btnUpdateAvatar,
   profileAvatar,
@@ -57,14 +49,20 @@ const validationObjectAvatar = {
 
 //llamando a FormValidator
 const ProfileValidation = new FormValidator(validationObject);
-const test = ProfileValidation.enableValidation();
+ProfileValidation.enableValidation();
 //prueba para place form
 const PlaceValidation = new FormValidator(validationObject2);
-const test2 = PlaceValidation.enableValidation();
+PlaceValidation.enableValidation();
 const avatarValidation = new FormValidator(validationObjectAvatar);
 avatarValidation.enableValidation();
 //popup form profile
+
 api.defaultProfile();
+function renderProfileInfo(data) {
+  const user = new userInfo({ data: data });
+  user.setUserInfo();
+  user.getUserInfo();
+}
 const formPopupProfile = new PopupWithForm(
   {
     formSubmitHandler: (data) => {
@@ -76,12 +74,12 @@ const formPopupProfile = new PopupWithForm(
           name: data.name,
           about: data["about-me"],
         })
+        .then((res) => {
+          renderProfileInfo(res);
+        })
         .finally(() => {
           formPopupProfile.renderLoading(false);
         });
-      const user = new userInfo({ data: data });
-      user.setUserInfo();
-      user.getUserInfo();
     }, //aqui termina
   },
   popupEditProfile
@@ -97,7 +95,7 @@ export function renderCards(dataArray) {
   dataArray.forEach((item) => {
     addedCardsArray.push(item);
   });
-  // console.log(addedCardsArray);
+
   const defaultCardList = new Section(
     {
       items: addedCardsArray,
@@ -140,7 +138,6 @@ function initialCardsRequest() {
   initialCardsApi
     .then((res) => {
       if (res.ok) {
-        // console.log("todo ok");
         return res.json();
       }
       return Promise.reject(res.status);
@@ -168,15 +165,13 @@ function createNewCard(item) {
             submitHandler: () => {
               api.deleteCard(id);
               apiCard.trashBtnFunctions();
-              console.log(id);
             },
           },
           popupDeleteCard
         );
         confirmation.submitFunctions();
-        console.log(id); // esta funcion si regresa al id de vard
+
         confirmation.open();
-        // console.log(argumento);
       },
     },
     "#card-template"
@@ -189,11 +184,10 @@ function newCardApi() {
     {
       formSubmitHandler: (newCard) => {
         formPopupPlace.renderLoading(true);
-        // console.log(newCard);
+
         api
           .addNewCardPetition(newCard)
           .then((result) => {
-            // console.log(res);
             document
               .querySelector(".card-container")
               .prepend(createNewCard(result));

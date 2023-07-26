@@ -32,7 +32,7 @@ export class Card {
     this._cardElement.querySelector(".place-card__name").textContent =
       this._name;
     this._cardElement.querySelector(".place-card__photo").src = this._link;
-    // console.log(this._cardElement);
+
     this._cardElement.id = this._id;
     this._cardElement.querySelector(".like-button-counter").textContent =
       this._likes.length;
@@ -62,32 +62,26 @@ export class Card {
     });
     const trashBtn = this._cardElement.querySelector(".trash-button");
     trashBtn.addEventListener("click", (evt) => {
-      // console.log("enviado desde setevent de card open handler");
       this._deleteHandler(this._cardElement.id);
-      // console.log(this._cardElement.id);
     });
-    //const likeNumber = this._cardElement.querySelector(".like-button-counter");
+
     const likeIcon = this._cardElement.querySelector(".like-button");
     likeIcon.addEventListener("click", (evt) => {
       evt.target.classList.toggle("like-button_active");
       if (evt.target.classList.contains("like-button_active")) {
         api.addLike(this._cardElement.id).then((res) => {
-          let likesinitArray = res.likes;
-          // console.log(likesinitArray);
+          const likesinitArray = res.likes;
 
           this._cardElement.querySelector(".like-button-counter").textContent =
             likesinitArray.length;
         });
       } else {
         api.deleteLike(this._cardElement.id).then((res) => {
-          console.log(res);
           const likesinitArray = res.likes;
           this._cardElement.querySelector(".like-button-counter").textContent =
             likesinitArray.length;
         });
-        // console.log("borraste un like");
       }
-      // this.likeadding();
     });
   }
 
@@ -95,8 +89,5 @@ export class Card {
     const trashBtn = this._cardElement.querySelector(".trash-button");
     const cardToRemove = trashBtn.closest(".place-card");
     cardToRemove.remove();
-  }
-  test() {
-    console.log(this._id);
   }
 }
