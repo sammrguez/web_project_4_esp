@@ -5,6 +5,8 @@
   font-weight: 400;
   line-height: 22px;
   margin-top: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis " ...";
 }
 @media screen and (max-width: 470px) {
   .profile__user-profession {

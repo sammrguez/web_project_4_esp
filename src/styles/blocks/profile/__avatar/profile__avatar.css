@@ -7,10 +7,9 @@
 }
 
 .profile__avatar {
+  height: 100%;
   border-radius: 50%;
   overflow: hidden;
-  height: 120px;
-
   z-index: 1;
 }
 .profile__avatar-overlay {

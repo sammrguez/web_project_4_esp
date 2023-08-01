@@ -8,7 +8,7 @@ export default class SubmitForm {
 
     const formElement = popup.querySelector(".form");
 
-    console.log(formElement);
+    return formElement;
   }
 
   _setEventListeners() {

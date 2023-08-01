@@ -15,16 +15,16 @@ export class FormValidator {
     this._inputErrorClass = objToValidate.inputErrorClass;
     this._errorClass = objToValidate.errorClass;
   }
+
   //termina el constructor
+
   switchingInput(evt) {
     switch (evt.target.name) {
       case "name":
         this._checkInputValidity(regEx.name, evt.target, this._formSelector);
-
         break;
       case " aboutMe":
         this._checkInputValidity(regEx.aboutMe, evt.target, this._formSelector);
-
         break;
       case "placeName":
         this._checkInputValidity(
@@ -32,11 +32,9 @@ export class FormValidator {
           evt.target,
           this._formSelector
         );
-
         break;
       case "link":
         this._checkInputValidity(regEx.link, evt.target, this._formSelector);
-
         break;
       case "updateAvatar":
         this._checkInputValidity(
@@ -47,10 +45,10 @@ export class FormValidator {
         break;
     }
   }
+
   _checkInputValidity(expresion, inputElement, formID) {
     const formElement = document.getElementById(formID);
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-
     if (expresion.test(inputElement.value)) {
       errorElement.classList.remove(this._errorClass);
       inputElement.classList.remove(this._inputErrorClass);
@@ -61,23 +59,34 @@ export class FormValidator {
       inputElement.classList.add(this._inputErrorClass);
     }
   }
+
   // termina check show error
+
   // is valid
 
   isValid(formID) {
+    let valid = "";
     const formElement = document.getElementById(formID);
-    const inputsList = formElement.querySelectorAll(this._inputSelector);
-
-    return inputsList.every((inputElement) => {
-      return inputElement.validity.valid;
-    });
+    const inputsList = Array.from(
+      formElement.querySelectorAll(this._inputSelector)
+    );
+    if (
+      inputsList.every((inputElement) => {
+        return inputElement.validity.valid;
+      })
+    ) {
+      valid = true;
+    } else {
+      valid = false;
+    }
+    return valid;
   }
 
   // toggleBtn
+
   toggleBtnState(formID) {
     const formElement = document.getElementById(formID);
     const btnElement = formElement.querySelector(this._submitButtonSelector);
-
     if (this.isValid(formID) === true) {
       btnElement.classList.remove(this._inactiveButtonClass);
     } else {
@@ -86,22 +95,27 @@ export class FormValidator {
   }
 
   //prueba enable validation
+
   enableValidation() {
     const formElement = document.getElementById(this._formSelector);
-
     const inputsList = Array.from(
       formElement.querySelectorAll(this._inputSelector)
     );
+
     this.toggleBtnState(this._formSelector);
+
     inputsList.forEach((input) => {
       input.addEventListener("input", (evt) => {
         this.switchingInput(evt);
+
         this.toggleBtnState(this._formSelector);
       });
     });
   }
 }
+
 //termina objeto
+
 //  prueba Para Profile form
 
 //Proyecto 8

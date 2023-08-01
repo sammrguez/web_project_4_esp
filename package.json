@@ -1,36 +1,34 @@
 {
   "name": "web_project_4_esp",
   "version": "1.0.0",
-  "description": "Educational Proyect",
+  "description": "Proyecto de una página web con perfil personalizable, accesible mediante un popup o ventana modal . En el cuerpo se pueden ver cards de sitios, con su nombre y una imágen de este.\r ##tecnologías: \r *HTML\r *CSS\r *Js\r ## futuros upgrades:\r En la siguiente etapa de este proyecto se pretende agregar las funciuones correspondientes para poder agregar cards manualmente, activar el botón de like y eliminar, todo esto mediante Javascript.\r ### Enlace al proyecto :\r * https://sammrguez.github.io/web_project_4_esp/",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
+    "dev": "webpack serve --mode development",
     "predeploy": "npm run build",
-    "dev": "webpack serve",
     "deploy": "gh-pages -d dist"
   },
-  "author": "Samantha Rodríguez",
+  "keywords": [],
+  "author": "Samantha Rodriguez",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.22.9",
     "@babel/core": "^7.22.9",
-    "@babel/node": "^7.22.6",
-    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.22.9",
-    "autoprefixer": "^10.4.5",
-    "babel-loader": "^7.1.5",
-    "clean-webpack-plugin": "^4.0.0",
+    "autoprefixer": "^10.4.14",
+    "babel-loader": "^9.1.3",
     "css-loader": "^6.8.1",
     "cssnano": "^6.0.1",
-    "gh-pages": "^3.0.0",
+    "gh-pages": "^5.0.0",
     "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
     "postcss-loader": "^7.3.3",
-    "webpack": "^5.86.0",
+    "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "core-js": "^3.31.1",
-    "mini-css-extract-plugin": "^2.7.6"
+    "clean-webpack-plugin": "^4.0.0",
+    "core-js": "^3.32.0"
   }
 }

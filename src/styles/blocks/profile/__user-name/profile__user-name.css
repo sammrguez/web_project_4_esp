@@ -5,8 +5,9 @@
   font-weight: 500;
   line-height: 1.3;
   text-align: left;
-
   display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis " ...";
 }
 @media screen and (max-width: 600px) {
   .profile__user-name {

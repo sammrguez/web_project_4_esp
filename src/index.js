@@ -1,18 +1,27 @@
 import "./styles/index.css";
+
 import {
   btnEditProfile,
   popupEditProfile,
+  initialCards,
+  defaultCards,
   popupPhoto,
   popupAddNewPlace,
   btnAddNewPlace,
+  btnSubmitNewPlace,
+  userAvatar,
+  userName,
+  userAboutMe,
   popupDeleteCard,
+  btnDeleteCard,
   api,
+  updateAvatar,
   popupUpdateAvatar,
   btnUpdateAvatar,
   profileAvatar,
 } from "./script/utils/Data.js";
-import Section from "./script/components/Section.js";
 
+import Section from "./script/components/Section.js";
 import { FormValidator } from "./script/components/FormValidator.js";
 import { Card, cardsContainer } from "./script/components/Card.js";
 import PopupWithImage from "./script/components/PopupWithImage.js";
@@ -21,6 +30,7 @@ import userInfo from "./script/components/UserInfo.js";
 import PopupConfirmation from "./script/components/PopupConfirmation";
 
 // objetos para validar
+
 const validationObject = {
   formSelector: "profile",
   inputSelector: ".form__input",
@@ -38,6 +48,7 @@ const validationObject2 = {
   inputErrorClass: "form__input_type_error",
   errorClass: "form__input-error_active",
 };
+
 const validationObjectAvatar = {
   formSelector: "avatar",
   inputSelector: ".form__input",
@@ -48,38 +59,35 @@ const validationObjectAvatar = {
 };
 
 //llamando a FormValidator
+
 const ProfileValidation = new FormValidator(validationObject);
-ProfileValidation.enableValidation();
+const profileValidationClass = ProfileValidation.enableValidation();
 //prueba para place form
 const PlaceValidation = new FormValidator(validationObject2);
-PlaceValidation.enableValidation();
+const placeValidationClass = PlaceValidation.enableValidation();
+
 const avatarValidation = new FormValidator(validationObjectAvatar);
 avatarValidation.enableValidation();
 //popup form profile
-
 api.defaultProfile();
-function renderProfileInfo(data) {
-  const user = new userInfo({ data: data });
-  user.setUserInfo();
-  user.getUserInfo();
-}
 const formPopupProfile = new PopupWithForm(
   {
     formSubmitHandler: (data) => {
       // aqui empieza callback
       formPopupProfile.renderLoading(true);
-
       api
         .editProfile({
           name: data.name,
           about: data["about-me"],
         })
-        .then((res) => {
-          renderProfileInfo(res);
-        })
+
         .finally(() => {
           formPopupProfile.renderLoading(false);
         });
+
+      const user = new userInfo({ data: data });
+      user.setUserInfo();
+      user.getUserInfo();
     }, //aqui termina
   },
   popupEditProfile
@@ -89,13 +97,12 @@ formPopupProfile.setEventListeners(btnEditProfile);
 // funciones de perfil
 
 // Rendeizar initial Cards
-export const addedCardsArray = [];
 
+export const addedCardsArray = [];
 export function renderCards(dataArray) {
   dataArray.forEach((item) => {
     addedCardsArray.push(item);
   });
-
   const defaultCardList = new Section(
     {
       items: addedCardsArray,
@@ -105,8 +112,10 @@ export function renderCards(dataArray) {
             data: item,
             photoHandler: (src, name) => {
               const photo = new PopupWithImage(popupPhoto);
-              const newPhoto = photo.open(src, name);
+              photo.open(src, name);
+              photo.handleEscClose();
             },
+
             deleteHandler: (id) => {
               const confirmation = new PopupConfirmation(
                 {
@@ -117,19 +126,21 @@ export function renderCards(dataArray) {
                 },
                 popupDeleteCard
               );
-              confirmation.setEventListeners();
 
+              confirmation.setEventListeners();
               confirmation.open();
             },
           },
           "#card-template"
         );
+
         const newCard = card.generateCard();
         defaultCardList.addItem(newCard);
       },
     },
     cardsContainer
   );
+
   defaultCardList.renderItems();
 }
 
@@ -142,13 +153,16 @@ function initialCardsRequest() {
       }
       return Promise.reject(res.status);
     })
+
     .then((res) => {
       renderCards(res);
     })
+
     .catch((error) => {
       console.log(`Error: ${error}`);
     });
 }
+
 initialCardsRequest();
 
 function createNewCard(item) {
@@ -157,8 +171,10 @@ function createNewCard(item) {
       data: item,
       photoHandler: (src, name) => {
         const photo = new PopupWithImage(popupPhoto);
-        const newPhoto = photo.open(src, name);
+        photo.open(src, name);
+        photo.handleEscClose();
       },
+
       deleteHandler: (id) => {
         const confirmation = new PopupConfirmation(
           {
@@ -170,7 +186,6 @@ function createNewCard(item) {
           popupDeleteCard
         );
         confirmation.submitFunctions();
-
         confirmation.open();
       },
     },
@@ -179,12 +194,12 @@ function createNewCard(item) {
 
   return apiCard.generateCard();
 }
+
 function newCardApi() {
   const formPopupPlace = new PopupWithForm( // declarando form
     {
       formSubmitHandler: (newCard) => {
         formPopupPlace.renderLoading(true);
-
         api
           .addNewCardPetition(newCard)
           .then((result) => {
@@ -202,7 +217,9 @@ function newCardApi() {
   );
   formPopupPlace.setEventListeners(btnAddNewPlace);
 }
+
 newCardApi();
+
 function renderAvatar(avatarUrl) {
   profileAvatar.src = avatarUrl;
 }
@@ -210,7 +227,6 @@ const newPpdateAvatar = new PopupWithForm(
   {
     formSubmitHandler: (data) => {
       newPpdateAvatar.renderLoading(true);
-
       api
         .updateAvatar({
           avatar: data.updateAvatar,
