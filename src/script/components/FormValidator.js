@@ -21,11 +21,9 @@ export class FormValidator {
   switchingInput(evt) {
     switch (evt.target.name) {
       case "name":
-      
         this._checkInputValidity(regEx.name, evt.target, this._formSelector);
         break;
       case "about-me":
-      
         this._checkInputValidity(regEx.aboutMe, evt.target, this._formSelector);
         break;
       case "placeName":
@@ -36,11 +34,9 @@ export class FormValidator {
         );
         break;
       case "link":
-     
         this._checkInputValidity(regEx.link, evt.target, this._formSelector);
         break;
       case "updateAvatar":
-       
         this._checkInputValidity(
           regEx.updateAvatar,
           evt.target,
@@ -81,10 +77,10 @@ export class FormValidator {
 
   // toggleBtn
 
-  toggleBtnState(formID) {
-    const formElement = document.getElementById(formID);
+  toggleBtnState() {
+    const formElement = document.getElementById(this._formSelector);
     const btnElement = formElement.querySelector(this._submitButtonSelector);
-    if (this._hasInvalidInput(formID)) {
+    if (this._hasInvalidInput(this._formSelector)) {
       btnElement.classList.add(this._inactiveButtonClass);
       btnElement.setAttribute("disabled", true);
     } else {
@@ -100,14 +96,16 @@ export class FormValidator {
     const inputsList = Array.from(
       formElement.querySelectorAll(this._inputSelector)
     );
+    const btnElement = formElement.querySelector(this._submitButtonSelector);
+    this.toggleBtnState();
     inputsList.forEach((inputElement) => {
       inputElement.addEventListener("input", (evt) => {
         evt.stopImmediatePropagation();
         this.switchingInput(evt);
-        this.toggleBtnState(this._formSelector);
+        this.toggleBtnState();
       });
     });
-    this.toggleBtnState(this._formSelector);
+    this.toggleBtnState();
   }
 }
 
