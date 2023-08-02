@@ -79,8 +79,7 @@ const formPopupProfile = new PopupWithForm(
           formPopupProfile.renderLoading(false);
         });
 
-      const user = new userInfo({ data: data }); //No entendí como cambiar esta situación, y contactar a los tutores para que me apoyen ha sido imposible, una disculpa
-      user.setUserInfo();
+      const user = new userInfo({ data: data });
       user.getUserInfo();
     }, //aqui termina
   },
