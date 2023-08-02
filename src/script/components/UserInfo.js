@@ -1,16 +1,16 @@
 import { userName, userAboutMe } from "../utils/Data.js";
-export default class userInfo {
-  constructor({ data }) {
-    this._userName = data.name;
-    this._userAboutMe = data["about-me"];
+export class UserInfo {
+  constructor(inputNameSelector, inputAboutSelector) {
+    this._userName = document.querySelector(inputNameSelector);
+    this._userAboutMe = document.querySelector(inputAboutSelector);
   }
   getUserInfo() {
-    this._userName = userName.textContent;
-    this._userAboutMe = userAboutMe.textContent;
+    this._userName.value = userName.textContent;
+    this._userAboutMe.value = userAboutMe.textContent;
   }
 
   setUserInfo() {
-    userName.textContent = this._userName;
-    userAboutMe.textContent = this._userAboutMe;
+    userName.textContent = this._userName.value;
+    userAboutMe.textContent = this._userAboutMe.value;
   }
 }

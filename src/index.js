@@ -11,6 +11,10 @@ import {
   popupUpdateAvatar,
   btnUpdateAvatar,
   profileAvatar,
+  userNameInput,
+  userProfessionInput,
+  userName,
+  userAboutMe,
 } from "./script/utils/Data.js";
 
 import Section from "./script/components/Section.js";
@@ -18,7 +22,7 @@ import { FormValidator } from "./script/components/FormValidator.js";
 import { Card, cardsContainer } from "./script/components/Card.js";
 import PopupWithImage from "./script/components/PopupWithImage.js";
 import PopupWithForm from "./script/components/PopupWithForm.js";
-import userInfo from "./script/components/UserInfo.js";
+import { UserInfo } from "./script/components/UserInfo.js";
 import PopupConfirmation from "./script/components/PopupWithConfirmation";
 
 // objetos para validar
@@ -50,6 +54,8 @@ const validationObjectAvatar = {
   errorClass: "form__input-error_active",
 };
 
+export const userData = new UserInfo("#name-input", "#about-me-input");
+
 //llamando a FormValidator
 
 const ProfileValidation = new FormValidator(validationObject);
@@ -78,9 +84,10 @@ const formPopupProfile = new PopupWithForm(
         .finally(() => {
           formPopupProfile.renderLoading(false);
         });
-
-      const user = new userInfo({ data: data });
-      user.getUserInfo();
+      userData.setUserInfo();
+      userData.getUserInfo();
+      //console.log(userNameInput.value);
+      // console.log(userProfessionInput.value);
     }, //aqui termina
   },
   popupEditProfile

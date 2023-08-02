@@ -8,8 +8,9 @@ export default class PopupWithForm extends Popup {
 
   close() {
     super.close();
-    this._form.reset();
-
+    if (this._form.id == "place" || "avatar") {
+      this._form.reset();
+    }
     this._popup.querySelector(".overlay").addEventListener("click", (evt) => {
       this._popup.classList.remove("popup_opened");
       evt.stopImmediatePropagation();
@@ -42,7 +43,7 @@ export default class PopupWithForm extends Popup {
       this._form.querySelector(".form__submit-button").textContent =
         "Guardando...";
     } else {
-      this._form.querySelector(".form__submit-button").textContent = "Guardar";
+      this._form.querySelector(".form__submit-button").textContent = "Guardado";
       this.close();
     }
   }
