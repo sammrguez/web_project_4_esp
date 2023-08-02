@@ -85,10 +85,8 @@ const formPopupProfile = new PopupWithForm(
           formPopupProfile.renderLoading(false);
           ProfileValidation.toggleBtnState();
         });
-
-      const user = new userInfo({ data: data }); //No entendí como cambiar esta situación, y contactar a los tutores para que me apoyen ha sido imposible, una disculpa
-      user.setUserInfo();
-      user.getUserInfo();
+      userData.setUserInfo();
+      userData.getUserInfo();
     }, //aqui termina
   },
   popupEditProfile
