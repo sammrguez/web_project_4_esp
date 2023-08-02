@@ -59,9 +59,7 @@ export class Api {
         }
         return Promise.reject(res.status);
       })
-      .then((res) => {
-        console.log(res);
-      })
+
       .catch((error) => {
         console.log(`Error: ${error}`);
       });

@@ -3,19 +3,11 @@ import "./styles/index.css";
 import {
   btnEditProfile,
   popupEditProfile,
-  initialCards,
-  defaultCards,
   popupPhoto,
   popupAddNewPlace,
   btnAddNewPlace,
-  btnSubmitNewPlace,
-  userAvatar,
-  userName,
-  userAboutMe,
   popupDeleteCard,
-  btnDeleteCard,
   api,
-  updateAvatar,
   popupUpdateAvatar,
   btnUpdateAvatar,
   profileAvatar,
@@ -27,7 +19,7 @@ import { Card, cardsContainer } from "./script/components/Card.js";
 import PopupWithImage from "./script/components/PopupWithImage.js";
 import PopupWithForm from "./script/components/PopupWithForm.js";
 import userInfo from "./script/components/UserInfo.js";
-import PopupConfirmation from "./script/components/PopupConfirmation";
+import PopupConfirmation from "./script/components/PopupWithConfirmation";
 
 // objetos para validar
 
@@ -61,13 +53,15 @@ const validationObjectAvatar = {
 //llamando a FormValidator
 
 const ProfileValidation = new FormValidator(validationObject);
-const profileValidationClass = ProfileValidation.enableValidation();
+
+ProfileValidation.setEventListeners();
+
 //prueba para place form
 const PlaceValidation = new FormValidator(validationObject2);
-const placeValidationClass = PlaceValidation.enableValidation();
+PlaceValidation.setEventListeners();
 
 const avatarValidation = new FormValidator(validationObjectAvatar);
-avatarValidation.enableValidation();
+avatarValidation.setEventListeners();
 //popup form profile
 api.defaultProfile();
 const formPopupProfile = new PopupWithForm(
@@ -85,7 +79,7 @@ const formPopupProfile = new PopupWithForm(
           formPopupProfile.renderLoading(false);
         });
 
-      const user = new userInfo({ data: data });
+      const user = new userInfo({ data: data }); //No entendí como cambiar esta situación, y contactar a los tutores para que me apoyen ha sido imposible, una disculpa
       user.setUserInfo();
       user.getUserInfo();
     }, //aqui termina
@@ -209,7 +203,7 @@ function newCardApi() {
             formPopupPlace.close();
           })
           .finally(() => {
-            formPopupProfile.renderLoading(false);
+            formPopupPlace.renderLoading(false);
           });
       },
     },
