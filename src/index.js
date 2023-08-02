@@ -83,11 +83,12 @@ const formPopupProfile = new PopupWithForm(
 
         .finally(() => {
           formPopupProfile.renderLoading(false);
+          ProfileValidation.toggleBtnState();
         });
-      userData.setUserInfo();
-      userData.getUserInfo();
-      //console.log(userNameInput.value);
-      // console.log(userProfessionInput.value);
+
+      const user = new userInfo({ data: data }); //No entendí como cambiar esta situación, y contactar a los tutores para que me apoyen ha sido imposible, una disculpa
+      user.setUserInfo();
+      user.getUserInfo();
     }, //aqui termina
   },
   popupEditProfile
@@ -210,7 +211,9 @@ function newCardApi() {
           })
           .finally(() => {
             formPopupPlace.renderLoading(false);
+            PlaceValidation.toggleBtnState();
           });
+        formPopupPlace.resetInputs();
       },
     },
     popupAddNewPlace
@@ -236,7 +239,9 @@ const newPpdateAvatar = new PopupWithForm(
         })
         .finally(() => {
           newPpdateAvatar.renderLoading(false);
+          avatarValidation.toggleBtnState();
         });
+      newPpdateAvatar.resetInputs();
     },
   },
   popupUpdateAvatar
