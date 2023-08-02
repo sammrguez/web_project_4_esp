@@ -5,13 +5,9 @@
   color: #fff;
   font-size: 18px;
   border: none;
-  margin-bottom: 36px;
+  margin: 20px auto 36px;
 }
-@media screen and (max-width: 600px) {
-  .form__submit-button {
-    margin-top: 0px;
-  }
-}
+
 .form__submit-button:hover {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.8);
