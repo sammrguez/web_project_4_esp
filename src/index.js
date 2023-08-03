@@ -23,7 +23,7 @@ import { Card, cardsContainer } from "./script/components/Card.js";
 import PopupWithImage from "./script/components/PopupWithImage.js";
 import PopupWithForm from "./script/components/PopupWithForm.js";
 import { UserInfo } from "./script/components/UserInfo.js";
-import PopupConfirmation from "./script/components/PopupWithConfirmation";
+import PopupWithConfirmation from "./script/components/PopupWithConfirmation";
 
 // objetos para validar
 
@@ -112,11 +112,10 @@ export function renderCards(dataArray) {
             photoHandler: (src, name) => {
               const photo = new PopupWithImage(popupPhoto);
               photo.open(src, name);
-              photo.handleEscClose();
             },
 
             deleteHandler: (id) => {
-              const confirmation = new PopupConfirmation(
+              const confirmation = new PopupWithConfirmation(
                 {
                   submitHandler: () => {
                     api.deleteCard(id).then((res) => {});
@@ -171,11 +170,10 @@ function createNewCard(item) {
       photoHandler: (src, name) => {
         const photo = new PopupWithImage(popupPhoto);
         photo.open(src, name);
-        photo.handleEscClose();
       },
 
       deleteHandler: (id) => {
-        const confirmation = new PopupConfirmation(
+        const confirmation = new PopupWithConfirmation(
           {
             submitHandler: () => {
               api.deleteCard(id);

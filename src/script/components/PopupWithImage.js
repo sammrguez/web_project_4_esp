@@ -13,13 +13,6 @@ export default class PopupWithImage extends Popup {
     this._caption = document.querySelector(
       ".popup__photo-caption"
     ).textContent = name;
-  }
-  handleEscClose() {
-    document.addEventListener("keydown", (evt) => {
-      evt.preventDefault;
-      if (evt.key === "Escape") {
-        this.close();
-      }
-    });
+    document.removeEventListener("keydown", this._handleEscClose.bind(this));
   }
 }

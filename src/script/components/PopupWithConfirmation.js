@@ -1,6 +1,6 @@
 import Popup from "./Popup.js";
 import { btnDeleteConfirmation, closeDeletePopup } from "../utils/Data.js";
-export default class PopupConfirmation extends Popup {
+export default class PopupWithConfirmation extends Popup {
   constructor({ submitHandler }, popup) {
     super(popup);
     this._submitHandler = submitHandler;
