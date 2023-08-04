@@ -7,27 +7,16 @@ export default class PopupWithConfirmation extends Popup {
     this._form = this._popup.querySelector(".form");
   }
 
-  setEventListeners() {
-    btnDeleteConfirmation.addEventListener("click", (evt) => {
-      evt.preventDefault();
-      evt.stopImmediatePropagation();
-
-      this._submitHandler();
-      this.close();
-    });
-    closeDeletePopup.addEventListener("click", (evt) => {
-      evt.preventDefault();
-
-      this.close();
-    });
-  }
   submitFunctions() {
     btnDeleteConfirmation.addEventListener("click", (evt) => {
-      evt.preventDefault();
-      evt.stopImmediatePropagation();
+      console.log("oprimiste borrar");
       this._submitHandler();
+      console.log(btnDeleteConfirmation);
+      evt.preventDefault();
+
       this.close();
     });
+
     closeDeletePopup.addEventListener("click", (evt) => {
       evt.preventDefault();
 

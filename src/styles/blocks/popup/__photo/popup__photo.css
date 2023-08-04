@@ -1,5 +1,7 @@
 .popup__photo {
-  display: flex;
-  width: 100%;
-  max-height: 540px;
+  object-fit: cover;
+  max-width: 75vw;
+  max-height: 75vh;
+
+  object-position: center;
 }

@@ -115,17 +115,22 @@ export function renderCards(dataArray) {
             },
 
             deleteHandler: (id) => {
+              console.log("desde delete1 handler");
+              console.log(id);
+
               const confirmation = new PopupWithConfirmation(
                 {
                   submitHandler: () => {
-                    api.deleteCard(id).then((res) => {});
+                    console.log("oprimiste borrar desde ndex");
                     card.trashBtnFunctions();
+                    api.deleteCard(id);
                   },
                 },
+
                 popupDeleteCard
               );
+              confirmation.submitFunctions();
 
-              confirmation.setEventListeners();
               confirmation.open();
             },
           },
@@ -176,8 +181,9 @@ function createNewCard(item) {
         const confirmation = new PopupWithConfirmation(
           {
             submitHandler: () => {
-              api.deleteCard(id);
+              console.log("oprimiste borrar desde ndex");
               apiCard.trashBtnFunctions();
+              api.deleteCard(id);
             },
           },
           popupDeleteCard
