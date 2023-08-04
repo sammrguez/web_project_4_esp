@@ -1,6 +1,6 @@
 .popup__photo-container {
-  width: 75vw;
-  height: 75vh;
+  max-width: 75vw;
+  height: auto;
   display: flex;
   flex-direction: column;
   margin: auto;

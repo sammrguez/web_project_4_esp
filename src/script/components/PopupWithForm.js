@@ -41,7 +41,7 @@ export default class PopupWithForm extends Popup {
       this._form.querySelector(".form__submit-button").textContent =
         "Guardando...";
     } else {
-      this._form.querySelector(".form__submit-button").textContent = "Guardar";
+      this._form.querySelector(".form__submit-button").textContent = "Guardado";
       this.close();
     }
   }

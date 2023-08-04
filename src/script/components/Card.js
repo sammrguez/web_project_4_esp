@@ -65,6 +65,9 @@ export class Card {
     const trashBtn = this._cardElement.querySelector(".trash-button");
     trashBtn.addEventListener("click", () => {
       this._deleteHandler(this._cardElement.id);
+
+      console.log("desde card js");
+      console.log(this._cardElement.id);
     });
     const likeIcon = this._cardElement.querySelector(".like-button");
     likeIcon.addEventListener("click", (evt) => {
@@ -92,6 +95,9 @@ export class Card {
     const trashBtn = this._cardElement.querySelector(".trash-button");
 
     const cardToRemove = trashBtn.closest(".place-card");
+
+    console.log("desde trashBtnFunctionss");
+    console.log(this._cardElement.id);
 
     cardToRemove.remove();
   }

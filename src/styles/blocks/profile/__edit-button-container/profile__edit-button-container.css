@@ -6,6 +6,7 @@
   border: 1px #fff solid;
   display: flex;
   margin-top: 17px;
+  margin-left: 5px;
 }
 @media screen and (max-width: 950px) {
   .edit-button {
